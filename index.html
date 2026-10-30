@@ -1199,6 +1199,14 @@ footer .logo .lgimg{height:54px;background:#fff;border-radius:12px;padding:8px 1
 @media (max-width:1100px){.crts .wrap{padding-inline:max(16px,env(safe-area-inset-left,0px));scroll-padding-inline:16px}.crts h3{position:sticky;left:0}}
 @media (max-width:640px){.rgrid{gap:8px}.ftoggle{margin-bottom:6px}}
 @media (max-width:360px){.guide i{display:none}.guide li{justify-content:center;text-align:center;padding:9px 6px}}
+/* cabs on tablets: show the car between the copy and the form instead of hiding it behind the card */
+@media (min-width:641px) and (max-width:1100px){
+  .cabx{background:linear-gradient(180deg,#DFE7EE 0%,#EEF1F2 30%,#F7F4EE 60%)}
+  .cabx-bg,.cabx::after{display:none}
+  .cabx-pic{display:block;margin:0 -20px;height:min(52vw,480px);background:url("img/cab10-sm.webp") 0% 100%/cover no-repeat;-webkit-mask-image:linear-gradient(180deg,transparent 0%,#000 14%,#000 86%,transparent);mask-image:linear-gradient(180deg,transparent 0%,#000 14%,#000 86%,transparent)}
+  .cabx-in{gap:0}
+  #cbForm{margin-top:-40px;position:relative;justify-self:center;width:100%}
+}
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
