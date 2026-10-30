@@ -1150,6 +1150,55 @@ footer .logo .lgimg{height:54px;background:#fff;border-radius:12px;padding:8px 1
 @media (max-width:640px){.logo .lgimg{height:31px}header .wrap{gap:10px}}
 @media (max-width:360px){.logo .lgimg{height:26px}.hcta{padding:0 12px}}
 @media (max-width:340px){.hcta{font-size:0;gap:0;width:44px;padding:0;justify-content:center}.hcta svg{width:18px;height:18px}}
+/* ---------- end-to-end UX polish ---------- */
+/* results filters on phones: one "Filters" button opens a stacked panel instead of a cramped scroller */
+.ftoggle{display:none}
+@media (max-width:1100px){
+  .ftoggle{display:flex;align-items:center;gap:10px;width:100%;margin-bottom:10px;padding:14px 16px;border-radius:14px;border:0;background:var(--paper);box-shadow:inset 0 0 0 1px var(--line);font:inherit;font-weight:700;font-size:15px;color:var(--ink);cursor:pointer}
+  .ftoggle svg.i{width:18px;height:18px;color:var(--champ-t)}
+  .ftoggle span{flex:1;text-align:left}
+  .ftoggle b{min-width:22px;height:22px;border-radius:999px;background:var(--navy);color:#fff;font-size:12px;display:grid;place-items:center;padding:0 6px}
+  .ftoggle .chev{transition:transform .3s}
+  .ftoggle[aria-expanded="true"] .chev{transform:rotate(180deg)}
+  .filters{display:none!important}
+  .filters.open{display:flex!important;flex-direction:column;flex-wrap:nowrap;align-items:stretch;gap:18px;overflow:visible;padding:18px;margin-bottom:14px;max-height:none}
+  .filters.open > div{flex:initial}
+  .filters.open h4{display:block}
+  .filters.open .fchips{flex-wrap:wrap}
+}
+/* seat map: clearer numbers, obvious selection */
+.st{color:#3E4655;font-weight:600;font-size:11px}
+.st:disabled{color:#B5BCC6;font-weight:400}
+.st[aria-pressed="true"]{color:var(--ink);font-weight:800;box-shadow:0 6px 14px -8px rgba(138,106,50,.9)}
+/* custom cursor: a light ring that never hides what it points at */
+.cur-dot.big{width:56px;height:56px;margin:-28px 0 0 -28px;background:rgba(201,166,107,.14);box-shadow:inset 0 0 0 1.5px var(--champ)}
+.cur-dot span{display:none}
+/* booking progress on phones: compact pills */
+@media (max-width:640px){
+  .guide{grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
+  .guide li{flex-direction:row;align-items:center;gap:8px;padding:9px 10px}
+  .guide i{width:24px;height:24px;font-size:12px}
+  .guide b{font-size:12.5px;line-height:1.2}
+  .guide li > span > :not(b),.guide li > span{font-size:0}
+  .guide li > span b{font-size:12.5px}
+}
+/* no dead space when the cab tracker is empty */
+.cabafter{padding:0}
+.cabafter > :not([hidden]){margin-block:24px 40px}
+/* popular cab routes strip: snap scrolling on small screens */
+@media (max-width:1100px){.crts .wrap{scroll-snap-type:x mandatory}.crt{scroll-snap-align:start}}
+/* focus visibility for keyboard users */
+:where(a,button,input,select,textarea,summary):focus-visible{outline:2px solid var(--champ);outline-offset:2px}
+@media (max-width:640px){
+  .sortbar{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;gap:4px;margin-inline:-16px;padding-inline:16px}
+  .sortbar::-webkit-scrollbar{display:none}
+  .sortbar button,.sortbar > span{flex:none;white-space:nowrap}
+  .sortbar .n{margin-left:8px}
+}
+.guide li > span{min-width:0}.guide b{overflow-wrap:anywhere}
+@media (max-width:1100px){.crts .wrap{padding-inline:max(16px,env(safe-area-inset-left,0px));scroll-padding-inline:16px}.crts h3{position:sticky;left:0}}
+@media (max-width:640px){.rgrid{gap:8px}.ftoggle{margin-bottom:6px}}
+@media (max-width:360px){.guide i{display:none}.guide li{justify-content:center;text-align:center;padding:9px 6px}}
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -1204,7 +1253,7 @@ footer .logo .lgimg{height:54px;background:#fff;border-radius:12px;padding:8px 1
 
 <!-- HERO -->
 <div class="hero home" id="top">
-  <div class="hero-bg" id="heroBg" role="img" aria-label="A white SriYatra coach at a hill-town bus terminal on a clear morning"></div>
+  <div class="hero-bg" id="heroBg" role="img" aria-label="A white SGVK coach at a hill-town bus terminal on a clear morning"></div>
   <div class="wrap hero-in">
     <div class="hero-copy">
       <span class="eyebrow">A divine journey awaits</span>
@@ -1274,7 +1323,8 @@ footer .logo .lgimg{height:54px;background:#fff;border-radius:12px;padding:8px 1
     <ol class="guide" id="guide" aria-label="Booking progress"><li data-g="1"><i>1</i><span><b>Choose a bus</b>Compare times and fares</span></li><li data-g="2"><i>2</i><span><b>Pick your seats</b>Tap “View seats”</span></li><li data-g="3"><i>3</i><span><b>Add passengers</b>Review and confirm</span></li></ol>
     <div class="days" id="days" role="group" aria-label="Change date"></div>
     <div class="rgrid">
-      <aside class="filters" aria-label="Filters">
+      <button type="button" class="ftoggle" id="fToggle" aria-expanded="false" aria-controls="fPanel"><svg class="i"><use href="#i-route"/></svg><span>Filters</span><b id="fBadge" hidden></b><svg class="i chev"><use href="#i-chev"/></svg></button>
+      <aside class="filters" id="fPanel" aria-label="Filters">
         <div><h4>Departure</h4><div class="fchips" id="fDep">
           <button class="fchip" aria-pressed="false" data-v="0">Before 6 AM<small>Early</small></button><button class="fchip" aria-pressed="false" data-v="1">6 AM–12 PM<small>Morning</small></button>
           <button class="fchip" aria-pressed="false" data-v="2">12 PM–6 PM<small>Afternoon</small></button><button class="fchip" aria-pressed="false" data-v="3">After 6 PM<small>Night</small></button></div></div>
@@ -1309,7 +1359,7 @@ footer .logo .lgimg{height:54px;background:#fff;border-radius:12px;padding:8px 1
     <div class="ttdp-in">
       <div class="ttdp-copy">
         <button type="button" class="link ttdback" id="ttdBack">← Back to home</button>
-        <span class="eb3">SriYatra</span>
+        <span class="eb3">SGVK</span>
         <h1>TTD Tickets<br>Enquiry</h1>
         <p>Get assistance with TTD darshan tickets, seva bookings and accommodation for a smooth and peaceful visit to Tirumala.</p>
       </div>
@@ -1382,10 +1432,10 @@ footer .logo .lgimg{height:54px;background:#fff;border-radius:12px;padding:8px 1
 <!-- CABS -->
 <section data-home id="cabs">
   <div class="cabx">
-    <div class="cabx-bg" role="img" aria-label="A white SriYatra hatchback at a hilltop viewpoint above a lake and city"></div>
+    <div class="cabx-bg" role="img" aria-label="A white SGVK hatchback at a hilltop viewpoint above a lake and city"></div>
     <div class="wrap cabx-in">
       <div class="cabx-copy rv">
-        <span class="eb3">SriYatra Cabs</span>
+        <span class="eb3">SGVK Cabs</span>
         <h2>Comfort<br>for Every Journey</h2>
         <p>Reliable cabs for temple visits, city travel and outstation destinations across South India.</p>
         <div class="feats"><div><svg class="i"><use href="#i-shield"/></svg>Verified<br>Drivers</div><div><svg class="i"><use href="#i-car"/></svg>Well-Maintained<br>Cars</div><div><svg class="i"><use href="#i-clock"/></svg>On-Time<br>Pickup</div><div><svg class="i"><use href="#i-map"/></svg>Wide<br>Coverage</div></div>
@@ -1424,7 +1474,7 @@ footer .logo .lgimg{height:54px;background:#fff;border-radius:12px;padding:8px 1
   <div class="wrap">
     <div class="ttdban rv">
       <div class="ttdban-copy">
-        <span class="eb3">SriYatra</span>
+        <span class="eb3">SGVK</span>
         <h2>TTD Tickets Enquiry</h2>
         <p>Get assistance with darshan tickets, sevas and accommodation for a smooth visit to Tirumala.</p>
         <div class="tfeats">
@@ -1488,7 +1538,7 @@ footer .logo .lgimg{height:54px;background:#fff;border-radius:12px;padding:8px 1
       <div><h5>Buses from popular cities</h5><div class="flinks" id="fDirCities"></div></div>
     </div>
     <div class="big" aria-hidden="true">Go <span class="serif">further.</span></div>
-    <div class="legal"><span>© SriYatra. Prototype; fares and schedules are samples.</span><span>Darshan tickets are issued only by Tirumala Tirupati Devasthanams; SriYatra is not affiliated with TTD.</span></div>
+    <div class="legal"><span>© SGVK Tours and Travels. Fares and schedules shown are samples.</span><span>Darshan tickets are issued only by Tirumala Tirupati Devasthanams; SGVK is not affiliated with TTD.</span></div>
   </div>
 </footer>
 
@@ -1710,11 +1760,11 @@ const opts=(list,sel)=>list.map(n=>`<option${n===sel?" selected":""}>${n}</optio
 
 /* ---------- buses ---------- */
 const TYPES=[
-  {id:"vsl",line:"SriYatra Signature",model:"Volvo 9600 Multi-Axle",kind:"AC Sleeper (2+1)",ac:1,sl:1,rate:2.05,am:["Blanket","Water","Charging point","Reading light","Live tracking","CCTV"]},
-  {id:"asl",line:"SriYatra Comfort",model:"Bharat Benz",kind:"AC Sleeper (2+1)",ac:1,sl:1,rate:1.78,am:["Blanket","Water","Charging point","Live tracking"]},
-  {id:"ase",line:"SriYatra Express",model:"Volvo B11R",kind:"AC Seater (2+2)",ac:1,sl:0,rate:1.38,am:["Water","Charging point","Live tracking"]},
-  {id:"nsl",line:"SriYatra Value",model:"Ashok Leyland",kind:"Non-AC Sleeper (2+1)",ac:0,sl:1,rate:1.22,am:["Water","Live tracking"]},
-  {id:"nse",line:"SriYatra Value",model:"Eicher Skyline",kind:"Non-AC Seater (2+2)",ac:0,sl:0,rate:.94,am:["Live tracking"]}
+  {id:"vsl",line:"SGVK Signature",model:"Volvo 9600 Multi-Axle",kind:"AC Sleeper (2+1)",ac:1,sl:1,rate:2.05,am:["Blanket","Water","Charging point","Reading light","Live tracking","CCTV"]},
+  {id:"asl",line:"SGVK Comfort",model:"Bharat Benz",kind:"AC Sleeper (2+1)",ac:1,sl:1,rate:1.78,am:["Blanket","Water","Charging point","Live tracking"]},
+  {id:"ase",line:"SGVK Express",model:"Volvo B11R",kind:"AC Seater (2+2)",ac:1,sl:0,rate:1.38,am:["Water","Charging point","Live tracking"]},
+  {id:"nsl",line:"SGVK Value",model:"Ashok Leyland",kind:"Non-AC Sleeper (2+1)",ac:0,sl:1,rate:1.22,am:["Water","Live tracking"]},
+  {id:"nse",line:"SGVK Value",model:"Eicher Skyline",kind:"Non-AC Seater (2+2)",ac:0,sl:0,rate:.94,am:["Live tracking"]}
 ];
 function genBuses(from,to,date){
   const d=km(from,to), r=rng(hash(from+to+date)), n=6+Math.floor(r()*5), out=[];
@@ -1780,7 +1830,7 @@ function renderBuses(){
   let L=S.list.filter(b=>(!S.dep.size||S.dep.has(String(bucket(b.dep))))&&(!S.type.size||[...S.type].every(f=>f==="ac"?b.t.ac:f==="nonac"?!b.t.ac:f==="sleeper"?b.t.sl:!b.t.sl))
     &&(!S.arr.size||S.arr.has(String(bucket(b.arr))))&&(!S.am.size||[...S.am].every(a=>b.t.am.includes(a)))&&(!S.ops.size||S.ops.has(b.t.line))&&(!S.pmax||b.fare<=S.pmax));
   L.sort((a,b)=>S.sort==="price"?a.fare-b.fare:S.sort==="fast"?a.dur-b.dur:S.sort==="arr"?a.arr-b.arr:S.sort==="seats"?b.left-a.left:a.dep-b.dep);
-  const nf=S.dep.size+S.type.size+S.arr.size+S.am.size+S.ops.size+(S.pmax&&S.pmax<fRange().max?1:0);$("#fClear").textContent=nf?`Clear filters (${nf})`:"Clear filters";
+  const nf=S.dep.size+S.type.size+S.arr.size+S.am.size+S.ops.size+(S.pmax&&S.pmax<fRange().max?1:0);$("#fClear").textContent=nf?`Clear filters (${nf})`:"Clear filters";const fb=$("#fBadge");fb.hidden=!nf;fb.textContent=nf;
   $("#rCount").textContent=`${L.length} of ${S.list.length} buses`;
   const g=S.open?(S.sel.length?3:2):1; $$("#guide li").forEach(li=>{const k=+li.dataset.g;li.classList.toggle("now",k===g);li.classList.toggle("ok",k<g)});
   seatBar();
@@ -1824,6 +1874,7 @@ function setupFilters(){const {min:mn,max:mx}=fRange(),r=$("#fPrice");r.min=mn;r
 function paintRange(){const r=$("#fPrice"),p=(r.value-r.min)/((r.max-r.min)||1)*100;r.style.setProperty("--p",p+"%")}
 $("#fPrice").addEventListener("input",e=>{S.pmax=+e.target.value;$("#fPriceVal").textContent=inr(S.pmax);paintRange();renderBuses()});
 $("#fOps").addEventListener("change",e=>{const c=e.target.closest("input");if(!c)return;c.checked?S.ops.add(c.value):S.ops.delete(c.value);renderBuses()});
+$("#fToggle").onclick=()=>{const o=$("#fPanel").classList.toggle("open");$("#fToggle").setAttribute("aria-expanded",o)};
 function clearFilters(){S.dep.clear();S.type.clear();S.arr.clear();S.am.clear();S.ops.clear();$$(".fchip").forEach(x=>x.setAttribute("aria-pressed","false"));setupFilters();renderBuses()}
 $("#fClear").onclick=clearFilters;
 $$("#fDep .fchip,#fType .fchip,#fArr .fchip,#fAm .fchip").forEach(b=>b.onclick=()=>{const set={fDep:S.dep,fType:S.type,fArr:S.arr,fAm:S.am}[b.parentElement.id],v=b.dataset.v;set.has(v)?set.delete(v):set.add(v);b.setAttribute("aria-pressed",set.has(v));renderBuses()});
@@ -1900,7 +1951,7 @@ $("#cbFrom").addEventListener("input",e=>{if(!placeMsg(e.target.value))fmark("cb
 $("#cbDate").addEventListener("input",e=>{if(e.target.value)fmark("cbDate","")});
 $("#cbForm").addEventListener("input",()=>{$("#cbErr").hidden=true});
 function cbCheck(){const e=[fmark("cbFrom",placeMsg($("#cbFrom").value)),fmark("cbDate",$("#cbDate").value?"":"Choose your journey date."),...contactErr("cName","cPhone")].filter(Boolean);return e}
-function cabText(r){return `SriYatra cab enquiry ${r.ref}
+function cabText(r){return `SGVK cab enquiry ${r.ref}
 Route: ${r.from}${r.to?" → "+r.to:" (local)"}
 Date: ${r.date} · ${r.pax} passenger${r.pax>1?"s":""}
 Name: ${r.name} · Mobile: +91 ${r.phone}${r.notes?"\nNeeds: "+r.notes:""}`}
@@ -2071,7 +2122,7 @@ $("#tDate").min=iso(addDays(today,1));$("#tDate").max=iso(addDays(today,180));
 $("#ttdBack").onclick=()=>{try{if(history.state&&history.state.p==="ttd"){history.back();return}}catch(e){}showHome("#darshan")};
 $("#tType").addEventListener("change",e=>{if(e.target.value)fmark("tType","")});
 $("#ttdForm").addEventListener("input",()=>{$("#ttdErr").hidden=true});
-function ttdText(r){return `SriYatra TTD enquiry ${r.ref}
+function ttdText(r){return `SGVK TTD enquiry ${r.ref}
 Type: ${r.darshan.join(", ")}
 Date: ${r.date||"Flexible"} · ${r.adults} devotee${r.adults>1?"s":""}${r.from?"\nCity: "+r.from:""}
 Name: ${r.name} · Mobile: +91 ${r.phone}${r.notes?"\nNeeds: "+r.notes:""}`}
