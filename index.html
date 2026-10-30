@@ -783,7 +783,7 @@ footer p{font-size:13.5px;max-width:42ch;margin:14px 0 0}
   .guide{grid-template-columns:1fr 1fr 1fr;gap:6px}
   .guide li{flex-direction:column;align-items:flex-start;gap:6px;padding:10px}
   .guide span span,.guide li > span{font-size:12px}
-  .toast{bottom:calc(150px + env(safe-area-inset-bottom,0px))}
+  .toast{bottom:auto;top:calc(76px + env(safe-area-inset-top,0px));transform:translate(-50%,-16px);white-space:normal;width:max-content;max-width:calc(100vw - 32px);text-align:center;border-radius:16px;box-shadow:0 14px 30px -16px rgba(15,27,45,.7)}
 }
 @media (max-width:640px){
   .hero{min-height:auto}
