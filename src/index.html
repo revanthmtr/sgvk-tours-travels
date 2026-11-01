@@ -9,7 +9,7 @@
 <link rel="icon" type="image/webp" href="img/sgvk-logo.webp">
 </head>
 <body>
-<link rel="preload" as="image" href="img/coach6-sm.webp" type="image/webp" media="(max-width:640px)" fetchpriority="high">
+<link rel="preload" as="image" href="img/coach6-bus.webp" type="image/webp" media="(max-width:640px)" fetchpriority="high">
 <link rel="preload" as="image" href="img/coach6-md.webp" type="image/webp" media="(min-width:641px) and (max-width:1200px)" fetchpriority="high">
 <link rel="preload" as="image" href="img/coach6-lg.webp" type="image/webp" media="(min-width:1201px)" fetchpriority="high">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -1288,24 +1288,23 @@ footer .logo .lgimg{height:56px!important;filter:none}
 @media (max-width:640px){
   .hero{background:linear-gradient(180deg,#F7F3EC,#F1ECE2);min-height:0}
   .hero-bg,.hero::after,.hrule,.hero .eyebrow{display:none!important}
-  .hero-in{padding-block:14px 20px!important;gap:0!important}
-  .hero h1{font-size:clamp(28px,8.4vw,36px)!important;line-height:1.04!important;margin:0 0 6px!important}
+  .hero-in{padding-block:10px 18px!important;gap:0!important}
+  .hero h1{font-size:clamp(27px,8vw,34px)!important;line-height:1.08!important;margin:0 0 6px!important;word-spacing:.04em}
   .hero h1 .l{display:inline!important}
-  .hero h1 .l + .l::before{content:" "}
   .hero .spaced{font-size:14px!important;line-height:1.4;margin:0}
   .hero .spaced br{display:none}
-  .hero-copy::after{content:"";display:block;height:min(30vw,170px);margin:10px 0 0;border-radius:18px;background:url("img/coach6-sm.webp") 50% 60%/cover no-repeat;box-shadow:0 22px 36px -28px rgba(15,27,45,.6)}
-  .hsearch{margin-top:12px!important;position:relative}
-  .hsearch .glass{border-radius:20px;padding:10px}
-  .ctabs.two button{padding:9px 8px}
-  #busSearch{grid-template-columns:1fr 1fr!important;grid-template-areas:"f t" "d p" "b b"!important;gap:8px;margin-top:8px}
-  #busSearch .cf{min-height:58px;padding:9px 11px;gap:8px}
+  .hero-copy::after{content:"";display:block;width:100%;aspect-ratio:1268/705;height:auto;max-height:250px;margin:10px 0 0;border-radius:18px;background:#DCE4EA url("img/coach6-bus.webp") 50% 50%/cover no-repeat;box-shadow:0 22px 36px -28px rgba(15,27,45,.6)}
+  .hsearch{margin-top:10px!important;position:relative}
+  .hsearch .glass{border-radius:20px;padding:8px}
+  .ctabs.two button{padding:7px 8px}
+  #busSearch{grid-template-columns:1fr 1fr!important;grid-template-areas:"f t" "d p" "b b"!important;gap:6px;margin-top:6px}
+  #busSearch .cf{min-height:52px;padding:7px 11px;gap:8px}
   #busSearch .cf > svg.i{display:none}
   #busSearch .cf select,#busSearch .cf input{font-size:15.5px}
   #busSearch .quick{display:none}
-  #busSearch .swap{top:29px}
+  #busSearch .swap{top:26px}
   #busSearch .swap button{width:32px;height:32px}
-  #busSearch .btn{min-height:50px!important}
+  #busSearch .btn{min-height:46px!important}
   #drsSearch{grid-template-columns:1fr 1fr!important;grid-template-areas:"k k" "d n" "b b"!important;gap:8px;margin-top:8px}
   #drsSearch .cf{min-height:58px;padding:9px 11px;gap:8px}
   #drsSearch .a-d > svg.i,#drsSearch .a-n > svg.i{display:none}
@@ -1314,6 +1313,8 @@ footer .logo .lgimg{height:56px!important;filter:none}
 }
 @media (max-width:400px){header .btn.hcta{padding:0 12px;font-size:13.5px;gap:6px}header .wrap{gap:8px}.hbk{padding:0 10px}}
 @media (max-width:360px){.hero h1{font-size:26px!important}#busSearch .cf select,#busSearch .cf input{font-size:14.5px}}
+/* phones: the bottom tab bar slides in after the first scroll, so the hero search is fully visible on arrival */
+@media (max-width:1100px){.tabbar{transition:transform .35s var(--ease),opacity .35s}body:not(.tb-on) .tabbar{transform:translateY(120%);opacity:0;pointer-events:none}}
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -1372,7 +1373,7 @@ footer .logo .lgimg{height:56px!important;filter:none}
   <div class="wrap hero-in">
     <div class="hero-copy">
       <span class="eyebrow">A divine journey awaits</span>
-      <h1><span class="l"><span>Comfort</span></span><span class="l"><span>Moves</span></span><span class="l"><span>Your World</span></span></h1>
+      <h1><span class="l"><span>Comfort</span></span> <span class="l"><span>Moves</span></span> <span class="l"><span>Your World</span></span></h1>
       <span class="hrule" aria-hidden="true"></span>
       <p class="spaced">Premium bus &amp; cab services <br>for every journey.</p>
     </div>
@@ -2281,7 +2282,7 @@ try{document.fonts.ready.then(()=>requestAnimationFrame(placeInd))}catch(e){}
 function onScroll(){const y=scrollY;
   if(!reduce&&y<innerHeight*1.2)$("#heroBg").style.transform=`translateY(${y*.22}px)`;
   let cs="top";if(document.body.classList.contains("page-results"))cs="top";else if(document.body.classList.contains("page-ttd"))cs="darshan";else for(const id of["destinations","cabs","darshan","why","bookings"]){if(document.getElementById(id).getBoundingClientRect().top<=innerHeight*.4)cs=id}
-  $$("[data-sec]").forEach(a=>a.classList.toggle("cur",a.dataset.sec===cs));placeInd();$("#hdr").classList.toggle("scrolled",y>8);
+  $$("[data-sec]").forEach(a=>a.classList.toggle("cur",a.dataset.sec===cs));placeInd();$("#hdr").classList.toggle("scrolled",y>8);document.body.classList.toggle("tb-on",y>140||document.body.classList.contains("page-results")||document.body.classList.contains("page-ttd"));
   $("#totop").classList.toggle("show",y>innerHeight*1.2)}
 addEventListener("scroll",onScroll,{passive:true});
 $("#modify").onclick=()=>{setTab("bus");showHome("#search");$("#bTo").focus({preventScroll:true})};
