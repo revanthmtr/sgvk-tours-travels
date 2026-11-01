@@ -1283,13 +1283,33 @@ header.scrolled .logo .lgimg{height:44px!important}
 @media (max-width:360px){.logo .lgimg{height:28px!important}}
 footer .logo .lgimg{height:56px!important;filter:none}
 @media (max-width:640px){.guide b{font-size:12px!important;letter-spacing:-.01em}.guide li{padding:9px 8px}}
-/* phones: heading, then the photo at near-native scale (sharp), then the search card */
+/* phones: like the Cabs section: compact heading, rounded photo card, then a compact search card,
+   all on the same side margins, with the whole bus search visible on the first screen */
 @media (max-width:640px){
-  .hero{background:linear-gradient(180deg,#F7F3EC,#F1ECE2)}
-  .hero-bg,.hero::after{display:none!important}
-  .hero-copy::after{content:"";display:block;height:min(66vw,320px);margin:22px -20px 0;background:url("img/coach6-sm.webp") 50% 62%/cover no-repeat;-webkit-mask-image:linear-gradient(180deg,transparent 0,#000 12%,#000 80%,transparent);mask-image:linear-gradient(180deg,transparent 0,#000 12%,#000 80%,transparent)}
-  .hsearch{margin-top:-46px!important;position:relative}
+  .hero{background:linear-gradient(180deg,#F7F3EC,#F1ECE2);min-height:0}
+  .hero-bg,.hero::after,.hrule,.hero .eyebrow{display:none!important}
+  .hero-in{padding-block:14px 20px!important;gap:0!important}
+  .hero h1{font-size:clamp(28px,8.4vw,36px)!important;line-height:1.04!important;margin:0 0 6px!important}
+  .hero h1 .l{display:inline!important}
+  .hero h1 .l + .l::before{content:" "}
+  .hero .spaced{font-size:14px!important;line-height:1.4;margin:0}
+  .hero .spaced br{display:none}
+  .hero-copy::after{content:"";display:block;height:min(30vw,170px);margin:10px 0 0;border-radius:18px;background:url("img/coach6-sm.webp") 50% 60%/cover no-repeat;box-shadow:0 22px 36px -28px rgba(15,27,45,.6)}
+  .hsearch{margin-top:12px!important;position:relative}
+  .hsearch .glass{border-radius:20px;padding:10px}
+  .ctabs.two button{padding:9px 8px}
+  #busSearch{grid-template-columns:1fr 1fr!important;grid-template-areas:"f t" "d p" "b b"!important;gap:8px;margin-top:8px}
+  #busSearch .cf{min-height:58px;padding:9px 11px;gap:8px}
+  #busSearch .cf > svg.i{display:none}
+  #busSearch .cf select,#busSearch .cf input{font-size:15.5px}
+  #busSearch .quick{display:none}
+  #busSearch .swap{top:29px}
+  #busSearch .swap button{width:32px;height:32px}
+  #busSearch .btn{min-height:50px!important}
+  .cnote{display:none}
 }
+@media (max-width:400px){header .btn.hcta{padding:0 12px;font-size:13.5px;gap:6px}header .wrap{gap:8px}.hbk{padding:0 10px}}
+@media (max-width:360px){.hero h1{font-size:26px!important}#busSearch .cf select,#busSearch .cf input{font-size:14.5px}}
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -1350,7 +1370,7 @@ footer .logo .lgimg{height:56px!important;filter:none}
       <span class="eyebrow">A divine journey awaits</span>
       <h1><span class="l"><span>Comfort</span></span><span class="l"><span>Moves</span></span><span class="l"><span>Your World</span></span></h1>
       <span class="hrule" aria-hidden="true"></span>
-      <p class="spaced">Premium bus &amp; cab services<br>for every journey.</p>
+      <p class="spaced">Premium bus &amp; cab services <br>for every journey.</p>
     </div>
     <div class="hsearch" id="search">
       <div class="glass">
