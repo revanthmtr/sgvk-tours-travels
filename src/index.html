@@ -91,21 +91,21 @@ header nav a.cur::after{transform:none}
 
 /* hero */
 .hero{position:relative;overflow:hidden;min-height:clamp(620px,52vw,880px);display:flex;flex-direction:column;color:#121212;background:#C9B9A6}
-.hero-bg{position:absolute;inset:-5% 0 0;background:url("img/coach6-lg.webp") 40% 60%/cover no-repeat;animation:settle 2.4s var(--ease) both;will-change:transform}
+.hero-bg{position:absolute;inset:-5% 0 0;background:url("img/coach6-lg.webp") 40% 60%/cover no-repeat;animation:settle 1.6s var(--ease) both;will-change:transform}
 @keyframes settle{from{transform:scale(1.08)}to{transform:scale(1)}}
 .hero::after{content:"";position:absolute;inset:0;background:radial-gradient(38% 42% at 14% 52%,rgba(244,247,250,.72),rgba(244,247,250,0) 100%),linear-gradient(90deg,rgba(244,247,250,.62) 0%,rgba(244,247,250,.3) 26%,rgba(244,247,250,0) 42%);pointer-events:none}
 .hero-in{position:relative;z-index:2;width:100%;flex:1;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,500px);gap:40px;align-items:center;padding-block:clamp(44px,4.5vw,72px) clamp(44px,4.5vw,72px)}
 .hero-copy{max-width:600px;align-self:start;padding-top:clamp(10px,2vw,40px)}
-.hrule{display:block;width:56px;height:2px;background:var(--champ);margin:4px 0 22px;animation:fadeup 1.2s var(--ease) .3s both}
+.hrule{display:block;width:56px;height:2px;background:var(--champ);margin:4px 0 22px;animation:fadeup .7s var(--ease) .15s both}
 .eyebrow{font-size:13px;letter-spacing:.32em;text-transform:uppercase;font-weight:700;color:var(--champ-t)}
 .hero h1{font-family:var(--f-serif);font-weight:400;font-size:clamp(50px,5.6vw,92px);line-height:.94;letter-spacing:-.015em;margin:24px 0 20px;color:var(--navy)}
 .hero h1 .l{display:block;overflow:hidden;padding-bottom:.04em}
-.hero h1 .l > span{display:inline-block;animation:up 1.2s var(--ease) both}
+.hero h1 .l > span{display:inline-block;animation:up .8s var(--ease) both}
 .hero h1 .l:nth-child(2) > span{animation-delay:.1s}.hero h1 .l:nth-child(3) > span{animation-delay:.2s}
 @keyframes up{from{transform:translateY(105%)}to{transform:none}}
 .spaced{font-size:clamp(16px,1.25vw,19px);line-height:1.5;margin:0;font-weight:500;color:#262D3A}
 @keyframes fadeup{from{opacity:.001;transform:translateY(16px)}to{opacity:1;transform:none}}
-.hero .eyebrow,.hero .spaced{animation:fadeup 1.2s var(--ease) .35s both}
+.hero .eyebrow,.hero .spaced{animation:fadeup .7s var(--ease) .15s both}
 .svc{display:flex;flex-direction:column;min-width:230px;margin-top:-50px;color:#fff}
 .svc button{display:flex;align-items:center;gap:20px;padding:12px 6px;background:none;border:0;border-top:1px solid rgba(255,255,255,.55);cursor:pointer;color:inherit;text-align:left;position:relative;font-size:15px;letter-spacing:.3em;text-transform:uppercase;font-weight:500;text-shadow:0 1px 12px rgba(0,0,0,.35)}
 .svc button:last-child{border-bottom:1px solid rgba(255,255,255,.55)}
@@ -115,7 +115,7 @@ header nav a.cur::after{transform:none}
 .svc button:hover svg{transform:translateX(6px)}
 
 /* hero search: a glass booking card in the hero's left column */
-.hsearch{position:relative;z-index:3;width:100%;margin-top:0;animation:fadeup 1.2s var(--ease) .45s both}
+.hsearch{position:relative;z-index:3;width:100%;margin-top:0;animation:fadeup .5s var(--ease) .05s both}
 .glass{background:rgba(255,255,255,.97);backdrop-filter:blur(18px) saturate(1.15);-webkit-backdrop-filter:blur(18px) saturate(1.15);border:1px solid rgba(255,255,255,.75);border-radius:26px;padding:12px;box-shadow:0 40px 80px -42px rgba(15,27,45,.65),inset 0 1px 0 rgba(255,255,255,.8)}
 .ctabs{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;background:rgba(15,27,45,.06);border-radius:16px;padding:4px}
 .ctabs button{display:flex;align-items:center;justify-content:center;gap:8px;border:0;background:none;cursor:pointer;padding:10px 8px;border-radius:12px;font-weight:600;font-size:14.5px;color:var(--muted);transition:background .3s,color .3s,box-shadow .3s}
@@ -1213,6 +1213,8 @@ footer .logo .lgimg{height:54px;background:#fff;border-radius:12px;padding:8px 1
 .crt span{min-width:0}
 .crt{gap:12px;padding:4px 14px}.crt img{width:64px;height:54px}.crt i{display:none}
 @media (max-width:1100px){.crts .wrap{grid-template-columns:repeat(4,minmax(240px,1fr))}}
+/* after the first visit the home page appears instantly when coming back from another page */
+body.warm .hero-bg,body.warm .hero h1 .l > span,body.warm .hero .eyebrow,body.warm .hero .spaced,body.warm .hrule,body.warm .hsearch{animation:none!important;opacity:1!important;transform:none!important}
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -1827,9 +1829,9 @@ $("#rEdit").onsubmit=e=>{e.preventDefault();const f=$("#rFrom").value,t=$("#rTo"
   S.from=f;S.to=t;S.date=$("#rDate").value||S.date;$("#bFrom").value=f;$("#bTo").value=t;$("#bDate").value=S.date;$("#bPax").value=S.pax;search(false);scrollTo({top:0,behavior:"smooth"});toast(`Showing buses for ${f} → ${t}.`)};
 
 /* pages: home and bus results */
-function showResults(){if(!document.body.classList.contains("page-results")){document.body.classList.remove("page-ttd");document.body.classList.add("page-results");try{history.pushState({p:"results"},"")}catch(e){}}
+function showResults(){document.body.classList.add("warm");if(!document.body.classList.contains("page-results")){document.body.classList.remove("page-ttd");document.body.classList.add("page-results");try{history.pushState({p:"results"},"")}catch(e){}}
   scrollTo({top:0,behavior:"instant"});onScroll();$("#rTitle").setAttribute("tabindex","-1");$("#rTitle").focus({preventScroll:true})}
-function showTTD(focus){const b=document.body;if(!b.classList.contains("page-ttd")){b.classList.remove("page-results");b.classList.add("page-ttd");try{history.pushState({p:"ttd"},"")}catch(e){}}
+function showTTD(focus){const b=document.body;b.classList.add("warm");if(!b.classList.contains("page-ttd")){b.classList.remove("page-results");b.classList.add("page-ttd");try{history.pushState({p:"ttd"},"")}catch(e){}}
   $("#seatBar").hidden=true;scrollTo({top:0,behavior:"instant"});onScroll();if(focus)setTimeout(()=>{try{$(focus).focus({preventScroll:true})}catch(x){}},300)}
 function showHome(target){document.body.classList.remove("page-results","page-ttd");$("#seatBar").hidden=true;
   requestAnimationFrame(()=>{if(target){const el=document.querySelector(target);el&&el.scrollIntoView({block:target==="#search"?"center":"start",behavior:"instant"})}else scrollTo({top:0,behavior:"instant"});onScroll()})}
