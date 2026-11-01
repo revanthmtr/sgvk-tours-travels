@@ -1215,6 +1215,17 @@ footer .logo .lgimg{height:54px;background:#fff;border-radius:12px;padding:8px 1
 @media (max-width:1100px){.crts .wrap{grid-template-columns:repeat(4,minmax(240px,1fr))}}
 /* after the first visit the home page appears instantly when coming back from another page */
 body.warm .hero-bg,body.warm .hero h1 .l > span,body.warm .hero .eyebrow,body.warm .hero .spaced,body.warm .hrule,body.warm .hsearch{animation:none!important;opacity:1!important;transform:none!important}
+/* cabs on phones and tablets: one column on the same side margins: text, photo, form */
+@media (max-width:1100px){
+  .cabx-in.wrap{display:flex;flex-direction:column;align-items:stretch;gap:0;max-width:760px}
+  .cabx-copy{max-width:none;width:100%}
+  .cabx-pic{margin:20px 0 0!important;width:100%;height:min(56vw,400px)!important;border-radius:20px;-webkit-mask-image:none!important;mask-image:none!important;background-position:center 85%!important;box-shadow:0 24px 40px -30px rgba(15,27,45,.55)}
+  #cbForm.cbq{margin:16px 0 0!important;width:100%!important;max-width:none!important;justify-self:auto;position:relative}
+}
+@media (max-width:640px){
+  .cabx-pic{margin-top:18px!important;height:58vw!important;border-radius:16px}
+  #cbForm.cbq{margin-top:12px!important}
+}
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
