@@ -1226,6 +1226,50 @@ body.warm .hero-bg,body.warm .hero h1 .l > span,body.warm .hero .eyebrow,body.wa
   .cabx-pic{margin-top:18px!important;height:58vw!important;border-radius:16px}
   #cbForm.cbq{margin-top:12px!important}
 }
+/* ---------- premium detail pass ---------- */
+/* route cards read like a ticket: from → to, distance, time, buses a day, fare */
+.routes .route{display:flex;flex-direction:column;align-items:stretch;justify-content:flex-start;gap:14px;padding:18px;border-radius:20px;background:linear-gradient(180deg,#fff,#FCFAF6)}
+.rt-cities{display:grid;grid-template-columns:minmax(0,1fr) 44px minmax(0,1fr);align-items:end;gap:6px}
+.rt-cities small{display:block;font-size:10.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--champ-t);margin-bottom:2px}
+.rt-cities b{display:block;font-family:var(--f-serif);font-weight:500;font-size:clamp(16px,1.25vw,19px);line-height:1.15;color:var(--ink);word-break:keep-all;overflow-wrap:normal}
+.rt-cities .r{text-align:right}
+.rt-line{display:flex;align-items:center;gap:4px;padding-bottom:5px}
+.rt-line i{flex:1;height:0;border-top:1.5px dashed #CDBF9F}
+.rt-line svg.i{width:18px;height:18px;color:var(--navy)}
+.rt-meta{display:flex;flex-wrap:wrap;gap:6px}
+.rt-meta > span{display:inline-flex;align-items:center;gap:5px;font-size:12.5px;font-weight:600;color:#4A515D;background:var(--ivory);border-radius:999px;padding:4px 10px}
+.rt-meta svg.i{width:13px;height:13px;color:var(--champ-t)}
+.rt-foot{display:flex;justify-content:space-between;align-items:center;padding-top:12px;border-top:1px dashed var(--line);font-size:13px;color:var(--muted)}
+.rt-foot b{display:inline;font-size:18px;color:var(--ink);margin-left:4px}
+.routes .route span{font-size:inherit;color:inherit}
+.routes .route .rt-meta > span{font-size:12.5px}
+@media (max-width:1100px) and (min-width:641px){.routes{grid-template-columns:1fr 1fr}}
+
+/* phones: tighter rhythm, swipeable rows instead of endless stacks */
+@media (max-width:640px){
+  section{padding-block:56px}
+  .sh{gap:10px!important;margin-bottom:22px!important}
+  .sh h2{font-size:clamp(32px,9.5vw,40px)!important}
+  .sh p{font-size:15px}
+  /* trust strip: swipeable cards */
+  .trust .wrap{display:flex!important;gap:10px!important;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding-block:14px!important}
+  .trust .wrap::-webkit-scrollbar{display:none}
+  .trust .wrap > div{flex:0 0 72%;scroll-snap-align:start;border:0!important;background:linear-gradient(180deg,#FCFAF6,#F5EFE4);border-radius:16px;padding:14px 16px!important;box-shadow:inset 0 0 0 1px #EEE6D8}
+  .trust svg.i{width:30px!important;height:30px!important}
+  .trust b{font-size:14.5px!important}
+  .trust span{font-size:12.5px!important}
+  /* offers and destinations: horizontal carousels with a peek of the next card */
+  .offers,.dests{display:flex!important;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;margin-inline:-20px;padding:4px 20px 10px;scroll-padding-inline:20px}
+  .offers::-webkit-scrollbar,.dests::-webkit-scrollbar{display:none}
+  .offer{flex:0 0 84%;scroll-snap-align:start;min-height:180px}
+  .dest{flex:0 0 78%;scroll-snap-align:start}
+  .routes{display:flex!important;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;margin-inline:-20px;padding:4px 20px 10px;scroll-padding-inline:20px}
+  .routes::-webkit-scrollbar{display:none}
+  .routes .route{flex:0 0 84%;scroll-snap-align:start;padding:16px}
+  .rt-cities b{font-size:18px}
+}
+.swipe-hint{display:none}
+@media (max-width:640px){.swipe-hint{display:flex;align-items:center;gap:6px;font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--faint);margin:6px 0 0}.swipe-hint svg{width:14px;height:14px}}
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -1428,7 +1472,7 @@ body.warm .hero-bg,body.warm .hero h1 .l > span,body.warm .hero .eyebrow,body.wa
 <section data-home class="band" id="offers">
   <div class="wrap">
     <div class="sh rv"><span class="eb">Offers</span><h2>Save on <span class="serif">every ride</span></h2><p>Apply the code at checkout. Tap a code to copy it.</p></div>
-    <div class="offers rv">
+    <div class="offers rv" id="offerRow">
       <div class="offer o1"><div><b>₹150 off your first bus trip</b><p>On bookings of ₹500 or more.</p></div><button class="code" type="button" data-code="FIRSTRIDE">FIRSTRIDE</button></div>
       <div class="offer o2"><div><b>Weekend cab offers</b><p>Mention this code when customer care calls to confirm your weekend trip.</p></div><button class="code" type="button" data-code="CABWEEKEND">CABWEEKEND</button></div>
       <div class="offer o3"><div><b>Family of four? Save ₹200</b><p>Book four or more bus seats together.</p></div><button class="code" type="button" data-code="FAMILY4">FAMILY4</button></div>
@@ -1935,7 +1979,8 @@ document.addEventListener("click",e=>{const p=e.target.closest("[data-pop]");if(
 /* ---------- routes & destinations ---------- */
 const cheapest=(a,b)=>Math.max(249,Math.round(km(a,b)*TYPES[4].rate/10)*10);
 function renderRoutes(){
-  $("#routeList").innerHTML=POP.map(([a,b])=>`<button type="button" class="route" data-pop="${a}|${b}" data-cursor="Buses"><div><b>${a} → ${b}</b><span>${km(a,b)} km · from ${inr(cheapest(a,b))}</span></div><span class="arw"><svg><use href="#arrow"/></svg></span></button>`).join("");
+  $("#routeList").innerHTML=POP.map(([a,b])=>{const d=km(a,b),h=d/52,dur=h<1?Math.round(h*60)+"m":Math.floor(h)+"h "+String(Math.round(h%1*60)).padStart(2,"0")+"m",n=6+(hash(a+b)%5);
+    return `<button type="button" class="route" data-pop="${a}|${b}" data-cursor="Buses"><span class="rt-cities"><span><small>From</small><b>${a}</b></span><span class="rt-line" aria-hidden="true"><i></i><svg class="i"><use href="#i-bus"/></svg><i></i></span><span class="r"><small>To</small><b>${b}</b></span></span><span class="rt-meta"><span><svg class="i"><use href="#i-route"/></svg>${d} km</span><span><svg class="i"><use href="#i-clock"/></svg>~${dur}</span><span><svg class="i"><use href="#i-bus"/></svg>${n} buses daily</span></span><span class="rt-foot"><span>Starts at <b>${inr(cheapest(a,b))}</b></span><span class="arw"><svg><use href="#arrow"/></svg></span></span></button>`}).join("");
   $("#fDirRoutes").innerHTML=POP.map(([a,b])=>`<button class="fl" data-pop="${a}|${b}">${a} to ${b} bus</button>`).join("");
   $("#fDirCities").innerHTML=["Bengaluru","Hyderabad","Chennai","Tirupati","Vijayawada","Mysuru"].filter(c=>CITY[c]).map(c=>`<button class="fl" data-from="${c}">Buses from ${c}</button>`).join("");
   $("#fRoutes").innerHTML=POP.slice(0,5).map(([a,b])=>`<li><button class="fl" data-pop="${a}|${b}">${a} → ${b}</button></li>`).join("");
