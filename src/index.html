@@ -1270,6 +1270,11 @@ body.warm .hero-bg,body.warm .hero h1 .l > span,body.warm .hero .eyebrow,body.wa
 }
 .swipe-hint{display:none}
 @media (max-width:640px){.swipe-hint{display:flex;align-items:center;gap:6px;font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--faint);margin:6px 0 0}.swipe-hint svg{width:14px;height:14px}}
+/* seven menu items in page order: hide icons and tighten until there is room */
+header nav#mainNav a{padding:10px 15px}
+@media (max-width:1560px){header nav#mainNav a svg.i{display:none}}
+@media (max-width:1320px){header nav#mainNav a{padding:9px 11px;font-size:14px}header .wrap{gap:12px}}
+@media (max-width:1180px){.hbk-t{display:none}.hbk{padding:0 12px}}
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -1312,10 +1317,13 @@ body.warm .hero-bg,body.warm .hero h1 .l > span,body.warm .hero .eyebrow,body.wa
     <a class="logo" href="#top" aria-label="SGVK Tours and Travels, home"><img class="lgimg" src="img/sgvk-logo.webp" alt="SGVK Tours and Travels" width="510" height="128" decoding="async"></a>
     <nav aria-label="Sections" id="mainNav">
       <span class="nind" id="navInd" aria-hidden="true"></span>
-      <a href="#results" data-sec="results"><svg class="i"><use href="#i-bus"/></svg>Bus tickets</a>
+      <a href="#top" data-sec="top"><svg class="i"><use href="#i-bus"/></svg>Bus tickets</a>
+      <a href="#offers" data-sec="offers"><svg class="i"><use href="#i-ticket"/></svg>Offers</a>
+      <a href="#routes" data-sec="routes"><svg class="i"><use href="#i-route"/></svg>Routes</a>
       <a href="#destinations" data-sec="destinations"><svg class="i"><use href="#i-pin"/></svg>Destinations</a>
       <a href="#cabs" data-sec="cabs"><svg class="i"><use href="#i-car"/></svg>Cabs</a>
-      <a href="#ttd" data-sec="darshan"><svg class="i" viewBox="0 0 34 34"><use href="#i-temple"/></svg>Temple darshan</a>
+      <a href="#darshan" data-sec="darshan"><svg class="i" viewBox="0 0 34 34"><use href="#i-temple"/></svg>TTD</a>
+      <a href="#faq" data-sec="faq"><svg class="i"><use href="#i-headset"/></svg>Help</a>
     </nav>
     <a class="hbk" href="#bookings" data-sec="bookings" aria-label="My bookings"><svg class="i"><use href="#i-ticket"/></svg><span class="hbk-t">My bookings</span><span class="count" id="bkCount">0</span></a>
     <a class="btn c sm hcta" href="#search" data-cursor="Search">Book a ride <svg><use href="#arrow"/></svg></a>
@@ -1615,10 +1623,10 @@ body.warm .hero-bg,body.warm .hero h1 .l > span,body.warm .hero .eyebrow,body.wa
 
 <div class="seatbar" id="seatBar" hidden><div><b id="sbSeats">—</b><span id="sbFare">—</span></div><button class="btn c sm" type="button" id="sbGo">Continue <svg><use href="#arrow"/></svg></button></div>
 <nav class="tabbar" aria-label="Quick navigation">
-  <a href="#search" data-sec="top"><svg class="i"><use href="#i-route"/></svg>Search</a>
-  <a href="#results" data-sec="results"><svg class="i"><use href="#i-bus"/></svg>Buses</a>
+  <a href="#search" data-sec="top"><svg class="i"><use href="#i-bus"/></svg>Buses</a>
   <a href="#destinations" data-sec="destinations"><svg class="i"><use href="#i-pin"/></svg>Explore</a>
   <a href="#cabs" data-sec="cabs"><svg class="i"><use href="#i-car"/></svg>Cabs</a>
+  <a href="#darshan" data-sec="darshan"><svg class="i" viewBox="0 0 34 34"><use href="#i-temple"/></svg>TTD</a>
   <a href="#bookings" data-sec="bookings"><svg class="i"><use href="#i-ticket"/></svg>Trips<b id="tbCount"></b></a>
 </nav>
 <a class="totop" id="totop" href="#top" aria-label="Back to top"><svg class="i"><use href="#i-up"/></svg></a>
@@ -1895,7 +1903,9 @@ $("#backHome").onclick=()=>{try{if(history.state&&history.state.p==="results"){h
 document.addEventListener("click",e=>{const a=e.target.closest('a[href^="#"]');if(!a||a.hasAttribute("data-pop"))return;const h=a.getAttribute("href");
   if(h==="#results"){e.preventDefault();if(S.searched)showResults();else{showHome("#search");$("#bTo").focus({preventScroll:true});toast("Choose where you're going, then search.")}return}
   if(h==="#ttd"){e.preventDefault();showTTD();return}
-  if((document.body.classList.contains("page-results")||document.body.classList.contains("page-ttd"))&&h!=="#"){e.preventDefault();showHome(h==="#top"?null:h)}},true);
+  if((document.body.classList.contains("page-results")||document.body.classList.contains("page-ttd"))&&h!=="#"){e.preventDefault();showHome(h==="#top"?null:h);return}
+  /* sections render lazily, so a long jump can land short: scroll, then settle on the exact spot */
+  const el=h.length>1&&document.querySelector(h);if(el&&!a.hasAttribute("data-close")){e.preventDefault();const go=b=>el.scrollIntoView({block:h==="#search"?"center":"start",behavior:b});go(reduce?"auto":"smooth");clearTimeout(window.__nt);window.__nt=setTimeout(()=>go("auto"),reduce?0:650)}},true);
 const bucket=m=>{const h=(m%1440)/60;return h<6?0:h<12?1:h<18?2:3};
 function renderBuses(){
   let L=S.list.filter(b=>(!S.dep.size||S.dep.has(String(bucket(b.dep))))&&(!S.type.size||[...S.type].every(f=>f==="ac"?b.t.ac:f==="nonac"?!b.t.ac:f==="sleeper"?b.t.sl:!b.t.sl))
@@ -2234,7 +2244,7 @@ addEventListener("resize",()=>requestAnimationFrame(placeInd));
 try{document.fonts.ready.then(()=>requestAnimationFrame(placeInd))}catch(e){}
 function onScroll(){const y=scrollY;
   if(!reduce&&y<innerHeight*1.2)$("#heroBg").style.transform=`translateY(${y*.22}px)`;
-  let cs="results";if(document.body.classList.contains("page-results"))cs="results";else if(document.body.classList.contains("page-ttd"))cs="darshan";else for(const id of["destinations","cabs","darshan","why","faq","bookings"]){if(document.getElementById(id).getBoundingClientRect().top<=innerHeight*.4)cs=id}
+  let cs="top";if(document.body.classList.contains("page-results"))cs="top";else if(document.body.classList.contains("page-ttd"))cs="darshan";else for(const id of["offers","routes","destinations","cabs","darshan","faq","bookings"]){if(document.getElementById(id).getBoundingClientRect().top<=innerHeight*.4)cs=id}
   $$("[data-sec]").forEach(a=>a.classList.toggle("cur",a.dataset.sec===cs));placeInd();$("#hdr").classList.toggle("scrolled",y>8);
   $("#totop").classList.toggle("show",y>innerHeight*1.2)}
 addEventListener("scroll",onScroll,{passive:true});
