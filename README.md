@@ -4,7 +4,9 @@ Single-page website for SGVK Tours and Travels: bus ticket search with seat sele
 
 ## Structure
 
-- `index.html` — the whole site (HTML, CSS and JavaScript in one file)
+- `src/index.html` — the readable source of the whole site (HTML, CSS and JavaScript in one file); edit this
+- `index.html` — the minified page Vercel serves, built from the source
+- `build.sh` — rebuilds `index.html`: removes unused CSS and minifies HTML, CSS and JS (needs Node.js and Python 3)
 - `img/` — photos and the logo
 - `vercel.json` — static hosting settings for Vercel
 
@@ -15,6 +17,16 @@ Open `index.html` in a browser, or serve the folder:
 ```sh
 npx serve .
 ```
+
+## Build
+
+After editing `src/index.html`, run:
+
+```sh
+./build.sh
+```
+
+and commit both files.
 
 ## Deploy
 
