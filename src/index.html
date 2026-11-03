@@ -12,6 +12,7 @@
 <link rel="preload" as="image" href="img/coach6-bus.webp" type="image/webp" media="(max-width:640px)" fetchpriority="high">
 <link rel="preload" as="image" href="img/coach6-md.webp" type="image/webp" media="(min-width:641px) and (max-width:1200px)" fetchpriority="high">
 <link rel="preload" as="image" href="img/coach6-lg.webp" type="image/webp" media="(min-width:1201px)" fetchpriority="high">
+<script src="config.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=DM+Mono&display=swap">
@@ -1315,6 +1316,104 @@ footer .logo .lgimg{height:56px!important;filter:none}
 @media (max-width:360px){.hero h1{font-size:26px!important}#busSearch .cf select,#busSearch .cf input{font-size:14.5px}}
 /* phones: the bottom tab bar slides in after the first scroll, so the hero search is fully visible on arrival */
 @media (max-width:1100px){.tabbar{transition:transform .35s var(--ease),opacity .35s}body:not(.tb-on) .tabbar{transform:translateY(120%);opacity:0;pointer-events:none}}
+/* ---------- accounts: WhatsApp OTP login and personal account ---------- */
+.hbk .av{width:28px;height:28px;margin-left:-6px;border-radius:50%;display:grid;place-items:center;background:var(--navy);color:var(--champ-l);font-family:var(--f-serif);font-size:15px;font-weight:600}
+.hbk.acct .count{display:none}
+#tbAcct.acct b{display:none}
+#account{display:none;background:#F8F5EF;padding-block:28px 72px;min-height:100vh}
+body.page-account .home,body.page-account [data-home],body.page-account #results,body.page-account #ttd{display:none!important}
+body.page-account #account{display:block;animation:pagein .5s var(--ease)}
+.acc-demo,.lg-demo{font-size:13px;font-weight:600;color:#7A5A12;background:#FBEFD9;border-radius:12px;padding:9px 14px;margin-bottom:16px}
+.acc-head{display:flex;align-items:center;gap:18px;padding:26px;border-radius:24px;color:#fff;background:radial-gradient(70% 120% at 100% 0%,rgba(201,166,107,.3),rgba(201,166,107,0) 60%),var(--navy);box-shadow:0 30px 60px -40px rgba(15,27,45,.8)}
+.acc-av{flex:none;width:64px;height:64px;border-radius:50%;display:grid;place-items:center;background:var(--foil);color:var(--ink);font-family:var(--f-serif);font-size:28px;font-weight:600}
+.acc-id{flex:1;min-width:0}
+.acc-id h1{font-family:var(--f-serif);font-weight:500;font-size:clamp(24px,3vw,34px);margin:0 0 6px;color:#fff;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.acc-ph{display:inline-flex;align-items:center;gap:8px;flex-wrap:wrap;font-size:14.5px;color:#DDE2EA}
+.acc-ph svg.i{width:18px;height:18px;color:#5FD08A}
+.vbadge{display:inline-flex;align-items:center;gap:4px;font-size:11.5px;font-weight:700;color:#1E7A5A;background:#E2F2EA;border-radius:999px;padding:3px 9px}
+.vbadge svg.i{width:12px!important;height:12px!important;color:#1E7A5A!important}
+.acc-out{color:#fff!important;border-color:rgba(255,255,255,.35)!important;background:transparent!important;gap:6px}
+.acc-out svg.i{width:16px;height:16px}
+.acc-tabs{display:flex;gap:6px;margin:18px 0 18px;padding:5px;border-radius:999px;background:rgba(15,27,45,.05);overflow-x:auto;scrollbar-width:none}
+.acc-tabs::-webkit-scrollbar{display:none}
+.acc-tabs button{flex:1;display:flex;align-items:center;justify-content:center;gap:8px;white-space:nowrap;border:0;background:none;border-radius:999px;padding:11px 16px;font:inherit;font-weight:600;font-size:14.5px;color:var(--muted);cursor:pointer}
+.acc-tabs button svg.i{width:17px;height:17px;color:var(--champ-t)}
+.acc-tabs button[aria-selected="true"]{background:#fff;color:var(--ink);box-shadow:0 8px 18px -12px rgba(15,27,45,.6)}
+.acc-seg{display:inline-flex;gap:4px;padding:4px;border-radius:12px;background:#fff;box-shadow:inset 0 0 0 1px var(--line);margin-bottom:14px}
+.acc-seg button{border:0;background:none;font:inherit;font-weight:600;font-size:13.5px;color:var(--muted);padding:8px 14px;border-radius:9px;cursor:pointer}
+.acc-seg button[aria-pressed="true"]{background:var(--navy);color:#fff}
+.acc-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px}
+.acc-card{display:flex;flex-direction:column;gap:8px;padding:16px 18px;border-radius:18px;background:#fff;box-shadow:inset 0 0 0 1px var(--line)}
+.acc-card .t{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
+.acc-card b{font-size:16px;color:var(--ink)}
+.acc-card .m{font-size:13.5px;color:var(--muted);line-height:1.5}
+.acc-card .r{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.08em;color:var(--champ-t)}
+.acc-empty{text-align:center;padding:40px 20px;border-radius:20px;background:#fff;box-shadow:inset 0 0 0 1px var(--line);color:var(--muted)}
+.acc-empty b{display:block;font-family:var(--f-serif);font-weight:500;font-size:22px;color:var(--ink);margin-bottom:6px}
+.acc-empty .btn{margin-top:14px}
+.acc-note{font-size:14px;color:var(--muted);margin:0 0 12px}
+.tv{display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:16px;background:#fff;box-shadow:inset 0 0 0 1px var(--line)}
+.tv .ini{flex:none;width:40px;height:40px;border-radius:50%;display:grid;place-items:center;background:var(--ivory);color:var(--champ-t);font-weight:700}
+.tv div{flex:1;min-width:0}.tv b{display:block;font-size:15px}.tv span{font-size:13px;color:var(--muted)}
+.tv button{border:0;background:none;cursor:pointer;width:36px;height:36px;border-radius:50%;display:grid;place-items:center;color:var(--muted)}
+.tv button:hover{background:var(--ivory);color:var(--ink)}
+.tv button svg.i{width:17px;height:17px}
+.acc-form{margin-top:16px;padding:20px;border-radius:20px;background:#fff;box-shadow:inset 0 0 0 1px var(--line)}
+.acc-form h3{font-size:18px;margin:0 0 12px}
+.acc-grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px 14px}.acc-grid2 .g2{grid-column:1/-1}
+.acc-grid3{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,.8fr) minmax(0,1fr);gap:12px}
+.acc-actions{display:flex;justify-content:flex-end;align-items:center;gap:14px;margin-top:16px}
+.ro{display:flex;align-items:center;gap:10px;padding:12px 14px;border-radius:12px;background:var(--ivory)}
+.ro svg.i{width:18px;height:18px;color:#1FA855}
+#accTrav{display:grid;gap:8px}
+/* saved travellers at checkout */
+.svt{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 12px}
+.svt > span{width:100%;font-size:12.5px;font-weight:600;color:var(--muted)}
+.svt button{border:1px solid var(--line);background:#fff;border-radius:999px;padding:6px 12px;font:inherit;font-size:13px;font-weight:600;cursor:pointer}
+.svt button[aria-pressed="true"]{background:var(--navy);border-color:var(--navy);color:#fff}
+.svt-save{display:flex;gap:8px;align-items:center;font-size:13.5px;margin:4px 0 10px}
+.svt-save input{accent-color:var(--navy);width:18px;height:18px}
+/* login sheet */
+.lg-ov{position:fixed;inset:0;z-index:70;background:rgba(10,14,22,.55);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);display:grid;place-items:center;padding:20px}
+.lg-ov[hidden]{display:none}
+.lg{position:relative;width:min(440px,100%);background:#fff;border-radius:26px;padding:26px 24px 22px;box-shadow:0 40px 90px -30px rgba(0,0,0,.6);animation:pop .4s var(--ease) both}
+.lg-x{position:absolute;right:14px;top:14px}
+.lg-top{display:flex;gap:14px;align-items:center;margin-bottom:18px;padding-right:36px}
+.lg-wa{flex:none;width:48px;height:48px;border-radius:14px;display:grid;place-items:center;background:#E7F7EE}
+.lg-wa svg.i{width:26px;height:26px;color:#1FA855}
+.lg h2{font-family:var(--f-serif);font-weight:500;font-size:26px;margin:0}
+.lg-top p{margin:3px 0 0;font-size:14px;color:var(--muted)}
+.lg-step{display:flex;flex-direction:column;gap:12px}
+.lg-tel{display:flex;align-items:center;gap:8px;border:1.5px solid var(--line);border-radius:14px;padding:0 14px;background:#fff}
+.lg-tel:focus-within{border-color:var(--navy)}
+.lg-tel b{font-size:17px}
+.lg-tel .in{border:0;padding:14px 0;font-size:17px;font-weight:600;letter-spacing:.02em;box-shadow:none;background:transparent}
+.fld.bad .lg-tel{border-color:var(--rose)}
+.lg-go{width:100%;min-height:54px;border-radius:14px;font-size:16px;font-weight:700;gap:10px}
+.lg-go svg.i{width:20px;height:20px;color:#5FD08A}
+.lg-go:disabled{opacity:.6;cursor:progress}
+.lg-fine{font-size:12px;color:var(--faint);margin:0;text-align:center;line-height:1.5}
+.lg-sent{font-size:14px;color:var(--muted);margin:0}
+.otp{display:grid;grid-template-columns:repeat(6,1fr);gap:8px}
+.otp input{width:100%;min-width:0;height:56px;text-align:center;font-size:24px;font-weight:700;border:1.5px solid var(--line);border-radius:14px;background:#fff;color:var(--ink);font-family:var(--f-sans)}
+.otp input:focus{outline:none;border-color:var(--navy);box-shadow:0 0 0 3px rgba(15,27,45,.08)}
+.otp.bad input{border-color:var(--rose)}
+.lg-err{display:block;min-height:0;color:var(--rose);font-size:13px;font-weight:600}
+.lg-resend{margin:0;text-align:center;font-size:13.5px;color:var(--muted)}
+@media (max-width:640px){
+  .lg-ov{place-items:end center;padding:0}
+  .lg{width:100%;border-radius:24px 24px 0 0;padding:24px 18px calc(20px + env(safe-area-inset-bottom))}
+  .lg h2{font-size:23px}
+  .otp{gap:6px}.otp input{height:52px;font-size:22px}
+  #account{padding-block:16px 96px}
+  .acc-head{padding:18px;gap:14px;border-radius:20px;flex-wrap:wrap}
+  .acc-av{width:52px;height:52px;font-size:22px}
+  .acc-out{order:3;width:100%;justify-content:center}
+  .acc-tabs{border-radius:16px;margin:14px -4px}
+  .acc-tabs button{flex:none;padding:10px 14px;font-size:14px}
+  .acc-grid2,.acc-grid3{grid-template-columns:1fr}
+  .acc-list{grid-template-columns:1fr}
+}
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -1343,6 +1442,8 @@ footer .logo .lgimg{height:56px!important;filter:none}
     <symbol id="i-map" viewBox="0 0 24 24"><path d="M3 6.5l5-2 6 2 3-1.2M3 6.5V20l5-2 6 2 7-2.8V9"/><path d="M8 4.5V18M14 6.5V20"/><circle cx="19" cy="5.5" r="2.2"/></symbol>
     <symbol id="i-home" viewBox="0 0 24 24"><path d="M3 11.5L12 4l9 7.5"/><path d="M5.5 9.5V20h13V9.5"/><path d="M10 20v-5.5h4V20"/></symbol>
     <symbol id="i-headset" viewBox="0 0 24 24"><path d="M4 14v-2a8 8 0 0 1 16 0v2"/><rect x="3" y="13.5" width="4" height="6" rx="1.5"/><rect x="17" y="13.5" width="4" height="6" rx="1.5"/><path d="M19 19.5c0 1.4-1.6 2-4 2h-2"/></symbol>
+    <symbol id="i-wa" viewBox="0 0 24 24"><path d="M4 20l1.2-3.6A8 8 0 1 1 8 19z"/><path d="M9 8.5c0 3 2.5 6 6 6.5l1.2-1.4-2-1-1 .9c-1-.5-2-1.5-2.4-2.5l.9-1-1-2z" fill="currentColor" stroke="none"/></symbol>
+    <symbol id="i-out" viewBox="0 0 24 24"><path d="M14 4h4a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-4"/><path d="M10 16l-4-4 4-4M6 12h10"/></symbol>
     <symbol id="i-up" viewBox="0 0 24 24"><path d="M12 19V5M6 11l6-6 6 6"/></symbol>
     <symbol id="i-x" viewBox="0 0 24 24"><path d="M5 5l14 14M19 5L5 19" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
     <symbol id="i-wheel" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="2"/><path d="M12 4v6M5 15l5-2M19 15l-5-2"/></symbol>
@@ -1362,7 +1463,7 @@ footer .logo .lgimg{height:56px!important;filter:none}
       <a href="#cabs" data-sec="cabs"><svg class="i"><use href="#i-car"/></svg>Cabs</a>
       <a href="#darshan" data-sec="darshan"><svg class="i" viewBox="0 0 34 34"><use href="#i-temple"/></svg>TTD</a>
     </nav>
-    <a class="hbk" href="#bookings" data-sec="bookings" aria-label="My bookings"><svg class="i"><use href="#i-ticket"/></svg><span class="hbk-t">My bookings</span><span class="count" id="bkCount">0</span></a>
+    <a class="hbk" href="#bookings" data-sec="bookings" aria-label="My bookings" id="acctBtn"><span class="av" id="acctAv" hidden></span><svg class="i" id="acctIco"><use href="#i-ticket"/></svg><span class="hbk-t">My bookings</span><span class="count" id="bkCount">0</span></a>
     <a class="btn c sm hcta" href="#search" data-cursor="Search">Book a ride <svg><use href="#arrow"/></svg></a>
   </div>
 </header>
@@ -1464,6 +1565,54 @@ footer .logo .lgimg{height:56px!important;filter:none}
         <div id="buses"></div>
         <p class="disclaim">Sample schedule for this prototype. Live timings and seat availability come from the operator system at launch.</p>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ACCOUNT PAGE -->
+<section id="account" aria-label="My account">
+  <div class="wrap">
+    <div class="acc-demo" id="accDemo" hidden>Preview mode: accounts here are stored only in this browser.</div>
+    <div class="acc-head">
+      <span class="acc-av" id="accAv">S</span>
+      <div class="acc-id"><h1 id="accName">My account</h1><span class="acc-ph"><svg class="i"><use href="#i-wa"/></svg><span id="accPhone">—</span><b class="vbadge"><svg class="i"><use href="#i-check"/></svg>Verified</b></span></div>
+      <button type="button" class="btn o sm acc-out" id="accOut"><svg class="i"><use href="#i-out"/></svg>Log out</button>
+    </div>
+    <div class="acc-tabs" role="tablist" aria-label="Account sections">
+      <button type="button" role="tab" data-at="trips" aria-selected="true"><svg class="i"><use href="#i-ticket"/></svg>My trips</button>
+      <button type="button" role="tab" data-at="enq" aria-selected="false"><svg class="i"><use href="#i-chat"/></svg>Enquiries</button>
+      <button type="button" role="tab" data-at="trav" aria-selected="false"><svg class="i"><use href="#i-users"/></svg>Travellers</button>
+      <button type="button" role="tab" data-at="prof" aria-selected="false"><svg class="i"><use href="#i-user"/></svg>Profile</button>
+    </div>
+    <div class="acc-pane" data-ap="trips">
+      <div class="acc-seg" role="group" aria-label="Show trips"><button type="button" data-tf="up" aria-pressed="true">Upcoming</button><button type="button" data-tf="past" aria-pressed="false">Completed</button></div>
+      <div id="accTrips"></div>
+    </div>
+    <div class="acc-pane" data-ap="enq" hidden><div id="accEnq"></div></div>
+    <div class="acc-pane" data-ap="trav" hidden>
+      <p class="acc-note">Save the people you travel with. At checkout, tap a name to fill in their details.</p>
+      <div id="accTrav"></div>
+      <form class="acc-form tv-form" id="tvForm" novalidate>
+        <h3 id="tvTitle">Add a traveller</h3>
+        <div class="acc-grid3">
+          <label class="fld" for="tvName"><span>Full name</span><input class="in" id="tvName" autocomplete="off" maxlength="60" placeholder="As on ID proof"><small class="fe"></small></label>
+          <label class="fld" for="tvAge"><span>Age</span><input class="in" id="tvAge" inputmode="numeric" maxlength="3" placeholder="Age"><small class="fe"></small></label>
+          <label class="fld" for="tvGender"><span>Gender</span><select class="in" id="tvGender"><option value="M">Male</option><option value="F">Female</option><option value="O">Other</option></select></label>
+        </div>
+        <div class="acc-actions"><button type="button" class="link" id="tvCancel" hidden>Cancel</button><button type="submit" class="btn sm" id="tvSave">Save traveller</button></div>
+      </form>
+    </div>
+    <div class="acc-pane" data-ap="prof" hidden>
+      <form class="acc-form" id="pfForm" novalidate>
+        <div class="acc-grid2">
+          <label class="fld" for="pfName"><span>Full name</span><input class="in" id="pfName" autocomplete="name" maxlength="60"><small class="fe"></small></label>
+          <label class="fld" for="pfEmail"><span>Email <em>(optional)</em></span><input class="in" id="pfEmail" type="email" autocomplete="email" placeholder="you@example.com"><small class="fe"></small></label>
+          <label class="fld" for="pfGender"><span>Gender</span><select class="in" id="pfGender"><option value="">Prefer not to say</option><option value="M">Male</option><option value="F">Female</option><option value="O">Other</option></select></label>
+          <label class="fld" for="pfDob"><span>Date of birth <em>(optional)</em></span><input class="in" id="pfDob" type="date"></label>
+          <div class="fld g2"><span>WhatsApp number</span><div class="ro"><svg class="i"><use href="#i-wa"/></svg><b id="pfPhone">—</b><span class="vbadge"><svg class="i"><use href="#i-check"/></svg>Verified</span></div></div>
+        </div>
+        <div class="acc-actions"><button type="submit" class="btn" id="pfSave">Save changes</button></div>
+      </form>
     </div>
   </div>
 </section>
@@ -1664,7 +1813,7 @@ footer .logo .lgimg{height:56px!important;filter:none}
   <a href="#destinations" data-sec="destinations"><svg class="i"><use href="#i-pin"/></svg>Explore</a>
   <a href="#cabs" data-sec="cabs"><svg class="i"><use href="#i-car"/></svg>Cabs</a>
   <a href="#darshan" data-sec="darshan"><svg class="i" viewBox="0 0 34 34"><use href="#i-temple"/></svg>TTD</a>
-  <a href="#bookings" data-sec="bookings"><svg class="i"><use href="#i-ticket"/></svg>Trips<b id="tbCount"></b></a>
+  <a href="#bookings" data-sec="bookings" id="tbAcct"><svg class="i"><use href="#i-ticket"/></svg><span>Trips</span><b id="tbCount"></b></a>
 </nav>
 <a class="totop" id="totop" href="#top" aria-label="Back to top"><svg class="i"><use href="#i-up"/></svg></a>
 
@@ -1729,6 +1878,33 @@ footer .logo .lgimg{height:56px!important;filter:none}
 
 <div class="cur-dot" id="cursor" aria-hidden="true"><span></span></div>
 <div class="toast" id="toast" role="status"></div>
+<!-- LOGIN SHEET -->
+<div class="lg-ov" id="lgOv" hidden>
+  <div class="lg" role="dialog" aria-modal="true" aria-labelledby="lgTitle">
+    <button type="button" class="x lg-x" id="lgClose" aria-label="Close"><svg class="i"><use href="#i-x"/></svg></button>
+    <div class="lg-top"><span class="lg-wa"><svg class="i"><use href="#i-wa"/></svg></span><div><h2 id="lgTitle">Login or sign up</h2><p id="lgSub">We'll send a one-time code to your WhatsApp.</p></div></div>
+    <div class="lg-demo" id="lgDemo" hidden>Preview mode: no message is sent. Use code <b>123456</b>.</div>
+    <form class="lg-step" data-ls="1" id="lgPhoneForm" novalidate>
+      <label class="fld" for="lgPhone"><span>WhatsApp number</span><span class="lg-tel"><b>+91</b><input class="in" id="lgPhone" type="tel" inputmode="numeric" autocomplete="tel-national" placeholder="10-digit mobile number"></span><small class="fe" aria-live="polite"></small></label>
+      <button type="submit" class="btn lg-go" id="lgSend"><svg class="i"><use href="#i-wa"/></svg>Send OTP on WhatsApp</button>
+      <p class="lg-fine">By continuing you agree to receive booking updates from SGVK Tours and Travels on WhatsApp.</p>
+    </form>
+    <form class="lg-step" data-ls="2" id="lgOtpForm" novalidate hidden>
+      <p class="lg-sent">Code sent to <b id="lgTo">—</b> <button type="button" class="link" id="lgChange">Change</button></p>
+      <div class="otp" id="lgOtp" role="group" aria-label="6-digit code">
+        <input inputmode="numeric" autocomplete="one-time-code" maxlength="6" aria-label="Digit 1"><input inputmode="numeric" maxlength="1" aria-label="Digit 2"><input inputmode="numeric" maxlength="1" aria-label="Digit 3"><input inputmode="numeric" maxlength="1" aria-label="Digit 4"><input inputmode="numeric" maxlength="1" aria-label="Digit 5"><input inputmode="numeric" maxlength="1" aria-label="Digit 6">
+      </div>
+      <small class="fe lg-err" id="lgOtpErr" aria-live="polite"></small>
+      <button type="submit" class="btn lg-go" id="lgVerify">Verify &amp; continue</button>
+      <p class="lg-resend"><span id="lgTimer">Resend code in 0:30</span><button type="button" class="link" id="lgResend" hidden>Resend code</button></p>
+    </form>
+    <form class="lg-step" data-ls="3" id="lgNameForm" novalidate hidden>
+      <label class="fld" for="lgName"><span>Your full name</span><input class="in" id="lgName" autocomplete="name" maxlength="60" placeholder="As on ID proof"><small class="fe" aria-live="polite"></small></label>
+      <label class="fld" for="lgEmail"><span>Email <em>(optional)</em></span><input class="in" id="lgEmail" type="email" autocomplete="email" placeholder="For e-tickets"></label>
+      <button type="submit" class="btn lg-go" id="lgSaveName">Save &amp; continue</button>
+    </form>
+  </div>
+</div>
 <script>
 /* ---------- temple illustrations: crisp vector scenes, sharp at any size ---------- */
 const SCENE=(()=>{
@@ -1929,18 +2105,19 @@ $("#rEdit").onsubmit=e=>{e.preventDefault();const f=$("#rFrom").value,t=$("#rTo"
   S.from=f;S.to=t;S.date=$("#rDate").value||S.date;$("#bFrom").value=f;$("#bTo").value=t;$("#bDate").value=S.date;$("#bPax").value=S.pax;search(false);scrollTo({top:0,behavior:"smooth"});toast(`Showing buses for ${f} → ${t}.`)};
 
 /* pages: home and bus results */
-function showResults(){document.body.classList.add("warm");if(!document.body.classList.contains("page-results")){document.body.classList.remove("page-ttd");document.body.classList.add("page-results");try{history.pushState({p:"results"},"")}catch(e){}}
+function showResults(){document.body.classList.add("warm");if(!document.body.classList.contains("page-results")){document.body.classList.remove("page-ttd","page-account");document.body.classList.add("page-results");try{history.pushState({p:"results"},"")}catch(e){}}
   scrollTo({top:0,behavior:"instant"});onScroll();$("#rTitle").setAttribute("tabindex","-1");$("#rTitle").focus({preventScroll:true})}
-function showTTD(focus){const b=document.body;b.classList.add("warm");if(!b.classList.contains("page-ttd")){b.classList.remove("page-results");b.classList.add("page-ttd");try{history.pushState({p:"ttd"},"")}catch(e){}}
+function showTTD(focus){const b=document.body;b.classList.add("warm");if(!b.classList.contains("page-ttd")){b.classList.remove("page-results","page-account");b.classList.add("page-ttd");try{history.pushState({p:"ttd"},"")}catch(e){}}
   $("#seatBar").hidden=true;scrollTo({top:0,behavior:"instant"});onScroll();if(focus)setTimeout(()=>{try{$(focus).focus({preventScroll:true})}catch(x){}},300)}
-function showHome(target){document.body.classList.remove("page-results","page-ttd");$("#seatBar").hidden=true;
+function showHome(target){document.body.classList.remove("page-results","page-ttd","page-account");$("#seatBar").hidden=true;
   requestAnimationFrame(()=>{if(target){const el=document.querySelector(target);el&&el.scrollIntoView({block:target==="#search"?"center":"start",behavior:"instant"})}else scrollTo({top:0,behavior:"instant"});onScroll()})}
-addEventListener("popstate",()=>{if(document.body.classList.contains("page-results")||document.body.classList.contains("page-ttd"))showHome()});
+addEventListener("popstate",()=>{const c=document.body.classList;if(c.contains("page-results")||c.contains("page-ttd")||c.contains("page-account"))showHome()});
 $("#backHome").onclick=()=>{try{if(history.state&&history.state.p==="results"){history.back();return}}catch(e){}showHome()};
 document.addEventListener("click",e=>{const a=e.target.closest('a[href^="#"]');if(!a||a.hasAttribute("data-pop"))return;const h=a.getAttribute("href");
   if(h==="#results"){e.preventDefault();if(S.searched)showResults();else{showHome("#search");$("#bTo").focus({preventScroll:true});toast("Choose where you're going, then search.")}return}
   if(h==="#ttd"){e.preventDefault();showTTD();return}
-  if((document.body.classList.contains("page-results")||document.body.classList.contains("page-ttd"))&&h!=="#"){e.preventDefault();showHome(h==="#top"?null:h);return}
+  if(h==="#account"){e.preventDefault();if(ACC.user)showAccount();else openLogin();return}
+  if((document.body.classList.contains("page-results")||document.body.classList.contains("page-ttd")||document.body.classList.contains("page-account"))&&h!=="#"){e.preventDefault();showHome(h==="#top"?null:h);return}
   /* sections render lazily, so a long jump can land short: scroll, then settle on the exact spot */
   const el=h.length>1&&document.querySelector(h);if(el&&!a.hasAttribute("data-close")){e.preventDefault();const go=b=>el.scrollIntoView({block:h==="#search"?"center":"start",behavior:b});go(reduce?"auto":"smooth");clearTimeout(window.__nt);window.__nt=setTimeout(()=>go("auto"),reduce?0:650)}},true);
 const bucket=m=>{const h=(m%1440)/60;return h<6?0:h<12?1:h<18?2:3};
@@ -2127,7 +2304,7 @@ function openBus(b){
   $("#bkDep").textContent=hm(b.dep);$("#bkArr").textContent=hm(b.arr);$("#bkDepP").textContent=" "+S.board;$("#bkArrP").textContent=" "+S.drop;
   $("#bkDate").textContent=fmtDay(S.date,{weekday:"long",day:"numeric",month:"long"})+` · Seats ${B.seats.join(", ")}`;
   $("#bPaxList").innerHTML=B.seats.map((s,i)=>`<div class="p"><em>${s}</em><input class="in" data-k="n" data-s="${s}" placeholder="Passenger ${i+1} name" aria-label="Seat ${s} passenger name"><input class="in" data-k="a" data-s="${s}" inputmode="numeric" maxlength="3" placeholder="Age" aria-label="Seat ${s} age"><select class="in" data-k="g" data-s="${s}" aria-label="Seat ${s} gender"><option value="M">Male</option><option value="F">Female</option></select></div>`).join("");
-  $("#bCode").value="";$("#bCodeMsg").textContent="";bSync();bFlow.go(1);openDrawer("bForm","Bus checkout");
+  $("#bCode").value="";$("#bCodeMsg").textContent="";accFillCheckout();bSync();bFlow.go(1);openDrawer("bForm","Bus checkout");
 }
 const bAmount=()=>B.seats.reduce((s,id)=>s+seatFare(B.b,id),0);
 function bSync(){
@@ -2141,7 +2318,7 @@ $("#bPaxList").addEventListener("input",()=>bSync());$("#bPhone").addEventListen
 $("#bApply").onclick=()=>{const [d,m]=applyCode($("#bCode").value,{kind:"bus",amount:bAmount(),seats:B.seats.length});B.disc=d;B.code=d?$("#bCode").value.trim().toUpperCase():"";$("#bCodeMsg").textContent=m;$("#bCodeMsg").style.color=d?"var(--jade)":"var(--rose)";bSync()};
 const bFlow=flow($("#bForm"),$("#bErr"),{1:()=>{const e=[];B&&B.seats.forEach(s=>{const n=$(`#bPaxList [data-k=n][data-s="${s}"]`).value.trim(),a=+$(`#bPaxList [data-k=a][data-s="${s}"]`).value;if(!n)e.push(`Enter a name for seat ${s}.`);if(!a||a>110)e.push(`Enter a valid age for seat ${s}.`)});if(!phoneOk($("#bPhone").value))e.push("Enter a 10-digit mobile number.");return e}},
   ()=>{const ref="SY-B-"+Math.random().toString(36).slice(2,7).toUpperCase(),tot=bAmount()+B.seats.length*25+Math.round(bAmount()*.05)-B.disc;
-    addBk({ref,kind:"bus",title:`${B.from} → ${B.to}`,date:B.date,line:`${hm(B.b.dep)} · ${B.b.t.kind} · Seats ${B.seats.join(", ")}`,status:"Confirmed",total:tot});
+    addBk({ref,kind:"bus",title:`${B.from} → ${B.to}`,date:B.date,line:`${hm(B.b.dep)} · ${B.b.t.kind} · Seats ${B.seats.join(", ")}`,status:"Confirmed",total:tot});accSaveCheckoutTravellers();
     $("#bDone").innerHTML=`PNR <b>${ref}</b>. Boarding at ${esc(B.board)}, ${hm(B.b.dep)} on ${fmtDay(B.date)}. Your e-ticket goes to ${esc($("#bPhone").value)} by SMS.`;
     S.sel=[];S.open=null;renderBuses();$("#seatBar").hidden=true;toast(`Booked ${ref}.`)},3);
 
@@ -2204,7 +2381,7 @@ $("#deskFilter").addEventListener("click",e=>{const b=e.target.closest("[data-df
 $("#deskList").addEventListener("change",async e=>{const s=e.target.closest("select[data-ref]");if(!s)return;s.disabled=true;
   try{const ref=EQS.db.doc("enquiries/"+s.dataset.doc),sn=await ref.get();const items=(sn.data()?.items||[]).map(it=>it.ref===s.dataset.ref?{...it,status:s.value,history:[...(it.history||[]),{status:s.value,at:new Date().toISOString()}]}:it);
     await ref.update({items,updatedAt:new Date().toISOString()});toast(`${s.dataset.ref} marked ${stName(s.value)}.`)}catch(err){toast("Couldn't update. Try again.")}finally{s.disabled=false}});
-async function eqSave(r){if(!(EQS.db&&EQS.uid))return false;
+async function eqSave(r){if(!(EQS.db&&EQS.uid))return accSaveEnquiry(r);accSaveEnquiry(r);
   try{const ref=EQS.db.doc("enquiries/"+EQS.uid),sn=await ref.get();const items=sn.exists?(sn.data().items||[]):[];
     await ref.set({name:r.name,phone:r.phone,updatedAt:r.at,items:[...items,r].slice(-50)});return true}catch(x){return false}}
 $("#dType").innerHTML=TICKETS.map(t=>`<option value="${t.id}">${t.name} · ${inr(t.fee)}</option>`).join("");$("#sType").innerHTML=[...$("#tType").options].filter(o=>o.value).map(o=>`<option>${o.value}</option>`).join("");
@@ -2262,10 +2439,176 @@ $("#ttdForm").addEventListener("submit",async e=>{e.preventDefault();
   const cp=$("#eqCopy");if(cp)cp.onclick=()=>{try{navigator.clipboard.writeText(ttdText(r)).then(()=>toast("Details copied."),()=>getSelection().selectAllChildren($("#eqTxt")))}catch(x){getSelection().selectAllChildren($("#eqTxt"))}};
   toast(saved?`Enquiry ${r.ref} sent.`:"Copy your details to send them.")});
 
+/* ---------- accounts ----------
+   Login is a 6-digit code sent to the customer's WhatsApp. With config.js filled in, Supabase sends it
+   (through Twilio Verify) and keeps each person's profile, travellers, trips and enquiries private to them.
+   Without it the site works as before; a clearly marked demo mode exists only for previews. */
+const CFG=window.SGVK_CONFIG||{};
+const ACC={api:null,mode:"off",user:null,profile:null,trav:[],trips:[],enq:[],phone:"",tf:"up",tab:"trips",editTv:null};
+const fmtPh=p=>{const d=String(p||"").replace(/\D/g,"").slice(-10);return d?`+91 ${d.slice(0,5)} ${d.slice(5)}`:""};
+const ten=p=>String(p||"").replace(/\D/g,"").slice(-10);
+function supaApi(c){const q=async x=>{const {data,error}=await x;if(error)throw error;return data};
+  return {
+    send:ph=>q(c.auth.signInWithOtp({phone:ph,options:{channel:"whatsapp"}})),
+    verify:async(ph,t)=>(await q(c.auth.verifyOtp({phone:ph,token:t,type:"sms"}))).user,
+    current:async()=>{const {data}=await c.auth.getSession();return data.session&&data.session.user},
+    onChange:f=>c.auth.onAuthStateChange((e,sn)=>f(sn&&sn.user)),
+    out:()=>c.auth.signOut(),
+    profile:async id=>q(c.from("profiles").select("*").eq("id",id).maybeSingle()),
+    saveProfile:(id,p)=>q(c.from("profiles").upsert({id,...p,updated_at:new Date().toISOString()})),
+    list:t=>q(c.from(t).select("*").order("created_at",{ascending:false})),
+    add:(t,row)=>q(c.from(t).insert(row).select().single()),
+    addAnon:(t,row)=>q(c.from(t).insert(row)),
+    upd:(t,id,row)=>q(c.from(t).update(row).eq("id",id)),
+    del:(t,id)=>q(c.from(t).delete().eq("id",id))}}
+function demoApi(){const K="sgvk.demo.accounts";let D={};try{D=JSON.parse(localStorage.getItem(K))||{}}catch(e){}
+  D.users=D.users||{};const put=()=>{try{localStorage.setItem(K,JSON.stringify(D))}catch(e){}};let cb=()=>{};
+  const U=()=>D.cur&&D.users[D.cur];const wait=ms=>new Promise(r=>setTimeout(r,ms));const nid=()=>Math.random().toString(36).slice(2,10);
+  return {
+    send:async ph=>{await wait(500);D.pending=ph;put()},
+    verify:async(ph,t)=>{await wait(500);if(t!=="123456"){const e=new Error("Token has expired or is invalid");throw e}
+      const id="u"+ten(ph);D.users[id]=D.users[id]||{id,phone:ten(ph),profile:null,travellers:[],bookings:[],enquiries:[]};D.cur=id;put();cb({id,phone:"91"+ten(ph)});return {id,phone:"91"+ten(ph)}},
+    current:async()=>U()?{id:U().id,phone:"91"+U().phone}:null,
+    onChange:f=>{cb=f},
+    out:async()=>{D.cur=null;put();cb(null)},
+    profile:async()=>U()&&U().profile,
+    saveProfile:async(id,p)=>{U().profile={...(U().profile||{}),...p};put()},
+    list:async t=>(U()[t]||[]).slice().sort((a,b)=>b.created_at.localeCompare(a.created_at)),
+    add:async(t,row)=>{const r={id:nid(),created_at:new Date().toISOString(),...row};U()[t].push(r);put();return r},
+    addAnon:async(t,row)=>{if(U())U()[t].push({id:nid(),created_at:new Date().toISOString(),...row});put()},
+    upd:async(t,id,row)=>{const r=U()[t].find(x=>x.id===id);Object.assign(r,row);put()},
+    del:async(t,id)=>{U()[t]=U()[t].filter(x=>x.id!==id);put()}}}
+function friendly(e){const m=String(e&&e.message||e||"");
+  if(/expired|invalid/i.test(m))return "That code is wrong or has expired. Check WhatsApp and try again.";
+  if(/rate|too many|seconds/i.test(m))return "Please wait a few seconds before asking for another code.";
+  if(/phone/i.test(m)&&/invalid/i.test(m))return "That number does not look right.";
+  if(/fetch|network/i.test(m))return "No connection. Check your internet and try again.";
+  return "Something went wrong. Please try again."}
+async function accInit(){
+  if(CFG.supabaseUrl&&CFG.supabaseAnonKey){
+    try{await new Promise((ok,no)=>{const sc=document.createElement("script");sc.src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js";sc.onload=ok;sc.onerror=no;document.head.appendChild(sc)});
+      ACC.api=supaApi(window.supabase.createClient(CFG.supabaseUrl,CFG.supabaseAnonKey,{auth:{persistSession:true,autoRefreshToken:true}}));ACC.mode="live"}catch(e){return}
+  }else if(CFG.demoLogin){ACC.api=demoApi();ACC.mode="demo"}else return;
+  $("#lgDemo").hidden=$("#accDemo").hidden=ACC.mode!=="demo";
+  ACC.api.onChange(u=>{if(!u&&ACC.user){ACC.user=null;ACC.profile=null;accHeader();if(document.body.classList.contains("page-account"))showHome()}});
+  try{const u=await ACC.api.current();if(u)await accSignedIn(u,true)}catch(e){}
+  accHeader()}
+async function accSignedIn(u,quiet){ACC.user={id:u.id,phone:ten(u.phone)};
+  try{ACC.profile=await ACC.api.profile(u.id)}catch(e){ACC.profile=null}
+  accHeader();accLoad();
+  /* bring this device's earlier bookings into the account once */
+  try{const k="sgvk.synced."+u.id;if(!localStorage.getItem(k)&&BK.length){const have=new Set((await ACC.api.list("bookings")).map(b=>b.ref));for(const b of BK)if(b.kind==="bus"&&!have.has(b.ref))await accSaveBooking(b);localStorage.setItem(k,"1");accLoad()}}catch(e){}
+  if(!quiet)toast(`Welcome${ACC.profile&&ACC.profile.full_name?", "+ACC.profile.full_name.split(" ")[0]:""}!`)}
+async function accLoad(){if(!ACC.user)return;
+  const [t,v,q]=await Promise.all(["bookings","travellers","enquiries"].map(n=>ACC.api.list(n).catch(()=>[])));
+  ACC.trips=t;ACC.trav=v;ACC.enq=q;accRender()}
+function accHeader(){const b=$("#acctBtn"),tb=$("#tbAcct");if(ACC.mode==="off")return;
+  b.classList.add("acct");tb.classList.add("acct");b.href="#account";b.dataset.sec="account";tb.href="#account";tb.dataset.sec="account";tb.querySelector("use").setAttribute("href","#i-user");
+  if(ACC.user){const n=(ACC.profile&&ACC.profile.full_name)||"";const first=n.split(" ")[0]||"Account";
+    $("#acctAv").hidden=false;$("#acctAv").textContent=(n[0]||"S").toUpperCase();$("#acctIco").style.display="none";b.querySelector(".hbk-t").textContent=first;b.setAttribute("aria-label","My account");tb.querySelector("span").textContent="Account"}
+  else{$("#acctAv").hidden=true;$("#acctIco").style.display="";$("#acctIco").querySelector("use").setAttribute("href","#i-user");b.querySelector(".hbk-t").textContent="Login";b.setAttribute("aria-label","Login or sign up");tb.querySelector("span").textContent="Login"}}
+/* login sheet */
+let lgPhone="",lgT=null,lgBusy=false,lgAfter=null;
+function openLogin(after){if(ACC.mode==="off"){showHome("#bookings");return}lgAfter=after||null;lgStep(1);$("#lgPhone").value=lgPhone?ten(lgPhone):"";$("#lgOv").hidden=false;document.body.style.overflow="hidden";setTimeout(()=>$("#lgPhone").focus(),60)}
+function closeLogin(){$("#lgOv").hidden=true;document.body.style.overflow="";clearInterval(lgT)}
+function lgStep(k){$$(".lg-step").forEach(f=>f.hidden=+f.dataset.ls!==k);
+  $("#lgTitle").textContent=k===1?"Login or sign up":k===2?"Enter the code":"Welcome to SGVK";
+  $("#lgSub").textContent=k===1?"We'll send a one-time code to your WhatsApp.":k===2?"Check WhatsApp for a 6-digit code from SGVK.":"Tell us your name to finish setting up your account."}
+$("#lgClose").onclick=closeLogin;$("#lgOv").addEventListener("click",e=>{if(e.target.id==="lgOv")closeLogin()});
+addEventListener("keydown",e=>{if(e.key==="Escape"&&!$("#lgOv").hidden)closeLogin()});
+$("#lgPhone").addEventListener("input",e=>{const c=cleanPhone(e.target.value);if(c!==e.target.value)e.target.value=c;if(phoneOk(c))fmark("lgPhone","")});
+function lgTimer(){let n=30;$("#lgResend").hidden=true;$("#lgTimer").hidden=false;clearInterval(lgT);const f=()=>{$("#lgTimer").textContent=`Resend code in 0:${String(n).padStart(2,"0")}`;if(n--<=0){clearInterval(lgT);$("#lgTimer").hidden=true;$("#lgResend").hidden=false}};f();lgT=setInterval(f,1000)}
+async function lgSend(){const p=cleanPhone($("#lgPhone").value);const m=phoneMsg(p);if(fmark("lgPhone",m))return;if(lgBusy)return;lgBusy=true;
+  const btn=$("#lgSend");btn.disabled=true;btn.lastChild.textContent="Sending…";
+  try{await ACC.api.send("+91"+p);lgPhone="+91"+p;$("#lgTo").textContent=fmtPh(p);lgStep(2);otpClear();lgTimer();setTimeout(()=>$("#lgOtp input").focus(),60)}
+  catch(e){fmark("lgPhone",friendly(e))}finally{lgBusy=false;btn.disabled=false;btn.lastChild.textContent="Send OTP on WhatsApp"}}
+$("#lgPhoneForm").onsubmit=e=>{e.preventDefault();lgSend()};
+$("#lgChange").onclick=()=>{lgStep(1);clearInterval(lgT);$("#lgPhone").focus()};
+$("#lgResend").onclick=async()=>{try{await ACC.api.send(lgPhone);toast("New code sent on WhatsApp.");lgTimer()}catch(e){$("#lgOtpErr").textContent=friendly(e)}};
+const otpIn=()=>$$("#lgOtp input");
+function otpClear(){otpIn().forEach(i=>i.value="");$("#lgOtp").classList.remove("bad");$("#lgOtpErr").textContent=""}
+$("#lgOtp").addEventListener("input",e=>{const i=e.target,all=otpIn(),k=all.indexOf(i);let v=i.value.replace(/\D/g,"");
+  if(v.length>1){v.split("").slice(0,6-k).forEach((d,j)=>all[k+j].value=d);const last=Math.min(5,k+v.length-1);all[last].focus()}else{i.value=v;if(v&&k<5)all[k+1].focus()}
+  $("#lgOtp").classList.remove("bad");$("#lgOtpErr").textContent="";if(all.every(x=>x.value))$("#lgOtpForm").requestSubmit()});
+$("#lgOtp").addEventListener("keydown",e=>{const all=otpIn(),k=all.indexOf(e.target);if(e.key==="Backspace"&&!e.target.value&&k>0){all[k-1].focus();all[k-1].value=""}if(e.key==="ArrowLeft"&&k>0)all[k-1].focus();if(e.key==="ArrowRight"&&k<5)all[k+1].focus()});
+$("#lgOtp").addEventListener("paste",e=>{const t=(e.clipboardData||window.clipboardData).getData("text").replace(/\D/g,"").slice(0,6);if(!t)return;e.preventDefault();otpIn().forEach((x,j)=>x.value=t[j]||"");if(t.length===6)$("#lgOtpForm").requestSubmit()});
+$("#lgOtpForm").onsubmit=async e=>{e.preventDefault();const code=otpIn().map(x=>x.value).join("");
+  if(code.length<6){$("#lgOtp").classList.add("bad");$("#lgOtpErr").textContent="Enter all 6 digits.";return}if(lgBusy)return;lgBusy=true;
+  const btn=$("#lgVerify");btn.disabled=true;btn.textContent="Verifying…";
+  try{const u=await ACC.api.verify(lgPhone,code);clearInterval(lgT);await accSignedIn(u,true);
+    if(!(ACC.profile&&ACC.profile.full_name)){lgStep(3);setTimeout(()=>$("#lgName").focus(),60)}else{closeLogin();toast(`Welcome back, ${ACC.profile.full_name.split(" ")[0]}!`);lgDone()}}
+  catch(x){$("#lgOtp").classList.add("bad");$("#lgOtpErr").textContent=friendly(x)}finally{lgBusy=false;btn.disabled=false;btn.textContent="Verify & continue"}};
+$("#lgNameForm").onsubmit=async e=>{e.preventDefault();const n=$("#lgName").value.trim(),m=nameMsg(n);if(fmark("lgName",m))return;
+  const em=$("#lgEmail").value.trim();try{await ACC.api.saveProfile(ACC.user.id,{full_name:n,email:em||null,phone:ACC.user.phone});ACC.profile={...(ACC.profile||{}),full_name:n,email:em||null}}catch(x){fmark("lgName",friendly(x));return}
+  accHeader();closeLogin();toast(`Welcome, ${n.split(" ")[0]}! Your account is ready.`);lgDone()};
+function lgDone(){if(lgAfter){const f=lgAfter;lgAfter=null;f()}else if(!$("#bForm").hidden){accFillCheckout()}else showAccount()}
+/* account page */
+function showAccount(tab){if(!ACC.user){openLogin();return}const b=document.body;b.classList.add("warm");
+  if(!b.classList.contains("page-account")){b.classList.remove("page-results","page-ttd");b.classList.add("page-account");try{history.pushState({p:"account"},"")}catch(e){}}
+  $("#seatBar").hidden=true;accTab(tab||ACC.tab);accRender();accLoad();scrollTo({top:0,behavior:"instant"});onScroll()}
+function accTab(t){ACC.tab=t;$$(".acc-tabs [data-at]").forEach(x=>x.setAttribute("aria-selected",x.dataset.at===t));$$(".acc-pane").forEach(p=>p.hidden=p.dataset.ap!==t)}
+$(".acc-tabs").addEventListener("click",e=>{const b=e.target.closest("[data-at]");if(b)accTab(b.dataset.at)});
+$(".acc-seg").addEventListener("click",e=>{const b=e.target.closest("[data-tf]");if(!b)return;ACC.tf=b.dataset.tf;$$(".acc-seg [data-tf]").forEach(x=>x.setAttribute("aria-pressed",x===b));accRender()});
+$("#accOut").onclick=async()=>{try{await ACC.api.out()}catch(e){}ACC.user=null;ACC.profile=null;ACC.trips=[];ACC.trav=[];ACC.enq=[];accHeader();showHome();toast("You are logged out.")};
+const KIND={bus:"BUS",cab:"CAB",drs:"DARSHAN",ttd:"TTD"};
+function accRender(){if(!ACC.user)return;const p=ACC.profile||{},n=p.full_name||"Traveller";
+  $("#accAv").textContent=(n[0]||"S").toUpperCase();$("#accName").textContent=n;$("#accPhone").textContent=fmtPh(ACC.user.phone);$("#pfPhone").textContent=fmtPh(ACC.user.phone);
+  if(document.activeElement&&!$("#pfForm").contains(document.activeElement)){$("#pfName").value=p.full_name||"";$("#pfEmail").value=p.email||"";$("#pfGender").value=p.gender||"";$("#pfDob").value=p.dob||""}
+  const td=iso(today);const L=ACC.trips.filter(b=>ACC.tf==="up"?b.date>=td:b.date<td);
+  $("#accTrips").innerHTML=L.length?`<div class="mine">${L.map(b=>{const d=fromIso(b.date);return `<div class="stub ${b.kind}"><div class="a"><span class="r">${esc(b.ref)} · ${KIND[b.kind]||"TRIP"}</span><h4>${esc(b.title)}</h4><div class="m">${esc(b.line||"")}</div><span class="s">${esc(b.status||"")}</span></div><div class="b">${d.getDate()}<small>${d.toLocaleDateString("en-IN",{month:"short"})}</small></div></div>`}).join("")}</div>`
+    :`<div class="acc-empty"><b>${ACC.tf==="up"?"No upcoming trips":"No completed trips yet"}</b>Bus tickets you book while logged in appear here.<br><a class="btn sm" href="#search" data-tab="bus">Search buses</a></div>`;
+  $("#accEnq").innerHTML=ACC.enq.length?`<div class="acc-list">${ACC.enq.map(r=>{const x=r.payload||{};const title=r.kind==="cab"?`${esc(x.from||"")}${x.to?" → "+esc(x.to):""}`:esc((x.darshan||[]).join(", ")||"TTD enquiry");const st=r.status||"new";
+      return `<div class="acc-card"><div class="t"><div><span class="r">${esc(r.ref||"")} · ${r.kind==="cab"?"CAB":"TTD"}</span><br><b>${title}</b></div><span class="pill st-${st}">${r.kind==="cab"?(CST[st]||stName(st)):stName(st)}</span></div><div class="m">${x.date?fmtDay(x.date,{weekday:"short",day:"numeric",month:"short"}):"Flexible dates"} · ${(x.pax||x.adults||1)} ${r.kind==="cab"?"passenger":"devotee"}${(x.pax||x.adults||1)>1?"s":""}</div>${track(st)}</div>`}).join("")}</div>`
+    :`<div class="acc-empty"><b>No enquiries yet</b>Cab and TTD enquiries you send while logged in appear here with their status.<br><a class="btn sm" href="#cabs">Cab enquiry</a></div>`;
+  $("#accTrav").innerHTML=ACC.trav.length?ACC.trav.map(t=>`<div class="tv"><span class="ini">${esc((t.name||"?")[0].toUpperCase())}</span><div><b>${esc(t.name)}</b><span>${t.age} yrs · ${{M:"Male",F:"Female",O:"Other"}[t.gender]||""}</span></div><button type="button" data-tvedit="${t.id}" aria-label="Edit ${esc(t.name)}"><svg class="i"><use href="#i-edit"/></svg></button><button type="button" data-tvdel="${t.id}" aria-label="Remove ${esc(t.name)}"><svg class="i"><use href="#i-x"/></svg></button></div>`).join("")
+    :`<div class="acc-empty"><b>No saved travellers</b>Add family and friends once, then fill their details at checkout in one tap.</div>`}
+/* travellers */
+const tvReset=()=>{ACC.editTv=null;$("#tvName").value="";$("#tvAge").value="";$("#tvGender").value="M";$("#tvTitle").textContent="Add a traveller";$("#tvSave").textContent="Save traveller";$("#tvCancel").hidden=true;fmark("tvName","");fmark("tvAge","")};
+$("#tvCancel").onclick=tvReset;
+$("#accTrav").addEventListener("click",async e=>{const ed=e.target.closest("[data-tvedit]"),dl=e.target.closest("[data-tvdel]");
+  if(ed){const t=ACC.trav.find(x=>x.id===ed.dataset.tvedit);ACC.editTv=t.id;$("#tvName").value=t.name;$("#tvAge").value=t.age;$("#tvGender").value=t.gender;$("#tvTitle").textContent="Edit traveller";$("#tvSave").textContent="Update traveller";$("#tvCancel").hidden=false;$("#tvName").focus()}
+  if(dl){const t=ACC.trav.find(x=>x.id===dl.dataset.tvdel);if(dl.dataset.armed!=="1"){dl.dataset.armed="1";dl.style.color="var(--rose)";toast(`Tap again to remove ${t.name}.`);setTimeout(()=>{dl.dataset.armed="";dl.style.color=""},3000);return}
+    try{await ACC.api.del("travellers",t.id);ACC.trav=ACC.trav.filter(x=>x.id!==t.id);accRender();toast(`${t.name} removed.`)}catch(x){toast(friendly(x))}}});
+$("#tvForm").onsubmit=async e=>{e.preventDefault();const n=$("#tvName").value.trim(),a=+$("#tvAge").value;
+  const er=[fmark("tvName",nameMsg(n)),fmark("tvAge",a>0&&a<=110?"":"Enter an age between 1 and 110.")].filter(Boolean);if(er.length)return;
+  const row={name:n,age:a,gender:$("#tvGender").value};
+  try{if(ACC.editTv){await ACC.api.upd("travellers",ACC.editTv,row);Object.assign(ACC.trav.find(x=>x.id===ACC.editTv),row);toast("Traveller updated.")}
+    else{if(ACC.trav.length>=12){toast("You can save up to 12 travellers.");return}ACC.trav.unshift(await ACC.api.add("travellers",row));toast(`${n} saved.`)}
+    tvReset();accRender()}catch(x){toast(friendly(x))}};
+/* profile */
+$("#pfForm").onsubmit=async e=>{e.preventDefault();const n=$("#pfName").value.trim(),em=$("#pfEmail").value.trim();
+  const er=[fmark("pfName",nameMsg(n)),fmark("pfEmail",!em||/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em)?"":"Enter a valid email or leave it empty.")].filter(Boolean);if(er.length)return;
+  const p={full_name:n,email:em||null,gender:$("#pfGender").value||null,dob:$("#pfDob").value||null,phone:ACC.user.phone};
+  const btn=$("#pfSave");btn.disabled=true;try{await ACC.api.saveProfile(ACC.user.id,p);ACC.profile={...(ACC.profile||{}),...p};accHeader();accRender();toast("Profile saved.")}catch(x){toast(friendly(x))}finally{btn.disabled=false}};
+/* saving trips and enquiries */
+async function accSaveBooking(b){if(!ACC.user||b.kind!=="bus")return;try{const r=await ACC.api.add("bookings",{ref:b.ref,kind:b.kind,title:b.title,date:b.date,line:b.line||"",status:b.status||"",total:b.total||0});ACC.trips.unshift(r);accRender()}catch(e){}}
+async function accSaveEnquiry(r){if(ACC.mode==="off")return false;
+  try{const row={kind:r.kind,ref:r.ref,status:"new",payload:r};if(ACC.user){ACC.enq.unshift(await ACC.api.add("enquiries",row));accRender()}else await ACC.api.addAnon("enquiries",row);return true}catch(e){return false}}
+/* checkout: phone and saved travellers */
+function accFillCheckout(){const box=$("#bForm .stp[data-s='1']");let bar=$("#svt");
+  if(!ACC.user){if(bar)bar.remove();const g=$("#svtLogin");if(!g&&ACC.mode!=="off"){box.insertAdjacentHTML("afterbegin",`<p class="svt" id="svtLogin"><span>Have an account? <button type="button" class="link" id="svtLoginBtn">Log in with WhatsApp</button> to use saved travellers.</span></p>`);$("#svtLoginBtn").onclick=()=>openLogin(()=>accFillCheckout())}return}
+  const g=$("#svtLogin");if(g)g.remove();if(!$("#bPhone").value)$("#bPhone").value=ACC.user.phone;
+  if(!bar){box.insertAdjacentHTML("afterbegin",`<div class="svt" id="svt"></div><label class="svt-save"><input type="checkbox" id="svtKeep" checked> Save new travellers to my account</label>`);bar=$("#svt")}
+  bar.innerHTML=ACC.trav.length?`<span>Saved travellers: tap to fill the next seat</span>`+ACC.trav.map(t=>`<button type="button" data-svt="${t.id}" aria-pressed="false">${esc(t.name)} · ${t.age}</button>`).join(""):`<span>Travellers you book now will be saved to your account for next time.</span>`}
+$("#bForm").addEventListener("click",e=>{const b=e.target.closest("[data-svt]");if(!b)return;const t=ACC.trav.find(x=>x.id===b.dataset.svt);
+  const rows=[...$$("#bPaxList .p")];const used=rows.find(r=>r.querySelector("[data-k=n]").value.trim()===t.name);
+  if(used){used.querySelectorAll("[data-k=n],[data-k=a]").forEach(i=>i.value="");b.setAttribute("aria-pressed","false");bSync();return}
+  const r=rows.find(r=>!r.querySelector("[data-k=n]").value.trim());if(!r){toast("All seats already have a passenger.");return}
+  r.querySelector("[data-k=n]").value=t.name;r.querySelector("[data-k=a]").value=t.age;r.querySelector("[data-k=g]").value=t.gender==="F"?"F":"M";b.setAttribute("aria-pressed","true");bSync()});
+async function accSaveCheckoutTravellers(){if(!ACC.user||!$("#svtKeep")||!$("#svtKeep").checked)return;
+  const have=new Set(ACC.trav.map(t=>t.name.toLowerCase()));
+  for(const r of $$("#bPaxList .p")){const n=r.querySelector("[data-k=n]").value.trim(),a=+r.querySelector("[data-k=a]").value,g=r.querySelector("[data-k=g]").value;
+    if(n&&a&&!have.has(n.toLowerCase())&&ACC.trav.length<12){try{ACC.trav.unshift(await ACC.api.add("travellers",{name:n,age:a,gender:g}));have.add(n.toLowerCase())}catch(e){}}}accRender()}
+/* enquiry forms: fill the caller's details */
+document.addEventListener("focusin",e=>{if(!ACC.user)return;const f=e.target.closest("#cbForm,#ttdForm");if(!f)return;
+  const [nm,ph]=f.id==="cbForm"?["#cName","#cPhone"]:["#tName","#tPhone"];
+  if(!$(nm).value&&ACC.profile&&ACC.profile.full_name)$(nm).value=ACC.profile.full_name;if(!$(ph).value)$(ph).value=ACC.user.phone});
+accInit();
+
 /* ---------- bookings ---------- */
 const KEY="sriyatra.bookings.v2";let BK=[];try{BK=JSON.parse(localStorage.getItem(KEY))||[]}catch(e){}
 const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(BK))}catch(e){}};
-function addBk(b){BK.unshift(b);save();renderBk()}
+function addBk(b){BK.unshift(b);save();renderBk();if(ACC.user)accSaveBooking(b)}
 const _rb=()=>{$("#tbCount").textContent=BK.length||""};
 function renderBk(){$("#bkCount").textContent=BK.length;if(typeof _rb==="function")_rb();$("#clearBk").hidden=!BK.length;
   $("#bkList").innerHTML=BK.length?`<div class="mine">${BK.map(b=>{const d=fromIso(b.date);return `<div class="stub ${b.kind}"><div class="a"><span class="r">${b.ref} · ${b.kind==="bus"?"BUS":b.kind==="cab"?"CAB":"DARSHAN"}</span><h4>${esc(b.title)}</h4><div class="m">${esc(b.line)}</div><span class="s">${esc(b.status)}</span></div><div class="b">${d.getDate()}<small>${d.toLocaleDateString("en-IN",{month:"short"})}</small></div></div>`}).join("")}</div>`
@@ -2281,8 +2624,8 @@ addEventListener("resize",()=>requestAnimationFrame(placeInd));
 try{document.fonts.ready.then(()=>requestAnimationFrame(placeInd))}catch(e){}
 function onScroll(){const y=scrollY;
   if(!reduce&&y<innerHeight*1.2)$("#heroBg").style.transform=`translateY(${y*.22}px)`;
-  let cs="top";if(document.body.classList.contains("page-results"))cs="top";else if(document.body.classList.contains("page-ttd"))cs="darshan";else for(const id of["destinations","cabs","darshan","why","bookings"]){if(document.getElementById(id).getBoundingClientRect().top<=innerHeight*.4)cs=id}
-  $$("[data-sec]").forEach(a=>a.classList.toggle("cur",a.dataset.sec===cs));placeInd();$("#hdr").classList.toggle("scrolled",y>8);document.body.classList.toggle("tb-on",y>140||document.body.classList.contains("page-results")||document.body.classList.contains("page-ttd"));
+  let cs="top";if(document.body.classList.contains("page-results"))cs="top";else if(document.body.classList.contains("page-ttd"))cs="darshan";else if(document.body.classList.contains("page-account"))cs="account";else for(const id of["destinations","cabs","darshan","why","bookings"]){if(document.getElementById(id).getBoundingClientRect().top<=innerHeight*.4)cs=id}
+  $$("[data-sec]").forEach(a=>a.classList.toggle("cur",a.dataset.sec===cs));placeInd();$("#hdr").classList.toggle("scrolled",y>8);document.body.classList.toggle("tb-on",y>140||document.body.classList.contains("page-results")||document.body.classList.contains("page-ttd")||document.body.classList.contains("page-account"));
   $("#totop").classList.toggle("show",y>innerHeight*1.2)}
 addEventListener("scroll",onScroll,{passive:true});
 $("#modify").onclick=()=>{setTab("bus");showHome("#search");$("#bTo").focus({preventScroll:true})};
