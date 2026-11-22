@@ -740,7 +740,7 @@ footer p{font-size:13.5px;max-width:42ch;margin:14px 0 0}
 
 @media (max-width:1200px){.hero-bg{background-image:url("img/coach6-md.webp")}}
 /* below-the-fold sections render only when scrolled near */
-#offers,#routes,#destinations,#cabs,#darshan,#bookings,footer{content-visibility:auto;contain-intrinsic-size:auto 900px}
+#offers,#routes,#destinations,#cabs,#darshan,#ttdguide,#amenities,#gallery,#contact,#bookings,footer{content-visibility:auto;contain-intrinsic-size:auto 900px}
 @media (max-width:1100px){
   header nav{display:none}
   header .btn{margin-left:auto}
@@ -1414,6 +1414,114 @@ body.page-account #account{display:block;animation:pagein .5s var(--ease)}
   .acc-grid2,.acc-grid3{grid-template-columns:1fr}
   .acc-list{grid-template-columns:1fr}
 }
+/* ---------- tour packages, TTD guide, amenities, gallery, about & contact ---------- */
+.pkgsec{background:#fff}
+.pkgs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.pkc{display:flex;flex-direction:column;text-align:left;border:0;padding:0;background:#fff;border-radius:22px;overflow:hidden;cursor:pointer;box-shadow:inset 0 0 0 1px var(--line),0 24px 44px -38px rgba(15,27,45,.6);transition:transform .45s var(--ease),box-shadow .45s;font:inherit;color:inherit}
+.pkc:hover{transform:translateY(-4px);box-shadow:inset 0 0 0 1px var(--champ),0 30px 50px -36px rgba(15,27,45,.6)}
+.pkc .ph{position:relative;aspect-ratio:16/9;background:#DCE4EA center/cover no-repeat}
+.pkc .dur{position:absolute;left:12px;top:12px;font-size:12px;font-weight:700;color:var(--ink);background:rgba(255,255,255,.94);border-radius:999px;padding:5px 11px}
+.pkc .tag{position:absolute;right:12px;top:12px;font-size:11.5px;font-weight:700;color:#fff;background:var(--navy);border-radius:999px;padding:5px 11px}
+.pkc .bd{display:flex;flex-direction:column;gap:10px;padding:16px 18px 18px;flex:1}
+.pkc h3{font-family:var(--f-serif);font-weight:500;font-size:21px;line-height:1.2;margin:0}
+.pkc .stops{font-size:13.5px;color:var(--muted);line-height:1.5}
+.pk-inc{display:flex;flex-wrap:wrap;gap:6px}
+.pk-inc i{font-style:normal;font-size:12px;font-weight:600;color:#4A515D;background:var(--ivory);border-radius:999px;padding:4px 10px}
+.pkc .ft{display:flex;justify-content:space-between;align-items:flex-end;margin-top:auto;padding-top:12px;border-top:1px dashed var(--line)}
+.pkc .ft small{display:block;font-size:12px;color:var(--muted)}
+.pkc .ft b{font-size:22px;color:var(--ink)}
+.pkc .ft .go{font-size:13.5px;font-weight:700;color:var(--champ-t)}
+.pk-fine{font-size:13px;color:var(--faint);margin:16px 0 0}
+.pk-ov .pk{width:min(640px,100%);max-height:min(88vh,900px);overflow:auto;padding:0}
+.pk-hero{aspect-ratio:16/7;background:#DCE4EA center/cover no-repeat}
+.pk-in{padding:20px 24px 24px}
+.pk-in h2{font-family:var(--f-serif);font-weight:500;font-size:28px;margin:6px 0 4px}
+.pk-meta{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 4px}
+.pk-meta span{font-size:12.5px;font-weight:600;background:var(--ivory);border-radius:999px;padding:5px 11px}
+.pk-price{display:flex;gap:22px;margin:14px 0 6px;padding:14px 16px;border-radius:16px;background:var(--navy);color:#fff}
+.pk-price small{display:block;font-size:12px;color:#B9C1CD}
+.pk-price b{font-size:22px}
+.pk-in h3{font-size:16px;margin:22px 0 10px}
+.pk-tl{list-style:none;margin:0;padding:0;border-left:2px solid var(--champ-l);margin-left:6px}
+.pk-tl li{position:relative;padding:0 0 14px 18px;font-size:14.5px;line-height:1.5}
+.pk-tl li::before{content:"";position:absolute;left:-7px;top:4px;width:12px;height:12px;border-radius:50%;background:var(--champ);box-shadow:0 0 0 3px #fff}
+.pk-tl b{display:block;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--champ-t)}
+.pk-io{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.pk-io ul{margin:0;padding:0 0 0 18px;font-size:14px;line-height:1.6;color:#3E4655}
+.pk-io .no ul{color:var(--muted)}
+.pk-bp{font-size:14px;line-height:1.6;color:#3E4655}
+.pk-bp a{color:var(--champ-t);font-weight:600}
+.pk-form{margin-top:18px;padding:16px;border-radius:18px;background:var(--ivory)}
+.pk-form .acc-grid2{gap:10px}
+.pk-form .btn{width:100%;margin-top:12px;min-height:52px;border-radius:14px}
+.tgsec{background:#F7F4EE}
+.tg-tabs{display:flex;gap:6px;padding:5px;border-radius:999px;background:#fff;box-shadow:inset 0 0 0 1px var(--line);margin-bottom:16px;overflow-x:auto;scrollbar-width:none}
+.tg-tabs::-webkit-scrollbar{display:none}
+.tg-tabs button{flex:1;white-space:nowrap;border:0;background:none;border-radius:999px;padding:11px 16px;font:inherit;font-weight:600;font-size:14.5px;color:var(--muted);cursor:pointer}
+.tg-tabs button[aria-selected="true"]{background:var(--navy);color:#fff}
+.tg-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.tg-grid.tg-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.tg-card{padding:18px;border-radius:18px;background:#fff;box-shadow:inset 0 0 0 1px var(--line)}
+.tg-card svg.i{width:26px;height:26px;color:var(--champ-t);margin-bottom:8px}
+.tg-card b{display:block;font-size:16px;margin-bottom:4px}
+.tg-card p{margin:0;font-size:14px;line-height:1.55;color:var(--muted)}
+.tg-card.tg-no{box-shadow:inset 0 0 0 1.5px #E8C3C3;background:#FDF6F5}
+.tg-steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;counter-reset:tg}
+.tg-steps li{counter-increment:tg;display:flex;flex-direction:column;gap:4px;padding:18px 18px 18px 60px;position:relative;border-radius:18px;background:#fff;box-shadow:inset 0 0 0 1px var(--line);font-size:14px;color:var(--muted);line-height:1.55}
+.tg-steps li::before{content:counter(tg);position:absolute;left:18px;top:18px;width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:var(--navy);color:#fff;font-weight:700;font-size:13px}
+.tg-steps b{font-size:16px;color:var(--ink)}
+.amsec{background:#fff}
+.am-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.am-col{padding:22px;border-radius:20px;background:linear-gradient(180deg,#FCFAF6,#F6F1E8);box-shadow:inset 0 0 0 1px #EEE6D8}
+.am-col h3{font-family:var(--f-serif);font-weight:500;font-size:21px;margin:0 0 12px}
+.am-col ul{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.am-col li{display:flex;align-items:center;gap:12px;font-size:14.5px;color:#3E4655}
+.am-col li svg.i{flex:none;width:34px;height:34px;padding:7px;border-radius:10px;background:var(--navy);color:var(--champ-l)}
+.glsec{background:#F7F4EE}
+.gl-tabs{display:inline-flex;gap:4px;padding:4px;border-radius:12px;background:#fff;box-shadow:inset 0 0 0 1px var(--line);margin-bottom:16px}
+.gl-tabs button{border:0;background:none;font:inherit;font-weight:600;font-size:13.5px;color:var(--muted);padding:8px 14px;border-radius:9px;cursor:pointer}
+.gl-tabs button[aria-pressed="true"]{background:var(--navy);color:#fff}
+.gl-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;grid-auto-flow:dense}
+.gl-grid button{position:relative;border:0;padding:0;border-radius:16px;overflow:hidden;cursor:zoom-in;aspect-ratio:4/3;background:#DCE4EA}
+.gl-grid button.gbig{grid-column:span 2;grid-row:span 2;aspect-ratio:auto}
+.gl-grid img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s var(--ease)}
+.gl-grid button:hover img{transform:scale(1.04)}
+.gl-grid span{position:absolute;left:10px;bottom:10px;font-size:12px;font-weight:600;color:#fff;background:rgba(10,14,22,.6);border-radius:999px;padding:4px 10px}
+.gl-box{position:fixed;inset:0;z-index:75;background:rgba(8,10,14,.92);display:grid;place-items:center;padding:20px}
+.gl-box[hidden]{display:none}
+.gl-box figure{margin:0;max-width:min(1200px,100%);text-align:center}
+.gl-box img{max-width:100%;max-height:82vh;border-radius:14px}
+.gl-box figcaption{color:#DDE2EA;font-size:14px;margin-top:10px}
+.gl-box .x{position:absolute;right:16px;top:16px;background:#fff}
+.absec{background:#fff}
+.ab-wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,480px);gap:48px;align-items:start}
+.ab-copy .eb3{display:flex;align-items:center;gap:14px;font-size:14px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--champ-t)}
+.ab-copy .eb3::before{content:"";width:40px;height:1.5px;background:var(--champ)}
+.ab-copy h2{font-family:var(--f-serif);font-weight:500;font-size:clamp(34px,4vw,56px);line-height:1.05;margin:12px 0 14px;color:var(--navy)}
+.ab-copy h2 .serif{font-style:italic;color:var(--champ-t)}
+.ab-copy > p{font-size:16px;line-height:1.65;color:#3E4655;max-width:560px}
+.ab-points{list-style:none;margin:18px 0;padding:0;display:grid;gap:10px}
+.ab-points li{display:flex;align-items:center;gap:10px;font-size:15px;font-weight:600}
+.ab-points svg.i{width:22px;height:22px;color:var(--champ-t)}
+.ab-contact{display:grid;gap:10px;margin-top:22px}
+.ab-contact a,.ab-contact div{display:flex;align-items:center;gap:12px;padding:14px 16px;border-radius:16px;background:var(--ivory);color:var(--ink);text-decoration:none;font-size:15px}
+.ab-contact a:hover{box-shadow:inset 0 0 0 1px var(--champ)}
+.ab-contact svg.i{flex:none;width:22px;height:22px;color:var(--champ-t)}
+.ab-contact small{display:block;font-size:12px;color:var(--muted)}
+.ab-contact .wa svg.i{color:#1FA855}
+.ab-form{box-shadow:0 30px 60px -40px rgba(15,27,45,.5),0 0 0 1px var(--line)}
+.qk-done{margin-top:14px}
+@media (max-width:1100px){.pkgs{grid-template-columns:1fr 1fr}.tg-grid{grid-template-columns:1fr 1fr}.am-grid{grid-template-columns:1fr}.gl-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.ab-wrap{grid-template-columns:1fr;gap:28px}}
+@media (max-width:640px){
+  .pkgs{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;margin-inline:-20px;padding:4px 20px 10px;scroll-padding-inline:20px}
+  .pkgs::-webkit-scrollbar{display:none}
+  .pkc{flex:0 0 86%;scroll-snap-align:start}
+  .tg-tabs{border-radius:16px;margin-inline:-4px}.tg-tabs button{flex:none;padding:10px 14px;font-size:14px}
+  .tg-grid,.tg-grid.tg-2,.tg-steps{grid-template-columns:1fr}
+  .gl-grid{grid-template-columns:1fr 1fr}.gl-grid button.gbig{grid-column:span 2;grid-row:span 1;aspect-ratio:16/10}
+  .pk-in{padding:16px 18px 22px}.pk-in h2{font-size:24px}.pk-io{grid-template-columns:1fr}
+  .pk-ov .pk{max-height:92vh}
+}
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -1444,6 +1552,16 @@ body.page-account #account{display:block;animation:pagein .5s var(--ease)}
     <symbol id="i-headset" viewBox="0 0 24 24"><path d="M4 14v-2a8 8 0 0 1 16 0v2"/><rect x="3" y="13.5" width="4" height="6" rx="1.5"/><rect x="17" y="13.5" width="4" height="6" rx="1.5"/><path d="M19 19.5c0 1.4-1.6 2-4 2h-2"/></symbol>
     <symbol id="i-wa" viewBox="0 0 24 24"><path d="M4 20l1.2-3.6A8 8 0 1 1 8 19z"/><path d="M9 8.5c0 3 2.5 6 6 6.5l1.2-1.4-2-1-1 .9c-1-.5-2-1.5-2.4-2.5l.9-1-1-2z" fill="currentColor" stroke="none"/></symbol>
     <symbol id="i-out" viewBox="0 0 24 24"><path d="M14 4h4a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-4"/><path d="M10 16l-4-4 4-4M6 12h10"/></symbol>
+    <symbol id="i-snow" viewBox="0 0 24 24"><path d="M12 3v18M4.2 7.5l15.6 9M4.2 16.5l15.6-9"/><path d="M9.5 4.5L12 7l2.5-2.5M9.5 19.5L12 17l2.5 2.5"/></symbol>
+    <symbol id="i-plug" viewBox="0 0 24 24"><path d="M9 3v5M15 3v5M6 8h12v3a6 6 0 0 1-12 0z"/><path d="M12 17v4"/></symbol>
+    <symbol id="i-bed" viewBox="0 0 24 24"><path d="M3 18V7M3 13h18v5M21 18v-3a3 3 0 0 0-3-3h-7v1"/><circle cx="7" cy="10.5" r="1.8"/></symbol>
+    <symbol id="i-cam" viewBox="0 0 24 24"><rect x="3" y="7" width="13" height="10" rx="2"/><path d="M16 11l5-3v8l-5-3"/></symbol>
+    <symbol id="i-aid" viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="14" rx="2"/><path d="M9 6V4h6v2M12 10v6M9 13h6"/></symbol>
+    <symbol id="i-fire" viewBox="0 0 24 24"><path d="M9 7h5l1 3v10H8V10z"/><path d="M11.5 7V4h3M8 5l3-1"/></symbol>
+    <symbol id="i-drop" viewBox="0 0 24 24"><path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11z"/></symbol>
+    <symbol id="i-door" viewBox="0 0 24 24"><path d="M5 21V4h11v17M3 21h18"/><circle cx="13" cy="12.5" r=".9"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 6l8.5 7 8.5-7"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol>
     <symbol id="i-up" viewBox="0 0 24 24"><path d="M12 19V5M6 11l6-6 6 6"/></symbol>
     <symbol id="i-x" viewBox="0 0 24 24"><path d="M5 5l14 14M19 5L5 19" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
     <symbol id="i-wheel" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="2"/><path d="M12 4v6M5 15l5-2M19 15l-5-2"/></symbol>
@@ -1670,7 +1788,19 @@ body.page-account #account{display:block;animation:pagein .5s var(--ease)}
       <div class="offer o1"><div><b>₹150 off your first bus trip</b><p>On bookings of ₹500 or more.</p></div><button class="code" type="button" data-code="FIRSTRIDE">FIRSTRIDE</button></div>
       <div class="offer o2"><div><b>Weekend cab offers</b><p>Mention this code when customer care calls to confirm your weekend trip.</p></div><button class="code" type="button" data-code="CABWEEKEND">CABWEEKEND</button></div>
       <div class="offer o3"><div><b>Family of four? Save ₹200</b><p>Book four or more bus seats together.</p></div><button class="code" type="button" data-code="FAMILY4">FAMILY4</button></div>
+      <div class="offer o1"><div><b>₹100 off Tirupati trips</b><p>On bus tickets to Tirupati of ₹500 or more.</p></div><button class="code" type="button" data-code="TIRUPATI100">TIRUPATI100</button></div>
+      <div class="offer o2"><div><b>Group of 5 or more?</b><p>Ask for our group fare on tour packages and buses.</p></div><a class="code" href="#contact">Ask our team</a></div>
+      <div class="offer o3"><div><b>Seniors &amp; weekdays</b><p>Help for senior citizens, and lower fares on Monday–Thursday departures. Ask when you enquire.</p></div><a class="code" href="#contact">Ask our team</a></div>
     </div>
+  </div>
+</section>
+
+<!-- TOUR PACKAGES -->
+<section data-home id="packages" class="pkgsec">
+  <div class="wrap">
+    <div class="sh rv"><span class="eb">Tour packages</span><h2>Tirupati <span class="serif">made simple</span></h2><p>Bus, darshan help, food and a coordinator in one booking. Tap a package for the full day-by-day plan.</p></div>
+    <div class="pkgs" id="pkgList"></div>
+    <p class="pk-fine">Prices are per person and indicative; our team confirms the final fare and darshan slot when they call.</p>
   </div>
 </section>
 
@@ -1754,6 +1884,85 @@ body.page-account #account{display:block;animation:pagein .5s var(--ease)}
   </div>
 </section>
 
+<!-- TTD GUIDE -->
+<section data-home id="ttdguide" class="tgsec">
+  <div class="wrap">
+    <div class="sh rv"><span class="eb">Before you go</span><h2>TTD darshan <span class="serif">rules &amp; tips</span></h2><p>Tirumala has strict rules. Read these before you travel so nothing stops you at the queue.</p></div>
+    <div class="tg-tabs" role="tablist" aria-label="TTD guide">
+      <button type="button" role="tab" data-tg="docs" aria-selected="true">Details we need</button>
+      <button type="button" role="tab" data-tg="dress" aria-selected="false">Dress code</button>
+      <button type="button" role="tab" data-tg="ticket" aria-selected="false">Darshan &amp; laddu</button>
+      <button type="button" role="tab" data-tg="day" aria-selected="false">On the day</button>
+    </div>
+    <div class="tg-pane" data-tp="docs">
+      <div class="tg-grid">
+        <div class="tg-card"><svg class="i"><use href="#i-user"/></svg><b>Full name</b><p>Exactly as printed on the ID proof you will carry.</p></div>
+        <div class="tg-card"><svg class="i"><use href="#i-users"/></svg><b>Age and gender</b><p>For every devotee in the group, including children.</p></div>
+        <div class="tg-card"><svg class="i"><use href="#i-ticket"/></svg><b>Photo ID number</b><p>Aadhaar is preferred; passport or voter ID also work. Carry the original on the day.</p></div>
+        <div class="tg-card"><svg class="i"><use href="#i-phone"/></svg><b>Mobile number</b><p>Your ticket and slot details are sent to this number.</p></div>
+      </div>
+    </div>
+    <div class="tg-pane" data-tp="dress" hidden>
+      <div class="tg-grid tg-2">
+        <div class="tg-card"><b>Men</b><p>Dhoti or pancha with a shirt, or kurta with pyjama.</p></div>
+        <div class="tg-card"><b>Women</b><p>Saree, half-saree, or churidar with a dupatta.</p></div>
+        <div class="tg-card tg-no"><b>Not allowed</b><p>Jeans, shorts, T-shirts, sleeveless tops and other western wear are not allowed for darshan.</p></div>
+        <div class="tg-card"><b>Tip</b><p>Pack your traditional clothes in your day bag; you change at the fresh-up stop before darshan.</p></div>
+      </div>
+    </div>
+    <div class="tg-pane" data-tp="ticket" hidden>
+      <div class="tg-grid tg-2">
+        <div class="tg-card"><b>₹300 Special Entry Darshan</b><p>Issued only by TTD from its online quota, so slots depend on availability. Our team tells you before you pay whether your package includes a confirmed slot.</p></div>
+        <div class="tg-card"><b>Children</b><p>Rules for children and infants change from time to time. Tell us their ages and we confirm what applies for your date.</p></div>
+        <div class="tg-card"><b>Laddu prasadam</b><p>Laddu prasadam is given after darshan. Extra laddus can be bought at the TTD laddu counters in Tirumala.</p></div>
+        <div class="tg-card"><b>Special sevas</b><p>Sevas are separate TTD bookings and are not part of the packages. Ask our team if you want one.</p></div>
+      </div>
+    </div>
+    <div class="tg-pane" data-tp="day" hidden>
+      <ol class="tg-steps">
+        <li><b>Report on time</b><span>Be at the queue complex entry printed on your ticket at the reporting time. Your coordinator walks you there.</span></li>
+        <li><b>Leave phones and cameras</b><span>Mobiles, cameras and electronics are not allowed inside the temple. Deposit them at the free TTD cloak rooms, or leave them on the bus.</span></li>
+        <li><b>No photos inside</b><span>Photography is not allowed inside the main temple complex.</span></li>
+        <li><b>Tonsure (mundan)</b><span>Hair offering is done at Kalyanakatta. Tell your coordinator and we plan the time for it.</span></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- AMENITIES -->
+<section data-home id="amenities" class="amsec">
+  <div class="wrap">
+    <div class="sh rv"><span class="eb">On board</span><h2>Comfort &amp; <span class="serif">safety</span></h2><p>What you get on our buses and tours. Exact features depend on the bus type you pick.</p></div>
+    <div class="am-grid">
+      <div class="am-col"><h3>Seating &amp; comfort</h3><ul>
+        <li><svg class="i"><use href="#i-snow"/></svg>AC sleeper and semi-sleeper push-back seats</li>
+        <li><svg class="i"><use href="#i-bed"/></svg>Clean blankets and pillows</li>
+        <li><svg class="i"><use href="#i-plug"/></svg>Charging point at every seat</li>
+        <li><svg class="i"><use href="#i-sun"/></svg>Reading lights</li></ul></div>
+      <div class="am-col"><h3>Safety &amp; tracking</h3><ul>
+        <li><svg class="i"><use href="#i-live"/></svg>Live GPS bus tracking</li>
+        <li><svg class="i"><use href="#i-cam"/></svg>CCTV on board</li>
+        <li><svg class="i"><use href="#i-aid"/></svg>First-aid kit</li>
+        <li><svg class="i"><use href="#i-fire"/></svg>Fire extinguisher</li>
+        <li><svg class="i"><use href="#i-door"/></svg>Emergency exit</li>
+        <li><svg class="i"><use href="#i-shield"/></svg>Verified, experienced drivers</li></ul></div>
+      <div class="am-col"><h3>Tour support</h3><ul>
+        <li><svg class="i"><use href="#i-users"/></svg>Tour coordinator for the whole trip</li>
+        <li><svg class="i"><use href="#i-drop"/></svg>Complimentary water bottle</li>
+        <li><svg class="i"><use href="#i-home"/></svg>Rooms arranged to fresh up</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section data-home id="gallery" class="glsec">
+  <div class="wrap">
+    <div class="sh rv"><span class="eb">Gallery</span><h2>See our <span class="serif">fleet &amp; trips</span></h2><p>Tap a photo to view it large. Send us your bus interior photos and trip videos and we add them here.</p></div>
+    <div class="gl-tabs" role="group" aria-label="Gallery"><button type="button" data-gl="all" aria-pressed="true">All</button><button type="button" data-gl="fleet" aria-pressed="false">Fleet</button><button type="button" data-gl="trips" aria-pressed="false">Trips &amp; temples</button></div>
+    <div class="gl-grid" id="glGrid"></div>
+  </div>
+</section>
+
 <!-- WHY US -->
 <section data-home id="why" class="whyus">
   <div class="wrap">
@@ -1764,6 +1973,34 @@ body.page-account #account{display:block;animation:pagein .5s var(--ease)}
       <div class="wcard rv"><span class="wi"><svg class="i"><use href="#i-live"/></svg></span><b>Live bus tracking</b><p>Follow your bus on the way to the boarding point and share it with family.</p></div>
       <div class="wcard rv"><span class="wi"><svg class="i"><use href="#i-headset"/></svg></span><b>Help that calls back</b><p>Cab and TTD enquiries are handled by our team on the phone, in your language.</p></div>
     </div>
+  </div>
+</section>
+
+<!-- ABOUT & CONTACT -->
+<section data-home id="contact" class="absec">
+  <div class="wrap ab-wrap">
+    <div class="ab-copy">
+      <span class="eb3">About SGVK</span>
+      <h2>Pilgrim travel, <span class="serif">done with care</span></h2>
+      <p>SGVK Tours and Travels runs bus, cab and temple tours across South India, with a special focus on Tirupati and Tirumala. We look after the details that make a pilgrimage calm: punctual departures, clean buses, darshan guidance and a coordinator you can call.</p>
+      <ul class="ab-points"><li><svg class="i"><use href="#i-shield"/></svg>Safety and hygiene on every trip</li><li><svg class="i"><use href="#i-ticket"/></svg>Clear prices, no hidden charges</li><li><svg class="i"><use href="#i-headset"/></svg>Real people on the phone, in your language</li></ul>
+      <div class="ab-contact" id="abContact"></div>
+    </div>
+    <form class="cbq ab-form" id="qkForm" novalidate>
+      <h3>Quick enquiry</h3>
+      <p>Tell us your plan and we call you back.</p>
+      <div class="cbg">
+        <div class="qf w"><svg class="i"><use href="#i-route"/></svg><label for="qkPkg"><span class="lab">Interested in</span><select id="qkPkg"></select></label><svg class="chev"><use href="#i-chev"/></svg></div>
+        <div class="qf w"><svg class="i"><use href="#i-user"/></svg><label for="qkName"><span class="lab">Your name<b class="req" aria-hidden="true">*</b></span><input id="qkName" placeholder="Enter your name" autocomplete="name"><small class="fe" aria-live="polite"></small></label></div>
+        <div class="qf w"><svg class="i"><use href="#i-phone"/></svg><label for="qkPhone"><span class="lab">Mobile number<b class="req" aria-hidden="true">*</b></span><span class="tel"><b>+91</b><input id="qkPhone" type="tel" inputmode="numeric" placeholder="Enter mobile number" autocomplete="tel-national"></span><small class="fe" aria-live="polite"></small></label></div>
+        <div class="qf"><svg class="i"><use href="#i-cal"/></svg><label for="qkDate"><span class="lab">Travel date</span><input id="qkDate" type="date"></label></div>
+        <div class="qf"><svg class="i"><use href="#i-users"/></svg><label for="qkPax"><span class="lab">Passengers</span><select id="qkPax"></select></label><svg class="chev"><use href="#i-chev"/></svg></div>
+        <div class="qf w"><svg class="i"><use href="#i-pin"/></svg><label for="qkCity"><span class="lab">Boarding city</span><select id="qkCity"></select></label><svg class="chev"><use href="#i-chev"/></svg></div>
+      </div>
+      <div class="err" id="qkErr" hidden></div>
+      <button type="submit" class="btn c" id="qkSend">Send enquiry <svg><use href="#arrow"/></svg></button>
+      <div class="cbdone qk-done" id="qkDone" hidden></div>
+    </form>
   </div>
 </section>
 
@@ -1796,7 +2033,7 @@ body.page-account #account{display:block;animation:pagein .5s var(--ease)}
       <div><a class="logo" href="#top" aria-label="SGVK Tours and Travels, home"><img class="lgimg" src="img/sgvk-logo.webp" alt="SGVK Tours and Travels" width="510" height="128" decoding="async"></a><p>Premium bus and cab travel across South India, with temple darshan booking for pilgrims.</p></div>
       <div><h5>Book</h5><ul><li><button class="fl" data-tab="bus">Bus tickets</button></li><li><button class="fl" data-tab="cab">Cabs</button></li><li><button class="fl" data-tab="drs">Temple darshan</button></li></ul></div>
       <div><h5>Popular routes</h5><ul id="fRoutes"></ul></div>
-      <div><h5>Support</h5><ul><li><a class="fl" href="#faq">FAQs</a></li><li><a class="fl" href="#bookings">My bookings</a></li><li><a class="fl" href="#why">Why SGVK</a></li><li><a class="fl" href="#ttd">TTD enquiry</a></li></ul></div>
+      <div><h5>Support</h5><ul><li><a class="fl" href="#packages">Tour packages</a></li><li><a class="fl" href="#ttdguide">TTD rules &amp; tips</a></li><li><a class="fl" href="#contact">Contact us</a></li><li><a class="fl" href="#faq">FAQs</a></li><li><a class="fl" href="#bookings">My bookings</a></li><li><a class="fl" href="#why">Why SGVK</a></li><li><a class="fl" href="#ttd">TTD enquiry</a></li></ul></div>
     </div>
     <div class="fdir">
       <div><h5>Top bus routes</h5><div class="flinks" id="fDirRoutes"></div></div>
@@ -1878,6 +2115,14 @@ body.page-account #account{display:block;animation:pagein .5s var(--ease)}
 
 <div class="cur-dot" id="cursor" aria-hidden="true"><span></span></div>
 <div class="toast" id="toast" role="status"></div>
+<!-- PACKAGE SHEET -->
+<div class="lg-ov pk-ov" id="pkOv" hidden>
+  <div class="lg pk" role="dialog" aria-modal="true" aria-labelledby="pkTitle">
+    <button type="button" class="x lg-x" id="pkClose" aria-label="Close"><svg class="i"><use href="#i-x"/></svg></button>
+    <div id="pkBody"></div>
+  </div>
+</div>
+<div class="gl-box" id="glBox" hidden><button type="button" class="x" id="glClose" aria-label="Close"><svg class="i"><use href="#i-x"/></svg></button><figure><img id="glImg" alt=""><figcaption id="glCap"></figcaption></figure></div>
 <!-- LOGIN SHEET -->
 <div class="lg-ov" id="lgOv" hidden>
   <div class="lg" role="dialog" aria-modal="true" aria-labelledby="lgTitle">
@@ -2271,6 +2516,7 @@ $("#cbForm").addEventListener("submit",async e=>{e.preventDefault();
 $$("[data-code]").forEach(b=>b.onclick=()=>{const c=b.dataset.code;try{navigator.clipboard.writeText(c).then(()=>toast(`Copied ${c}`),()=>toast(`Use code ${c} at checkout`))}catch(e){toast(`Use code ${c} at checkout`)}});
 function applyCode(code,ctx){code=code.trim().toUpperCase();
   if(code==="FIRSTRIDE"){if(ctx.kind!=="bus")return [0,"FIRSTRIDE works on bus tickets."];if(ctx.amount<500)return [0,"FIRSTRIDE needs a booking of ₹500 or more."];return [150,"₹150 off applied."]}
+  if(code==="TIRUPATI100"){if(ctx.kind!=="bus")return [0,"TIRUPATI100 works on bus tickets."];if(B&&B.to!=="Tirupati")return [0,"TIRUPATI100 is for trips to Tirupati."];if(ctx.amount<500)return [0,"TIRUPATI100 needs a booking of ₹500 or more."];return [100,"₹100 off applied."]}
   if(code==="FAMILY4"){if(ctx.kind!=="bus")return [0,"FAMILY4 works on bus tickets."];if(ctx.seats<4)return [0,"FAMILY4 needs four or more seats."];return [200,"₹200 off applied."]}
   if(code==="CABWEEKEND"){if(ctx.kind!=="cab")return [0,"CABWEEKEND works on cabs."];const dw=fromIso(ctx.date).getDay();if(!(dw===0||dw===6)||!(ctx.trip==="oneway"||ctx.trip==="round"))return [0,"CABWEEKEND is for weekend outstation and round trips."];return [Math.min(500,Math.round(ctx.amount*.1)),"10% off applied."]}
   return [0,"That code isn't valid."]}
@@ -2365,7 +2611,7 @@ const CST={new:"Request received",called:"Customer care called",verified:"Car av
 function renderCabMine(){const L=EQS.mine.filter(r=>r.kind==="cab").reverse();$("#cabMine").hidden=!L.length;if(!L.length)return;
   $("#cabMine").innerHTML=`<h3>Your cab requests</h3><p class="eqhint" style="margin:4px 0 6px">Updated live as customer care confirms them.</p>`+L.map(r=>`<div class="eqitem"><div><b>${esc(r.from)}${r.to?" → "+esc(r.to):""}${r.car?" · "+esc(r.car):""}</b><div class="m">${esc(r.ref)} · ${fmtDay(r.date)}${r.time?", "+esc(r.time):""} · ${r.pax} passenger${r.pax>1?"s":""}</div>${track(r.status)}</div><span class="pill st-${r.status}">${CST[r.status]||stName(r.status)}</span></div>`).join("")}
 function deskMain(r){if(r.kind==="cab")return `<b><span class="kt cab">CAB</span>${esc(r.from)}${r.to?" → "+esc(r.to):""}</b><div class="m">${esc(r.tripName)}${r.km?` · ${r.km} km`:""}<br>${fmtDay(r.date,{weekday:"short",day:"numeric",month:"short"})}${r.time?", "+esc(r.time):""}${r.addr?` · ${esc(r.addr)}`:""}<br>${r.car?esc(r.car)+" · ":""}${r.pax} passenger${r.pax>1?"s":""}</div>${r.notes?`<div class="m" style="margin-top:6px">“${esc(r.notes)}”</div>`:""}`;
-  return `<b><span class="kt">${r.kind==="ttd"?"TTD":"DARSHAN"}</span>${r.darshan.map(esc).join(", ")}</b><div class="m">${r.date?fmtDay(r.date,{weekday:"short",day:"numeric",month:"short"}):"Flexible"}${r.alt?` or ${fmtDay(r.alt,{day:"numeric",month:"short"})}`:""}${r.flexible&&r.date?" · flexible":""}<br>${r.kind==="ttd"?`${r.adults} devotee${r.adults>1?"s":""}`:[[r.adults,"adult"],[r.children,"child"],[r.seniors,"senior"]].filter(x=>x[0]).map(([n,w])=>n+" "+(n>1?(w==="child"?"children":w+"s"):w)).join(", ")}</div>${r.notes?`<div class="m" style="margin-top:6px">“${esc(r.notes)}”</div>`:""}`}
+  return `<b><span class="kt">${r.kind==="ttd"?"TTD":r.kind==="pkg"?"TOUR":"DARSHAN"}</span>${r.darshan.map(esc).join(", ")}</b><div class="m">${r.date?fmtDay(r.date,{weekday:"short",day:"numeric",month:"short"}):"Flexible"}${r.alt?` or ${fmtDay(r.alt,{day:"numeric",month:"short"})}`:""}${r.flexible&&r.date?" · flexible":""}<br>${r.kind==="ttd"?`${r.adults} devotee${r.adults>1?"s":""}`:[[r.adults,"adult"],[r.children,"child"],[r.seniors,"senior"]].filter(x=>x[0]).map(([n,w])=>n+" "+(n>1?(w==="child"?"children":w+"s"):w)).join(", ")}</div>${r.notes?`<div class="m" style="margin-top:6px">“${esc(r.notes)}”</div>`:""}`}
 function renderDesk(){
   const counts={};EQS.all.forEach(r=>counts[r.status]=(counts[r.status]||0)+1);
   const F=[["open","Open",EQS.all.filter(r=>r.status!=="closed"&&r.status!=="confirmed").length],...STATUS.map(([k,l])=>[k,l,counts[k]||0]),["all","All",EQS.all.length]];
@@ -2558,7 +2804,7 @@ function accRender(){if(!ACC.user)return;const p=ACC.profile||{},n=p.full_name||
   $("#accTrips").innerHTML=L.length?`<div class="mine">${L.map(b=>{const d=fromIso(b.date);return `<div class="stub ${b.kind}"><div class="a"><span class="r">${esc(b.ref)} · ${KIND[b.kind]||"TRIP"}</span><h4>${esc(b.title)}</h4><div class="m">${esc(b.line||"")}</div><span class="s">${esc(b.status||"")}</span></div><div class="b">${d.getDate()}<small>${d.toLocaleDateString("en-IN",{month:"short"})}</small></div></div>`}).join("")}</div>`
     :`<div class="acc-empty"><b>${ACC.tf==="up"?"No upcoming trips":"No completed trips yet"}</b>Bus tickets you book while logged in appear here.<br><a class="btn sm" href="#search" data-tab="bus">Search buses</a></div>`;
   $("#accEnq").innerHTML=ACC.enq.length?`<div class="acc-list">${ACC.enq.map(r=>{const x=r.payload||{};const title=r.kind==="cab"?`${esc(x.from||"")}${x.to?" → "+esc(x.to):""}`:esc((x.darshan||[]).join(", ")||"TTD enquiry");const st=r.status||"new";
-      return `<div class="acc-card"><div class="t"><div><span class="r">${esc(r.ref||"")} · ${r.kind==="cab"?"CAB":"TTD"}</span><br><b>${title}</b></div><span class="pill st-${st}">${r.kind==="cab"?(CST[st]||stName(st)):stName(st)}</span></div><div class="m">${x.date?fmtDay(x.date,{weekday:"short",day:"numeric",month:"short"}):"Flexible dates"} · ${(x.pax||x.adults||1)} ${r.kind==="cab"?"passenger":"devotee"}${(x.pax||x.adults||1)>1?"s":""}</div>${track(st)}</div>`}).join("")}</div>`
+      return `<div class="acc-card"><div class="t"><div><span class="r">${esc(r.ref||"")} · ${r.kind==="cab"?"CAB":r.kind==="pkg"?"TOUR":"TTD"}</span><br><b>${title}</b></div><span class="pill st-${st}">${r.kind==="cab"?(CST[st]||stName(st)):stName(st)}</span></div><div class="m">${x.date?fmtDay(x.date,{weekday:"short",day:"numeric",month:"short"}):"Flexible dates"} · ${(x.pax||x.adults||1)} ${r.kind==="cab"?"passenger":"devotee"}${(x.pax||x.adults||1)>1?"s":""}</div>${track(st)}</div>`}).join("")}</div>`
     :`<div class="acc-empty"><b>No enquiries yet</b>Cab and TTD enquiries you send while logged in appear here with their status.<br><a class="btn sm" href="#cabs">Cab enquiry</a></div>`;
   $("#accTrav").innerHTML=ACC.trav.length?ACC.trav.map(t=>`<div class="tv"><span class="ini">${esc((t.name||"?")[0].toUpperCase())}</span><div><b>${esc(t.name)}</b><span>${t.age} yrs · ${{M:"Male",F:"Female",O:"Other"}[t.gender]||""}</span></div><button type="button" data-tvedit="${t.id}" aria-label="Edit ${esc(t.name)}"><svg class="i"><use href="#i-edit"/></svg></button><button type="button" data-tvdel="${t.id}" aria-label="Remove ${esc(t.name)}"><svg class="i"><use href="#i-x"/></svg></button></div>`).join("")
     :`<div class="acc-empty"><b>No saved travellers</b>Add family and friends once, then fill their details at checkout in one tap.</div>`}
@@ -2605,6 +2851,97 @@ document.addEventListener("focusin",e=>{if(!ACC.user)return;const f=e.target.clo
   if(!$(nm).value&&ACC.profile&&ACC.profile.full_name)$(nm).value=ACC.profile.full_name;if(!$(ph).value)$(ph).value=ACC.user.phone});
 accInit();
 
+/* ---------- tour packages ----------
+   Edit prices, stops and plans here. Prices are per person in rupees. */
+const PKGS=[
+  {id:"express",name:"Tirupati 1-Day Express Darshan",dur:"1 night · 1 day",tag:"Most booked",img:"img/ttd-banner.webp",adult:2999,child:2499,
+   stops:"Overnight bus · fresh-up · ₹300 darshan · laddu · return",
+   inc:["AC bus both ways","₹300 darshan ticket*","Breakfast & lunch","Fresh-up room","Tolls & parking","Coordinator"],
+   exc:["Personal expenses","Special sevas","Extra laddus","Tonsure charges, if any"],
+   plan:[["Night 1","Board at your pick-up point and travel overnight to Tirupati."],["Early morning","Reach Tirupati, fresh up and change into traditional dress."],["Morning","Go up to Tirumala and join the queue for Special Entry Darshan."],["Afternoon","Darshan, laddu prasadam and lunch."],["Evening","Start the return journey."],["Next morning","Drop at your boarding city."]]},
+  {id:"local",name:"Tirupati & Local Temples",dur:"1 night · 2 days",tag:"Best value",img:"img/ttd-page.webp",adult:4499,child:3699,
+   stops:"Tirumala · Tiruchanur · Kapila Theertham · Srikalahasti · ISKCON",
+   inc:["AC bus both ways","₹300 darshan ticket*","Meals as per plan","Hotel stay (twin sharing)","Tolls & parking","Coordinator"],
+   exc:["Personal expenses","Special sevas","Extra laddus","Entry fees at other temples"],
+   plan:[["Night 1","Overnight journey to Tirupati."],["Day 1 morning","Fresh up, then Tirumala Balaji darshan."],["Day 1 afternoon","Laddu prasadam, lunch, check in and rest."],["Day 1 evening","Sri Padmavathi Ammavari Temple, Tiruchanur."],["Day 2 morning","Sri Kapileswara Swamy Temple and Sri Kalahasti."],["Day 2 afternoon","ISKCON Tirupati, then the return journey."]]},
+  {id:"circuit",name:"Tirupati, Kanipakam & Golden Temple",dur:"2 nights · 2 days",tag:"Temple circuit",img:"img/coach6-md.webp",adult:5499,child:4499,
+   stops:"Tirumala · Kanipakam · Sripuram Golden Temple, Vellore",
+   inc:["AC bus throughout","₹300 darshan ticket*","Meals as per plan","Hotel stay (twin sharing)","Tolls & parking","Coordinator"],
+   exc:["Personal expenses","Special sevas","Extra laddus","Entry fees at other temples"],
+   plan:[["Night 1","Overnight journey to Tirupati."],["Day 1","Tirumala Balaji darshan, laddu prasadam, hotel stay."],["Day 2 morning","Sri Varasiddhi Vinayaka Temple, Kanipakam."],["Day 2 afternoon","Sripuram Golden Temple, Vellore."],["Night 2","Return journey to your boarding city."]]}
+];
+const PK_FROM=["Bengaluru","Chennai","Hyderabad"];
+function pkCard(p){return `<button type="button" class="pkc" data-pk="${p.id}"><span class="ph" style="background-image:url('${p.img}')"><span class="dur">${p.dur}</span>${p.tag?`<span class="tag">${p.tag}</span>`:""}</span>
+  <span class="bd"><h3>${p.name}</h3><span class="stops">${p.stops}</span><span class="pk-inc">${p.inc.slice(0,4).map(x=>`<i>${x}</i>`).join("")}</span>
+  <span class="ft"><span><small>From, per adult</small><b>${inr(p.adult)}</b></span><span class="go">View plan →</span></span></span></button>`}
+$("#pkgList").innerHTML=PKGS.map(pkCard).join("");
+const mapLink=(pt,city)=>`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(pt+", "+city)}`;
+let pkCur=null;
+function openPkg(id){const p=PKGS.find(x=>x.id===id);pkCur=p;
+  $("#pkBody").innerHTML=`<div class="pk-hero" style="background-image:url('${p.img}')"></div><div class="pk-in">
+   <span class="eb3">Tour package</span><h2 id="pkTitle">${p.name}</h2><div class="pk-meta"><span>${p.dur}</span><span>From ${PK_FROM.join(", ")}</span></div>
+   <div class="pk-price"><div><small>Adult, per person</small><b>${inr(p.adult)}</b></div><div><small>Child 5–11 yrs</small><b>${inr(p.child)}</b></div></div>
+   <p class="pk-fine" style="margin-top:6px">Indicative price. Our team confirms the final fare and darshan slot before you pay.</p>
+   <h3>Day-by-day plan</h3><ol class="pk-tl">${p.plan.map(([t,d])=>`<li><b>${t}</b>${d}</li>`).join("")}</ol>
+   <div class="pk-io"><div><h3>Included</h3><ul>${p.inc.map(x=>`<li>${x}</li>`).join("")}</ul></div><div class="no"><h3>Not included</h3><ul>${p.exc.map(x=>`<li>${x}</li>`).join("")}</ul></div></div>
+   <p class="pk-fine">*₹300 darshan tickets are issued by TTD from its online quota and depend on availability.</p>
+   <h3>Boarding points</h3><div class="pk-bp">${PK_FROM.map(c=>`<p><b>${c}:</b> ${CITY[c][2].map(pt=>`<a href="${mapLink(pt,c)}" target="_blank" rel="noopener">${pt}</a>`).join(" · ")}</p>`).join("")}<p>Please report 30 minutes before departure. Drop at the same points on return.</p></div>
+   <form class="pk-form" id="pkForm" novalidate><h3 style="margin-top:0">Enquire for this package</h3>
+     <div class="acc-grid2">
+       <label class="fld" for="pkName"><span>Your name</span><input class="in" id="pkName" autocomplete="name"><small class="fe"></small></label>
+       <label class="fld" for="pkPhone"><span>Mobile number</span><input class="in" id="pkPhone" type="tel" inputmode="numeric" autocomplete="tel-national" placeholder="10-digit mobile"><small class="fe"></small></label>
+       <label class="fld" for="pkCity"><span>Boarding city</span><select class="in" id="pkCity">${PK_FROM.map(c=>`<option>${c}</option>`).join("")}</select></label>
+       <label class="fld" for="pkDate"><span>Travel date</span><input class="in" type="date" id="pkDate"></label>
+       <label class="fld" for="pkAd"><span>Adults</span><select class="in" id="pkAd">${Array.from({length:20},(_,i)=>`<option${i===1?" selected":""}>${i+1}</option>`).join("")}</select></label>
+       <label class="fld" for="pkCh"><span>Children (5–11)</span><select class="in" id="pkCh">${Array.from({length:11},(_,i)=>`<option>${i}</option>`).join("")}</select></label>
+     </div><div class="err" id="pkErr" hidden></div><button type="submit" class="btn c" id="pkSend">Send enquiry <svg><use href="#arrow"/></svg></button></form></div>`;
+  $("#pkDate").min=iso(addDays(today,1));
+  if(ACC.user){$("#pkPhone").value=ACC.user.phone;if(ACC.profile&&ACC.profile.full_name)$("#pkName").value=ACC.profile.full_name}
+  $("#pkOv").hidden=false;document.body.style.overflow="hidden";$("#pkOv .pk").scrollTop=0;
+  $("#pkForm").onsubmit=async e=>{e.preventDefault();const er=contactErr("pkName","pkPhone");if(er.length)return;
+    const ad=+$("#pkAd").value,ch=+$("#pkCh").value,at=new Date().toISOString();
+    const r={kind:"pkg",ref:"SY-P-"+Math.random().toString(36).slice(2,7).toUpperCase(),at,pkg:p.id,darshan:[p.name],date:$("#pkDate").value||"",flexible:!$("#pkDate").value,adults:ad,children:ch,seniors:0,pax:ad+ch,from:$("#pkCity").value,travel:"Package bus",
+      name:$("#pkName").value.trim(),phone:cleanPhone($("#pkPhone").value),whatsapp:true,email:"",language:"",callTime:"",notes:`Estimate ${inr(p.adult*ad+p.child*ch)}`,status:"new",history:[{status:"new",at}]};
+    const btn=$("#pkSend");btn.disabled=true;const saved=await eqSave(r);btn.disabled=false;
+    addBk({ref:r.ref,kind:"drs",title:p.name,date:r.date||iso(addDays(today,1)),line:`Tour enquiry · ${ad+ch} traveller${ad+ch>1?"s":""} from ${r.from}`,status:saved?"Enquiry received":"Not sent yet",total:0});
+    $("#pkForm").innerHTML=saved?`<h3 style="margin-top:0">Enquiry received</h3><p class="note">Reference <b>${r.ref}</b>. Our team will call <b>+91 ${esc(r.phone)}</b> to confirm dates, fares and darshan.</p>`
+      :`<h3 style="margin-top:0">Almost there</h3><p class="note">We couldn't send this online. ${CFG.whatsapp?`<a href="https://wa.me/${ten(CFG.whatsapp).length===10?"91"+ten(CFG.whatsapp):String(CFG.whatsapp).replace(/\D/g,"")}?text=${encodeURIComponent(`Tour enquiry ${r.ref}: ${p.name}, ${ad} adult(s), ${ch} child(ren) from ${r.from}${r.date?" on "+r.date:""}. Name: ${r.name}, +91 ${r.phone}`)}" target="_blank" rel="noopener">Send it on WhatsApp</a>`:`Call or WhatsApp our team with reference <b>${r.ref}</b>.`}</p>`;
+    toast(saved?`Enquiry ${r.ref} sent.`:"Please send your enquiry on WhatsApp.")}}
+function closePkg(){$("#pkOv").hidden=true;document.body.style.overflow=""}
+$("#pkgList").addEventListener("click",e=>{const b=e.target.closest("[data-pk]");if(b)openPkg(b.dataset.pk)});
+$("#pkClose").onclick=closePkg;$("#pkOv").addEventListener("click",e=>{if(e.target.id==="pkOv")closePkg()});
+addEventListener("keydown",e=>{if(e.key==="Escape"){if(!$("#pkOv").hidden)closePkg();if(!$("#glBox").hidden)$("#glBox").hidden=true}});
+/* TTD guide tabs */
+$(".tg-tabs").addEventListener("click",e=>{const b=e.target.closest("[data-tg]");if(!b)return;$$(".tg-tabs [data-tg]").forEach(x=>x.setAttribute("aria-selected",x===b));$$(".tg-pane").forEach(p=>p.hidden=p.dataset.tp!==b.dataset.tg)});
+/* gallery: only real photos of the fleet and trips */
+const GAL=[["img/coach6-bus.webp","SGVK coach at the bus terminal","fleet"],["img/cab10-lg.webp","SGVK cab at a hilltop viewpoint","fleet"],["img/ttd-banner.webp","Tirumala temple gopuram","trips"],["img/ttd-page.webp","Tirumala and the queue complex","trips"]];
+function renderGal(f){$("#glGrid").innerHTML=GAL.filter(g=>f==="all"||g[2]===f).map(([src,cap,,big])=>`<button type="button" class="${big?"gbig":""}" data-src="${src}" data-cap="${esc(cap)}"><img src="${src}" alt="${esc(cap)}" loading="lazy"><span>${esc(cap)}</span></button>`).join("")}
+renderGal("all");
+$(".gl-tabs").addEventListener("click",e=>{const b=e.target.closest("[data-gl]");if(!b)return;$$(".gl-tabs [data-gl]").forEach(x=>x.setAttribute("aria-pressed",x===b));renderGal(b.dataset.gl)});
+$("#glGrid").addEventListener("click",e=>{const b=e.target.closest("[data-src]");if(!b)return;$("#glImg").src=b.dataset.src;$("#glImg").alt=b.dataset.cap;$("#glCap").textContent=b.dataset.cap;$("#glBox").hidden=false});
+$("#glClose").onclick=()=>$("#glBox").hidden=true;$("#glBox").addEventListener("click",e=>{if(e.target.id==="glBox")$("#glBox").hidden=true});
+/* contact details come from config.js; nothing is shown until they are filled in */
+(function(){const c=window.SGVK_CONFIG||{},out=[];const d=x=>String(x||"").replace(/\D/g,"");
+  if(c.phone)out.push(`<a href="tel:+${d(c.phone).length===10?"91"+d(c.phone):d(c.phone)}"><svg class="i"><use href="#i-phone"/></svg><span><small>Call us${c.hours?` · ${esc(c.hours)}`:""}</small>${esc(c.phone)}</span></a>`);
+  if(c.whatsapp)out.push(`<a class="wa" href="https://wa.me/${d(c.whatsapp).length===10?"91"+d(c.whatsapp):d(c.whatsapp)}" target="_blank" rel="noopener"><svg class="i"><use href="#i-wa"/></svg><span><small>WhatsApp</small>${esc(c.whatsapp)}</span></a>`);
+  if(c.email)out.push(`<a href="mailto:${esc(c.email)}"><svg class="i"><use href="#i-mail"/></svg><span><small>Email</small>${esc(c.email)}</span></a>`);
+  if(c.address)out.push(c.mapsUrl?`<a href="${esc(c.mapsUrl)}" target="_blank" rel="noopener"><svg class="i"><use href="#i-pin"/></svg><span><small>Office · open in Maps</small>${esc(c.address)}</span></a>`:`<div><svg class="i"><use href="#i-pin"/></svg><span><small>Office</small>${esc(c.address)}</span></div>`);
+  $("#abContact").innerHTML=out.join("");$("#abContact").hidden=!out.length})();
+/* quick enquiry */
+$("#qkPkg").innerHTML=PKGS.map(p=>`<option value="${p.id}">${p.name}</option>`).join("")+`<option value="bus">Bus tickets</option><option value="cab">Cab</option><option value="other">Something else</option>`;
+$("#qkPax").innerHTML=Array.from({length:20},(_,i)=>`<option value="${i+1}"${i===1?" selected":""}>${i+1}</option>`).join("");
+$("#qkCity").innerHTML=NAMES.map(n=>`<option${n==="Bengaluru"?" selected":""}>${n}</option>`).join("");
+$("#qkDate").min=iso(addDays(today,1));
+document.addEventListener("focusin",e=>{if(!ACC.user||!e.target.closest("#qkForm"))return;if(!$("#qkName").value&&ACC.profile&&ACC.profile.full_name)$("#qkName").value=ACC.profile.full_name;if(!$("#qkPhone").value)$("#qkPhone").value=ACC.user.phone});
+$("#qkForm").onsubmit=async e=>{e.preventDefault();const er=contactErr("qkName","qkPhone");if(er.length){$("#qkErr").hidden=false;$("#qkErr").textContent="Please fill the highlighted fields.";return}$("#qkErr").hidden=true;
+  const sel=$("#qkPkg"),label=sel.options[sel.selectedIndex].text,n=+$("#qkPax").value,at=new Date().toISOString();
+  const r={kind:"pkg",ref:"SY-Q-"+Math.random().toString(36).slice(2,7).toUpperCase(),at,pkg:sel.value,darshan:[label],date:$("#qkDate").value||"",flexible:!$("#qkDate").value,adults:n,children:0,seniors:0,pax:n,from:$("#qkCity").value,travel:"—",
+    name:$("#qkName").value.trim(),phone:cleanPhone($("#qkPhone").value),whatsapp:true,email:"",language:"",callTime:"",notes:"",status:"new",history:[{status:"new",at}]};
+  const btn=$("#qkSend");btn.disabled=true;const saved=await eqSave(r);btn.disabled=false;
+  addBk({ref:r.ref,kind:"drs",title:label,date:r.date||iso(addDays(today,1)),line:`Enquiry · ${n} traveller${n>1?"s":""} from ${r.from}`,status:saved?"Enquiry received":"Not sent yet",total:0});
+  $("#qkDone").hidden=false;$("#qkDone").innerHTML=saved?`<div><h3>Enquiry received</h3><p>Reference <b>${r.ref}</b>. Our team will call <b>+91 ${esc(r.phone)}</b> soon.</p></div>`:`<div><h3>Almost there</h3><p>We couldn't send this online. Please call or WhatsApp our team with reference <b>${r.ref}</b>.</p></div>`;
+  toast(saved?`Enquiry ${r.ref} sent.`:"Please contact our team directly.")};
+
 /* ---------- bookings ---------- */
 const KEY="sriyatra.bookings.v2";let BK=[];try{BK=JSON.parse(localStorage.getItem(KEY))||[]}catch(e){}
 const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(BK))}catch(e){}};
@@ -2624,7 +2961,7 @@ addEventListener("resize",()=>requestAnimationFrame(placeInd));
 try{document.fonts.ready.then(()=>requestAnimationFrame(placeInd))}catch(e){}
 function onScroll(){const y=scrollY;
   if(!reduce&&y<innerHeight*1.2)$("#heroBg").style.transform=`translateY(${y*.22}px)`;
-  let cs="top";if(document.body.classList.contains("page-results"))cs="top";else if(document.body.classList.contains("page-ttd"))cs="darshan";else if(document.body.classList.contains("page-account"))cs="account";else for(const id of["destinations","cabs","darshan","why","bookings"]){if(document.getElementById(id).getBoundingClientRect().top<=innerHeight*.4)cs=id}
+  let cs="top";if(document.body.classList.contains("page-results"))cs="top";else if(document.body.classList.contains("page-ttd"))cs="darshan";else if(document.body.classList.contains("page-account"))cs="account";else for(const id of["packages","destinations","cabs","darshan","amenities","bookings"]){if(document.getElementById(id).getBoundingClientRect().top<=innerHeight*.4)cs=id}
   $$("[data-sec]").forEach(a=>a.classList.toggle("cur",a.dataset.sec===cs));placeInd();$("#hdr").classList.toggle("scrolled",y>8);document.body.classList.toggle("tb-on",y>140||document.body.classList.contains("page-results")||document.body.classList.contains("page-ttd")||document.body.classList.contains("page-account"));
   $("#totop").classList.toggle("show",y>innerHeight*1.2)}
 addEventListener("scroll",onScroll,{passive:true});

@@ -40,7 +40,7 @@ create table if not exists public.bookings (
 create table if not exists public.enquiries (
   id uuid primary key default gen_random_uuid(),
   user_id uuid default auth.uid() references auth.users (id) on delete set null,
-  kind text not null check (kind in ('cab','ttd')),
+  kind text not null check (kind in ('cab','ttd','pkg')),
   ref text,
   status text not null default 'new' check (status in ('new','called','verified','confirmed','closed')),
   payload jsonb not null,
@@ -71,3 +71,7 @@ create policy "anyone can send an enquiry" on public.enquiries
 create index if not exists travellers_user on public.travellers (user_id);
 create index if not exists bookings_user on public.bookings (user_id, date);
 create index if not exists enquiries_user on public.enquiries (user_id, created_at);
+
+-- Added for tour package enquiries. Safe to run again on an existing project:
+alter table public.enquiries drop constraint if exists enquiries_kind_check;
+alter table public.enquiries add constraint enquiries_kind_check check (kind in ('cab','ttd','pkg'));
