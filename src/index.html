@@ -1522,6 +1522,72 @@ body.page-account #account{display:block;animation:pagein .5s var(--ease)}
   .pk-in{padding:16px 18px 22px}.pk-in h2{font-size:24px}.pk-io{grid-template-columns:1fr}
   .pk-ov .pk{max-height:92vh}
 }
+/* ---------- departures board: airport-style, readable at a glance ---------- */
+.dbsec{background:linear-gradient(180deg,#F1ECE2,#F7F4EE);padding-block:28px 30px}
+.dboard{background:#0B1422;color:#fff;border-radius:22px;padding:18px 20px 14px;box-shadow:0 34px 70px -40px rgba(11,20,34,.85),inset 0 0 0 1px rgba(255,255,255,.06)}
+.db-top{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;padding-bottom:14px;border-bottom:1px solid rgba(255,255,255,.08)}
+.db-ttl{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.db-ttl > b{font-family:var(--f-serif);font-weight:500;font-size:26px;letter-spacing:.01em}
+.db-from{font-size:14px;color:#8E99AB}
+.db-live{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#7EE2A8;background:rgba(126,226,168,.1);border-radius:999px;padding:4px 10px}
+.db-live i{width:7px;height:7px;border-radius:50%;background:#7EE2A8;animation:dbPulse 1.6s ease-in-out infinite}
+@keyframes dbPulse{50%{opacity:.25}}
+.db-cities{display:inline-flex;gap:4px;padding:3px;border-radius:999px;background:rgba(255,255,255,.06)}
+.db-cities button{border:0;background:none;color:#B9C1CD;font:inherit;font-size:13.5px;font-weight:600;padding:6px 12px;border-radius:999px;cursor:pointer}
+.db-cities button[aria-pressed="true"]{background:#F5C76B;color:#0B1422}
+.db-clk{text-align:right;font-family:var(--f-mono)}
+.db-clk small{display:block;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#8E99AB}
+.db-clk b{font-size:28px;font-weight:500;color:#F5C76B;letter-spacing:.04em;font-variant-numeric:tabular-nums}
+.db-head,.db-row{display:grid;grid-template-columns:96px minmax(0,1.3fr) minmax(0,1.2fr) 90px 150px;gap:14px;align-items:center}
+.db-head{padding:12px 12px 8px;font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#6F7B8E}
+.db-rows{display:grid;gap:6px;min-height:calc(6 * 58px + 5 * 6px)}
+.db-row{width:100%;border:0;font:inherit;text-align:left;color:#fff;cursor:pointer;background:#111D30;border-radius:12px;padding:10px 12px;min-height:58px;transition:background .25s,transform .25s var(--ease);transform-origin:50% 0}
+.db-row:hover{background:#17263D}
+.db-row:focus-visible{outline:2px solid #F5C76B;outline-offset:2px}
+.db-row.flip{animation:dbFlip .55s var(--ease) both}
+@keyframes dbFlip{0%{transform:rotateX(-80deg);opacity:0}100%{transform:none;opacity:1}}
+.db-t{font-family:var(--f-mono);font-size:24px;color:#F5C76B;letter-spacing:.03em;font-variant-numeric:tabular-nums}
+.db-to b{display:block;font-size:18px;font-weight:700;letter-spacing:.01em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.db-to small{display:block;font-size:12px;color:#8E99AB;margin-top:1px}
+.db-bus{font-size:14px;color:#C9D0DB;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.db-bus small{display:block;font-size:12px;color:#8E99AB}
+.db-seat{font-family:var(--f-mono);font-size:20px;font-variant-numeric:tabular-nums}
+.db-seat small{font-family:var(--f-sans);font-size:11px;color:#8E99AB;margin-left:4px}
+.db-st{justify-self:start;display:inline-flex;align-items:center;gap:7px;font-size:13px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;border-radius:8px;padding:6px 10px;white-space:nowrap}
+.db-st::before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor}
+.st-ontime{color:#7EE2A8;background:rgba(126,226,168,.1)}
+.st-boarding{color:#0B1422;background:#F5C76B}
+.st-boarding::before{animation:dbPulse 1s ease-in-out infinite}
+.st-fast{color:#FF9B8A;background:rgba(255,155,138,.12)}
+.st-tmr{color:#B9C1CD;background:rgba(255,255,255,.07)}
+.db-foot{display:flex;justify-content:space-between;gap:10px;padding:12px 4px 0;font-size:12.5px;color:#8E99AB}
+.db-empty{padding:28px;text-align:center;color:#8E99AB}
+@media (max-width:1100px){
+  .db-head,.db-row{grid-template-columns:84px minmax(0,1fr) 74px 130px}
+  .db-c-bus,.db-bus{display:none}
+}
+@media (max-width:640px){
+  .dbsec{padding-block:6px 22px;background:#F1ECE2}
+  .dboard{border-radius:18px;padding:14px 12px 10px}
+  .db-ttl > b{font-size:22px}
+  .db-top{flex-wrap:nowrap;align-items:flex-start}
+  .db-ttl{flex:1;min-width:0}
+  .db-cities{width:100%;order:5}
+  .db-from{display:none}
+  .db-to small{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .db-cities button{flex:1;padding:7px 6px}
+  .db-clk b{font-size:22px}
+  .db-head{display:none}
+  .db-rows{min-height:calc(5 * 62px + 4 * 6px)}
+  .db-row{grid-template-columns:62px minmax(0,1fr) auto;grid-template-areas:"t to st" "t to seat";gap:2px 10px;padding:9px 10px;min-height:62px}
+  .db-t{grid-area:t;font-size:20px}
+  .db-to{grid-area:to}.db-to b{font-size:16px}
+  .db-st{grid-area:st;justify-self:end;font-size:11px;padding:4px 8px}
+  .db-seat{grid-area:seat;justify-self:end;font-size:14px}
+  .db-foot{font-size:12px}
+}
+@media (max-width:360px){.db-row{grid-template-columns:52px minmax(0,1fr) auto;gap:2px 8px}.db-t{font-size:17px}.db-st{font-size:10px;padding:3px 6px;gap:5px}.db-to b{font-size:15px}.db-ttl > b{font-size:20px}}
+@media (prefers-reduced-motion:reduce){.db-row.flip,.db-live i,.st-boarding::before{animation:none}}
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -1629,6 +1695,20 @@ body.page-account #account{display:block;animation:pagein .5s var(--ease)}
 
   </div>
 </div>
+  <div class="dbsec home" id="departures">
+    <div class="wrap">
+      <div class="dboard" id="dBoard" aria-label="Departures board">
+        <div class="db-top">
+          <div class="db-ttl"><span class="db-live"><i></i>Live</span><b>Departures</b><span class="db-from">from</span>
+            <span class="db-cities" role="group" aria-label="Departure city" id="dbCities"></span></div>
+          <div class="db-clk"><small id="dbDay">Today</small><b id="dbClk">--:--</b></div>
+        </div>
+        <div class="db-head" aria-hidden="true"><span>Time</span><span>To</span><span class="db-c-bus">Bus</span><span class="db-c-seat">Seats</span><span>Status</span></div>
+        <div class="db-rows" id="dbRows" role="list"></div>
+        <div class="db-foot"><span>Tap a departure to pick seats</span><span id="dbPage"></span></div>
+      </div>
+    </div>
+  </div>
   <div class="trust home"><div class="wrap">
     <div><svg class="i"><use href="#i-shield"/></svg><p><b>Safe &amp; Reliable</b><span>Your journey, our priority</span></p></div>
     <div><svg class="i"><use href="#i-users"/></svg><p><b>Family &amp; Group Options</b><span>Travel together, comfortably</span></p></div>
@@ -2941,6 +3021,39 @@ $("#qkForm").onsubmit=async e=>{e.preventDefault();const er=contactErr("qkName",
   addBk({ref:r.ref,kind:"drs",title:label,date:r.date||iso(addDays(today,1)),line:`Enquiry · ${n} traveller${n>1?"s":""} from ${r.from}`,status:saved?"Enquiry received":"Not sent yet",total:0});
   $("#qkDone").hidden=false;$("#qkDone").innerHTML=saved?`<div><h3>Enquiry received</h3><p>Reference <b>${r.ref}</b>. Our team will call <b>+91 ${esc(r.phone)}</b> soon.</p></div>`:`<div><h3>Almost there</h3><p>We couldn't send this online. Please call or WhatsApp our team with reference <b>${r.ref}</b>.</p></div>`;
   toast(saved?`Enquiry ${r.ref} sent.`:"Please contact our team directly.")};
+
+/* ---------- departures board ----------
+   Shows the next departures from a city, from the same sample schedule as the bus results.
+   The clock and statuses follow the real time; pages flip every few seconds. */
+const DB={from:"Bengaluru",page:0,list:[],t:null};
+const DB_FROM=["Bengaluru","Hyderabad","Chennai"].filter(c=>CITY[c]);
+function dbNow(){const d=new Date();return d.getHours()*60+d.getMinutes()}
+function dbBuild(){const from=DB.from,dests=NAMES.filter(n=>n!==from&&km(from,n)>=80&&km(from,n)<=700).sort((a,b)=>km(from,a)-km(from,b)).slice(0,6);
+  const now=dbNow(),day0=iso(today),day1=iso(addDays(today,1));let L=[];
+  for(const [day,off] of [[day0,0],[day1,1440]])for(const to of dests)for(const b of genBuses(from,to,day))L.push({...b,to,day,at:b.dep+off});
+  DB.list=L.filter(b=>b.at>=now-5).sort((a,b)=>a.at-b.at).slice(0,18)}
+function dbStatus(b){const m=b.at-dbNow();if(b.day!==iso(today))return ["st-tmr","Tomorrow"];if(m<=30)return ["st-boarding","Boarding"];if(b.left<8)return ["st-fast","Filling fast"];return ["st-ontime","On time"]}
+function dbPer(){return innerWidth<=640?5:6}
+function dbRender(flip){const per=dbPer(),pages=Math.max(1,Math.ceil(DB.list.length/per));DB.page%=pages;
+  const rows=DB.list.slice(DB.page*per,DB.page*per+per);
+  $("#dbRows").innerHTML=rows.length?rows.map((b,k)=>{const [c,t]=dbStatus(b);return `<button type="button" role="listitem" class="db-row${flip?" flip":""}" style="animation-delay:${k*70}ms" data-db="${b.id}|${b.to}|${b.day}" aria-label="${hm(b.dep)} to ${b.to}, ${b.t.kind}, ${b.left} seats left, ${t}">
+      <span class="db-t">${hm(b.dep)}</span><span class="db-to"><b>${esc(b.to)}</b><small>${km(DB.from,b.to)} km · ${Math.floor(b.dur/60)}h ${String(b.dur%60).padStart(2,"0")}m</small></span>
+      <span class="db-bus">${esc(b.t.line)}<small>${esc(b.t.kind)}</small></span><span class="db-seat">${b.left}<small>left</small></span><span class="db-st ${c}">${t}</span></button>`}).join("")
+    :`<div class="db-empty">No more departures listed today.</div>`;
+  $("#dbPage").textContent=pages>1?`Page ${DB.page+1} of ${pages}`:""}
+function dbClock(){const d=new Date();$("#dbClk").textContent=`${String(d.getHours()).padStart(2,"0")}:${String(d.getMinutes()).padStart(2,"0")}`;
+  $("#dbDay").textContent=d.toLocaleDateString("en-IN",{weekday:"short",day:"numeric",month:"short"})}
+function dbCities(){$("#dbCities").innerHTML=DB_FROM.map(c=>`<button type="button" data-dbc="${c}" aria-pressed="${c===DB.from}">${c}</button>`).join("")}
+function dbStart(){dbCities();dbBuild();dbRender(false);dbClock();clearInterval(DB.t);let tick=0;
+  DB.t=setInterval(()=>{dbClock();tick++;if(document.hidden)return;
+    if(tick%60===0){dbBuild()}
+    if(tick%7===0&&!reduce&&!$("#dBoard").matches(":hover,:focus-within")){DB.page++;dbRender(true)}else if(tick%60===0)dbRender(false)},1000)}
+$("#dbCities").addEventListener("click",e=>{const b=e.target.closest("[data-dbc]");if(!b)return;DB.from=b.dataset.dbc;DB.page=0;dbCities();dbBuild();dbRender(true)});
+$("#dbRows").addEventListener("click",e=>{const r=e.target.closest("[data-db]");if(!r)return;const [id,to,day]=r.dataset.db.split("|");
+  S.from=DB.from;S.to=to;S.date=day;$("#bFrom").value=S.from;$("#bTo").value=to;$("#bDate").value=day;search(true);
+  S.open=id;S.sel=[];renderBuses();requestAnimationFrame(()=>{const c=document.querySelector(`.bus[data-b="${id}"]`);if(c)c.scrollIntoView({block:"start",behavior:"instant"});scrollBy(0,-80)})});
+addEventListener("resize",()=>{clearTimeout(DB.rz);DB.rz=setTimeout(()=>dbRender(false),150)});
+dbStart();
 
 /* ---------- bookings ---------- */
 const KEY="sriyatra.bookings.v2";let BK=[];try{BK=JSON.parse(localStorage.getItem(KEY))||[]}catch(e){}
