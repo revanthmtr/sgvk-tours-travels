@@ -1655,6 +1655,32 @@ body.page-account #account{display:block;animation:pagein .5s var(--ease)}
   .pk-cats::-webkit-scrollbar{display:none}
   .pk-cats a{flex:none}
 }
+/* ---------- service tiles: everything SGVK offers, one tap away ---------- */
+.svc-tiles{background:#F7F4EE;padding-block:22px 6px}
+.svc-tiles .wrap{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:12px}
+.st-t{display:flex;flex-direction:column;gap:4px;padding:16px;border-radius:18px;background:#fff;text-decoration:none;color:var(--ink);box-shadow:inset 0 0 0 1px var(--line),0 14px 30px -26px rgba(15,27,45,.5);transition:transform .35s var(--ease),box-shadow .35s}
+.st-t:hover{transform:translateY(-3px);box-shadow:inset 0 0 0 1.5px var(--champ),0 20px 36px -26px rgba(15,27,45,.55)}
+.st-t .ic{width:44px;height:44px;border-radius:14px;display:grid;place-items:center;background:var(--navy);margin-bottom:8px}
+.st-t .ic svg.i{width:22px;height:22px;color:var(--champ-l)}
+.st-t b{font-size:15.5px}
+.st-t small{font-size:12.5px;color:var(--muted)}
+.pkc .ph img{width:100%;height:100%;object-fit:cover;display:block}
+.pk-hero img{width:100%;height:100%;object-fit:cover;display:block}
+@media (max-width:1100px){.svc-tiles .wrap{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:640px){
+  .svc-tiles{padding-block:14px 0}
+  .svc-tiles .wrap{gap:8px}
+  .st-t{padding:12px 10px;align-items:center;text-align:center;border-radius:16px}
+  .st-t .ic{width:40px;height:40px;margin-bottom:4px}
+  .st-t b{font-size:13.5px;line-height:1.2}
+  .st-t small{display:none}
+  /* comfort & safety: three swipeable cards instead of one long stack */
+  .am-grid{display:flex!important;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;margin-inline:-20px;padding:4px 20px 10px}
+  .am-grid::-webkit-scrollbar{display:none}
+  .am-col{flex:0 0 84%;scroll-snap-align:start}
+  .tg-steps li{padding:14px 14px 14px 52px}.tg-steps li::before{left:14px;top:14px}
+}
+@media (min-width:641px){#pkgList .pkc:nth-child(n+4){display:none}}
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -1776,6 +1802,14 @@ body.page-account #account{display:block;animation:pagein .5s var(--ease)}
       </div>
     </div>
   </div>
+  <nav class="svc-tiles home" aria-label="What we offer"><div class="wrap">
+    <a href="#search" data-tab="bus" class="st-t"><span class="ic"><svg class="i"><use href="#i-bus"/></svg></span><b>Bus tickets</b><small>Pick your seat</small></a>
+    <a href="#packages" class="st-t"><span class="ic"><svg class="i"><use href="#i-route"/></svg></span><b>Tour packages</b><small id="stTours">Tirupati &amp; more</small></a>
+    <a href="#cabs" class="st-t"><span class="ic"><svg class="i"><use href="#i-car"/></svg></span><b>Cabs</b><small>Send an enquiry</small></a>
+    <a href="#darshan" class="st-t"><span class="ic"><svg class="i" viewBox="0 0 34 34"><use href="#i-temple"/></svg></span><b>TTD darshan</b><small>Tickets &amp; rooms help</small></a>
+    <a href="#offers" class="st-t"><span class="ic"><svg class="i"><use href="#i-ticket"/></svg></span><b>Offers</b><small>Codes &amp; group fares</small></a>
+    <a href="#ttdguide" class="st-t"><span class="ic"><svg class="i"><use href="#i-headset"/></svg></span><b>Help &amp; rules</b><small>Dress code, booking tips</small></a>
+  </div></nav>
   <div class="trust home"><div class="wrap">
     <div><svg class="i"><use href="#i-shield"/></svg><p><b>Safe &amp; Reliable</b><span>Your journey, our priority</span></p></div>
     <div><svg class="i"><use href="#i-users"/></svg><p><b>Family &amp; Group Options</b><span>Travel together, comfortably</span></p></div>
@@ -2138,18 +2172,7 @@ body.page-account #account{display:block;animation:pagein .5s var(--ease)}
   </div>
 </section>
 
-<!-- WHY US -->
-<section data-home id="why" class="whyus">
-  <div class="wrap">
-    <div class="sh rv"><span class="eb">Why SGVK</span><h2>Travel booked <span class="serif">the easy way</span></h2><p>Buses, cabs and TTD help in one place, with real people behind every booking.</p></div>
-    <div class="wgrid">
-      <div class="wcard rv"><span class="wi"><svg class="i"><use href="#i-shield"/></svg></span><b>Verified operators</b><p>Every bus and cab partner is checked for permits, insurance and driver records.</p></div>
-      <div class="wcard rv"><span class="wi"><svg class="i"><use href="#i-ticket"/></svg></span><b>Pick your exact seat</b><p>See the full layout, lower and upper deck, and choose the seat you want.</p></div>
-      <div class="wcard rv"><span class="wi"><svg class="i"><use href="#i-live"/></svg></span><b>Live bus tracking</b><p>Follow your bus on the way to the boarding point and share it with family.</p></div>
-      <div class="wcard rv"><span class="wi"><svg class="i"><use href="#i-headset"/></svg></span><b>Help that calls back</b><p>Cab and TTD enquiries are handled by our team on the phone, in your language.</p></div>
-    </div>
-  </div>
-</section>
+
 
 <!-- ABOUT & CONTACT -->
 <section data-home id="contact" class="absec">
@@ -2208,7 +2231,7 @@ body.page-account #account{display:block;animation:pagein .5s var(--ease)}
       <div><a class="logo" href="#top" aria-label="SGVK Tours and Travels, home"><img class="lgimg" src="img/sgvk-logo.webp" alt="SGVK Tours and Travels" width="510" height="128" decoding="async"></a><p>Premium bus and cab travel across South India, with temple darshan booking for pilgrims.</p></div>
       <div><h5>Book</h5><ul><li><button class="fl" data-tab="bus">Bus tickets</button></li><li><button class="fl" data-tab="cab">Cabs</button></li><li><button class="fl" data-tab="drs">Temple darshan</button></li></ul></div>
       <div><h5>Popular routes</h5><ul id="fRoutes"></ul></div>
-      <div><h5>Support</h5><ul><li><a class="fl" href="#packages">Tour packages</a></li><li><a class="fl" href="#ttdguide">TTD rules &amp; tips</a></li><li><a class="fl" href="#contact">Contact us</a></li><li><a class="fl" href="#faq">FAQs</a></li><li><a class="fl" href="#bookings">My bookings</a></li><li><a class="fl" href="#why">Why SGVK</a></li><li><a class="fl" href="#ttd">TTD enquiry</a></li></ul></div>
+      <div><h5>Support</h5><ul><li><a class="fl" href="#packages">Tour packages</a></li><li><a class="fl" href="#ttdguide">TTD rules &amp; tips</a></li><li><a class="fl" href="#contact">Contact us</a></li><li><a class="fl" href="#faq">FAQs</a></li><li><a class="fl" href="#bookings">My bookings</a></li><li><a class="fl" href="#ttd">TTD enquiry</a></li></ul></div>
     </div>
     <div class="fdir">
       <div><h5>Top bus routes</h5><div class="flinks" id="fDirRoutes"></div></div>
@@ -3015,9 +3038,11 @@ accInit();
 let TOURS=[];
 const PK_FROM=["Bengaluru","Chennai","Hyderabad"];
 const CAT_ART={"Tirupati":["tirupati",0],"South India temples":["heritage",0],"Kerala":["beach",0],"Weekend getaways":["hills",0],"AP & Telangana":["srisailam",0],"Maharashtra":["heritage",1],"East & Central India":["kanipakam",0],"North India pilgrimage":["ahobilam",0],"Himalayas":["hills",1],"North East":["hills",1],"Andaman":["beach",1],"International":["beach",1]};
-const tArt=t=>{const [sc,v]=CAT_ART[t.cat]||["city",0];return SCENE(sc,"",v)};
+const TIR_PH=["img/ttd-banner.webp","img/coach6-bus.webp","img/ttd-page.webp"];
+const tArt=t=>{if(t.cat==="Tirupati"){const i=TOURS.filter(x=>x.cat==="Tirupati").indexOf(t);return `<img src="${TIR_PH[(i<0?0:i)%TIR_PH.length]}" alt="" loading="lazy">`}const [sc,v]=CAT_ART[t.cat]||["city",0];return SCENE(sc,"",v)};
+const shortDur=d=>String(d||"").replace(/\s*\(.*?\)\s*/g," ").replace(/\s+/g," ").trim();
 const tRoute=t=>t.meta.Route||(t.meta.Starts&&t.meta.Ends&&t.meta.Starts!==t.meta.Ends?`${t.meta.Starts} → ${t.meta.Ends}`:"")||((t.sections.find(x=>/Destinations|Places covered|Temples|Attractions/.test(x[0]))||[0,[]])[1].slice(0,5).join(" · "))||(t.meta.Starts?`From ${t.meta.Starts}`:"");
-function pkCard(t){return `<button type="button" class="pkc" data-pk="${t.id}"><span class="ph">${tArt(t)}${t.meta.Duration?`<span class="dur">${esc(t.meta.Duration)}</span>`:""}<span class="cat">${esc(t.cat)}</span></span>
+function pkCard(t){return `<button type="button" class="pkc" data-pk="${t.id}"><span class="ph">${tArt(t)}${t.meta.Duration?`<span class="dur">${esc(shortDur(t.meta.Duration))}</span>`:""}<span class="cat">${esc(t.cat)}</span></span>
   <span class="bd"><h3>${esc(t.name)}</h3><span class="stops">${esc(tRoute(t))}</span>
   <span class="ft"><span>${t.from?`<small>From</small><b>${inr(t.from)}</b>`:`<small>Price</small><span class="por">On request</span>`}</span><span class="go">View details →</span></span></span></button>`}
 function loadTours(){return new Promise(ok=>{if(window.SGVK_TOURS)return ok(window.SGVK_TOURS);const sc=document.createElement("script");sc.src="tours.js";sc.onload=()=>ok(window.SGVK_TOURS||[]);sc.onerror=()=>ok([]);document.head.appendChild(sc)})}
@@ -3026,7 +3051,7 @@ loadTours().then(T=>{TOURS=T||[];
   if(!TOURS.length){$("#pkgList").innerHTML=`<div class="pk-load">Tours are not available right now.</div>`;$("#pkAllBtn").hidden=true;return}
   $("#pkgList").innerHTML=TOURS.filter(t=>t.cat==="Tirupati").slice(0,6).map(pkCard).join("");
   $("#pkCats").innerHTML=CATS().filter(([c])=>c!=="Tirupati").map(([c,n])=>`<a href="#tours" data-tcat="${esc(c)}">${esc(c)}<em>${n}</em></a>`).join("");
-  $("#pkAllBtn").innerHTML=`View all ${TOURS.length} tours <svg><use href="#arrow"/></svg>`;
+  $("#pkAllBtn").innerHTML=`View all ${TOURS.length} tours <svg><use href="#arrow"/></svg>`;$("#stTours").textContent=`${TOURS.length} tours`;
   $("#qkPkg").innerHTML=`<option value="tirupati">Tirupati darshan tour</option>`+CATS().filter(([c])=>c!=="Tirupati").map(([c])=>`<option value="${esc(c)}">${esc(c)} tour</option>`).join("")+`<option value="bus">Bus tickets</option><option value="cab">Cab</option><option value="other">Something else</option>`;
   renderTours()});
 /* all-tours page */
