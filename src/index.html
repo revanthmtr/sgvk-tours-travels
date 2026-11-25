@@ -740,7 +740,7 @@ footer p{font-size:13.5px;max-width:42ch;margin:14px 0 0}
 
 @media (max-width:1200px){.hero-bg{background-image:url("img/coach6-md.webp")}}
 /* below-the-fold sections render only when scrolled near */
-#offers,#routes,#destinations,#cabs,#darshan,#ttdguide,#amenities,#gallery,#contact,#bookings,footer{content-visibility:auto;contain-intrinsic-size:auto 900px}
+#offers,#routes,#cabs,#darshan,#ttdguide,#amenities,#gallery,#contact,#bookings,footer{content-visibility:auto;contain-intrinsic-size:auto 900px}
 @media (max-width:1100px){
   header nav{display:none}
   header .btn{margin-left:auto}
@@ -1710,7 +1710,7 @@ body.page-account #account{display:block;animation:pagein .5s var(--ease)}
     <nav aria-label="Sections" id="mainNav">
       <span class="nind" id="navInd" aria-hidden="true"></span>
       <a href="#top" data-sec="top"><svg class="i"><use href="#i-bus"/></svg>Buses</a>
-      <a href="#destinations" data-sec="destinations"><svg class="i"><use href="#i-pin"/></svg>Destinations</a>
+      <a href="#packages" data-sec="packages"><svg class="i"><use href="#i-route"/></svg>Tours</a>
       <a href="#cabs" data-sec="cabs"><svg class="i"><use href="#i-car"/></svg>Cabs</a>
       <a href="#darshan" data-sec="darshan"><svg class="i" viewBox="0 0 34 34"><use href="#i-temple"/></svg>TTD</a>
     </nav>
@@ -1976,17 +1976,7 @@ body.page-account #account{display:block;animation:pagein .5s var(--ease)}
   </div>
 </section>
 
-<!-- DESTINATIONS -->
-<section data-home class="band" id="destinations">
-  <div class="wrap">
-    <div class="sh rv"><span class="eb">Destinations</span><h2>Go somewhere <span class="serif">worth it</span></h2><p>Temples, hill stations, beaches and cities. Fares shown from your chosen starting city.</p></div>
-    <div class="cats" id="cats" role="group" aria-label="Category">
-      <button class="cat" aria-pressed="true" data-c="temples">Temples</button><button class="cat" aria-pressed="false" data-c="hills">Hill stations</button>
-      <button class="cat" aria-pressed="false" data-c="beaches">Beaches</button><button class="cat" aria-pressed="false" data-c="cities">Cities &amp; heritage</button>
-    </div>
-    <div class="dests" id="dests"></div>
-  </div>
-</section>
+
 
 <!-- CABS -->
 <section data-home id="cabs">
@@ -2232,7 +2222,7 @@ body.page-account #account{display:block;animation:pagein .5s var(--ease)}
 <div class="seatbar" id="seatBar" hidden><div><b id="sbSeats">—</b><span id="sbFare">—</span></div><button class="btn c sm" type="button" id="sbGo">Continue <svg><use href="#arrow"/></svg></button></div>
 <nav class="tabbar" aria-label="Quick navigation">
   <a href="#search" data-sec="top"><svg class="i"><use href="#i-bus"/></svg>Buses</a>
-  <a href="#destinations" data-sec="destinations"><svg class="i"><use href="#i-pin"/></svg>Explore</a>
+  <a href="#packages" data-sec="packages"><svg class="i"><use href="#i-route"/></svg>Tours</a>
   <a href="#cabs" data-sec="cabs"><svg class="i"><use href="#i-car"/></svg>Cabs</a>
   <a href="#darshan" data-sec="darshan"><svg class="i" viewBox="0 0 34 34"><use href="#i-temple"/></svg>TTD</a>
   <a href="#bookings" data-sec="bookings" id="tbAcct"><svg class="i"><use href="#i-ticket"/></svg><span>Trips</span><b id="tbCount"></b></a>
@@ -2518,7 +2508,7 @@ function search(scroll){
   $("#rTitle").innerHTML=`${S.from} <i>→</i> ${S.to}`;
   rSync();
   $("#days").innerHTML=Array.from({length:7},(_,i)=>{const ds=iso(addDays(today,i));return `<button type="button" aria-pressed="${ds===S.date}" data-d="${ds}"><b>${fmtDay(ds,{day:"numeric",month:"short"})}</b><span>${i===0?"Today":i===1?"Tomorrow":fmtDay(ds,{weekday:"long"})}</span></button>`}).join("");
-  renderBuses(); renderDests(); renderRoutes();
+  renderBuses(); renderRoutes();
   $("#rSum").textContent=`${S.from} → ${S.to} · ${fmtDay(S.date,{day:"numeric",month:"short"})}`;
   S.searched=true;
   if(scroll)showResults();
@@ -2640,23 +2630,6 @@ function renderRoutes(){
   $("#fDirCities").innerHTML=["Bengaluru","Hyderabad","Chennai","Tirupati","Vijayawada","Mysuru"].filter(c=>CITY[c]).map(c=>`<button class="fl" data-from="${c}">Buses from ${c}</button>`).join("");
   $("#fRoutes").innerHTML=POP.slice(0,5).map(([a,b])=>`<li><button class="fl" data-pop="${a}|${b}">${a} → ${b}</button></li>`).join("");
 }
-const DEST={
-  temples:[["Tirupati","Tirupati","Sri Venkateswara Temple","tirupati"],["Srisailam","Srisailam","Mallikarjuna Jyotirlinga","srisailam"],["Kanipakam","Kanipakam","Varasiddhi Vinayaka","kanipakam"],["Ahobilam","Ahobilam","Nava Narasimha shrines","ahobilam"]],
-  hills:[["Ooty","Ooty","Nilgiris tea country","hills",0],["Kodaikanal","Kodaikanal","Lakes and pine forests","hills",1],["Coorg","Madikeri","Coffee estates and mist","hills",0],["Araku Valley","Araku","Eastern Ghats valley","hills",1]],
-  beaches:[["Goa","Panaji","Beaches and old quarters","beach",0],["Puducherry","Puducherry","French quarter by the sea","beach",1],["Gokarna","Gokarna","Quiet cliffside beaches","beach",0],["Visakhapatnam","Visakhapatnam","City on the Bay of Bengal","beach",1]],
-  cities:[["Hyderabad","Hyderabad","Charminar and biryani","city",0],["Chennai","Chennai","Marina and Mylapore","city",1],["Mysuru","Mysuru","Palaces and Dasara","heritage",0],["Hampi","Hampi","Vijayanagara ruins","heritage",0]]
-};
-let cat="temples";
-function renderDests(){
-  $("#dests").innerHTML=DEST[cat].map(([n,c,sub,sc,v])=>{const d=c===S.from?0:km(S.from,c),bus=d>=45;
-    return `<button type="button" class="dest" data-to="${c}" data-cursor="Go"><span class="art">${SCENE(sc,"",v||0)}<em>${bus?`${d} km from ${esc(S.from)}`:"Near you"}</em></span>
-      <span class="tx"><span><b>${n}</b><span>${sub}</span></span><span class="p">${bus?"Bus from":"By cab"}<strong>${bus?inr(cheapest(S.from,c)):"Request"}</strong></span></span></button>`}).join("");
-}
-$$("#cats .cat").forEach(b=>b.onclick=()=>{cat=b.dataset.c;$$("#cats .cat").forEach(x=>x.setAttribute("aria-pressed",x===b));renderDests()});
-$("#dests").addEventListener("click",e=>{const d=e.target.closest("[data-to]");if(!d)return;const to=d.dataset.to;
-  if(to===S.from||km(S.from,to)<45){cabFill(S.from,to===S.from?"":to,null);return}
-  S.to=to;$("#bTo").value=to;setTab("bus");search(true)});
-
 /* ---------- cabs: one enquiry card. The traveller sends the trip; customer care calls back with cars and fares. ---------- */
 const CB={from:"",to:"",date:""};
 $("#cbCities").innerHTML=[...NAMES,"Chikkaballapur","Kalahasti","Bengaluru Airport","Hyderabad Airport","Chennai Airport"].map(n=>`<option value="${n}">`).join("");
@@ -3200,7 +3173,7 @@ addEventListener("resize",()=>requestAnimationFrame(placeInd));
 try{document.fonts.ready.then(()=>requestAnimationFrame(placeInd))}catch(e){}
 function onScroll(){const y=scrollY;
   if(!reduce&&y<innerHeight*1.2)$("#heroBg").style.transform=`translateY(${y*.22}px)`;
-  let cs="top";if(document.body.classList.contains("page-results"))cs="top";else if(document.body.classList.contains("page-ttd"))cs="darshan";else if(document.body.classList.contains("page-account"))cs="account";else if(document.body.classList.contains("page-tours"))cs="packages";else for(const id of["packages","destinations","cabs","darshan","amenities","bookings"]){if(document.getElementById(id).getBoundingClientRect().top<=innerHeight*.4)cs=id}
+  let cs="top";if(document.body.classList.contains("page-results"))cs="top";else if(document.body.classList.contains("page-ttd"))cs="darshan";else if(document.body.classList.contains("page-account"))cs="account";else if(document.body.classList.contains("page-tours"))cs="packages";else for(const id of["packages","cabs","darshan","amenities","bookings"]){if(document.getElementById(id).getBoundingClientRect().top<=innerHeight*.4)cs=id}
   $$("[data-sec]").forEach(a=>a.classList.toggle("cur",a.dataset.sec===cs));placeInd();$("#hdr").classList.toggle("scrolled",y>8);document.body.classList.toggle("tb-on",y>140||document.body.classList.contains("page-results")||document.body.classList.contains("page-ttd")||document.body.classList.contains("page-account")||document.body.classList.contains("page-tours"));
   $("#totop").classList.toggle("show",y>innerHeight*1.2)}
 addEventListener("scroll",onScroll,{passive:true});
@@ -3218,7 +3191,7 @@ if(fine&&!reduce){const c=$("#cursor"),lab=c.querySelector("span");let x=-100,y=
 
 /* ---------- start ---------- */
 $("#dPhoto").innerHTML=SCENE("tirupati");
- setTab("bus"); renderDests(); renderRoutes(); S.searched=false; choose("sed"); renderBk(); onScroll();
+ setTab("bus"); renderRoutes(); S.searched=false; choose("sed"); renderBk(); onScroll();
 </script>
 
 </body>
