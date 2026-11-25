@@ -9,6 +9,7 @@ Single-page website for SGVK Tours and Travels: bus ticket search with seat sele
 - `build.sh` — rebuilds `index.html`: removes unused CSS and minifies HTML, CSS and JS (needs Node.js and Python 3)
 - `img/` — photos and the logo
 - `vercel.json` — static hosting settings for Vercel
+- `tours.js` — the tour package catalogue (names, prices, day plans, inclusions); edit it directly, no build needed
 - `config.js` — switches on WhatsApp OTP login and accounts (see `docs/ACCOUNTS.md`)
 - `docs/` — account setup guide and database script
 

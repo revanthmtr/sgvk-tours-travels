@@ -1322,6 +1322,8 @@ footer .logo .lgimg{height:56px!important;filter:none}
 #tbAcct.acct b{display:none}
 #account{display:none;background:#F8F5EF;padding-block:28px 72px;min-height:100vh}
 body.page-account .home,body.page-account [data-home],body.page-account #results,body.page-account #ttd{display:none!important}
+body.page-tours .home,body.page-tours [data-home],body.page-tours #results,body.page-tours #ttd,body.page-tours #account{display:none!important}
+body.page-tours #tours{display:block;animation:pagein .5s var(--ease)}
 body.page-account #account{display:block;animation:pagein .5s var(--ease)}
 .acc-demo,.lg-demo{font-size:13px;font-weight:600;color:#7A5A12;background:#FBEFD9;border-radius:12px;padding:9px 14px;margin-bottom:16px}
 .acc-head{display:flex;align-items:center;gap:18px;padding:26px;border-radius:24px;color:#fff;background:radial-gradient(70% 120% at 100% 0%,rgba(201,166,107,.3),rgba(201,166,107,0) 60%),var(--navy);box-shadow:0 30px 60px -40px rgba(15,27,45,.8)}
@@ -1588,6 +1590,71 @@ body.page-account #account{display:block;animation:pagein .5s var(--ease)}
 }
 @media (max-width:360px){.db-row{grid-template-columns:52px minmax(0,1fr) auto;gap:2px 8px}.db-t{font-size:17px}.db-st{font-size:10px;padding:3px 6px;gap:5px}.db-to b{font-size:15px}.db-ttl > b{font-size:20px}}
 @media (prefers-reduced-motion:reduce){.db-row.flip,.db-live i,.st-boarding::before{animation:none}}
+/* ---------- tour catalogue ---------- */
+.pk-load{padding:30px;color:var(--muted)}
+.pkc .ph{aspect-ratio:16/9;overflow:hidden}
+.pkc .ph svg{width:100%;height:100%;display:block}
+.pkc .ph .cat{position:absolute;left:12px;bottom:12px;font-size:11.5px;font-weight:700;letter-spacing:.06em;color:var(--ink);background:rgba(255,255,255,.92);border-radius:999px;padding:4px 10px}
+.pkc h3{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.pkc .stops{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.pkc .ft .por{font-size:15px;font-weight:700;color:var(--ink)}
+.pk-cats{display:flex;flex-wrap:wrap;gap:8px;margin:22px 0 0}
+.pk-cats a{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-size:14px;font-weight:600;color:var(--ink);background:#fff;border-radius:999px;padding:8px 14px;box-shadow:inset 0 0 0 1px var(--line);transition:box-shadow .25s}
+.pk-cats a:hover{box-shadow:inset 0 0 0 1.5px var(--champ)}
+.pk-cats a em{font-style:normal;font-size:12px;color:var(--champ-t);background:var(--ivory);border-radius:999px;padding:1px 8px}
+.pk-all{margin-top:22px;text-align:center}
+#tours{display:none;background:#F8F5EF;padding-block:24px 80px;min-height:100vh}
+.tp-head{display:flex;flex-direction:column;gap:12px;padding:26px;border-radius:24px;color:#fff;background:radial-gradient(70% 120% at 100% 0%,rgba(201,166,107,.28),rgba(201,166,107,0) 60%),var(--navy)}
+.tp-back{align-self:flex-start;color:#DDE2EA!important;font-size:14px;font-weight:600}
+.tp-head h1{font-family:var(--f-serif);font-weight:500;font-size:clamp(30px,4vw,52px);margin:0;color:#fff}
+.tp-head h1 .serif{font-style:italic;color:var(--champ)}
+.tp-search{display:flex;align-items:center;gap:10px;background:#fff;border-radius:16px;padding:6px 8px 6px 16px;max-width:620px}
+.tp-search svg.i{width:20px;height:20px;color:var(--champ-t);flex:none}
+.tp-search input{flex:1;min-width:0;border:0;background:none;font:inherit;font-size:16px;font-weight:600;color:var(--ink);padding:10px 0;outline:none}
+.tp-search button{border:0;background:var(--ivory);width:34px;height:34px;border-radius:50%;display:grid;place-items:center;cursor:pointer;color:var(--muted)}
+.tp-search button svg.i{width:16px;height:16px}
+.tp-cats{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;margin:0 -4px;padding:2px 4px}
+.tp-cats::-webkit-scrollbar{display:none}
+.tp-cats button{flex:none;border:0;font:inherit;font-size:14px;font-weight:600;color:#DDE2EA;background:rgba(255,255,255,.08);border-radius:999px;padding:8px 14px;cursor:pointer;white-space:nowrap}
+.tp-cats button em{font-style:normal;opacity:.6;margin-left:4px}
+.tp-cats button[aria-pressed="true"]{background:var(--champ);color:var(--ink)}
+.tp-count{font-size:14px;color:var(--muted);margin:18px 2px 12px}
+.tp-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.tp-grid .pkc{width:100%}
+.tp-none{grid-column:1/-1;text-align:center;padding:40px;border-radius:20px;background:#fff;box-shadow:inset 0 0 0 1px var(--line);color:var(--muted)}
+.tp-none b{display:block;font-family:var(--f-serif);font-weight:500;font-size:22px;color:var(--ink)}
+/* tour sheet */
+.pk-hero{aspect-ratio:16/7;overflow:hidden}
+.pk-hero svg{width:100%;height:100%;display:block}
+.pk-facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px;margin:14px 0 4px}
+.pk-facts div{padding:10px 12px;border-radius:12px;background:var(--ivory)}
+.pk-facts small{display:block;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--champ-t)}
+.pk-facts span{font-size:14px;font-weight:600;color:var(--ink)}
+.pk-route{font-size:14px;line-height:1.6;color:#3E4655;margin:10px 0 0}
+.pk-prices{margin:14px 0 6px;padding:14px 16px;border-radius:16px;background:var(--navy);color:#fff;display:grid;gap:6px}
+.pk-prices small{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--champ)}
+.pk-prices div{display:flex;justify-content:space-between;gap:12px;font-size:14.5px}
+.pk-prices b{font-size:17px;white-space:nowrap}
+.pk-sec ul{margin:0;padding:0 0 0 18px;font-size:14px;line-height:1.6;color:#3E4655;columns:2;column-gap:24px}
+.pk-sec ul li{break-inside:avoid}
+.pk-tl ul{margin:4px 0 0;padding:0 0 0 16px;color:#3E4655}
+.pk-tl li li{padding:0;font-size:14px}
+.pk-tl li li::before{display:none}
+.tg-list{margin:10px 0 0;padding:0 0 0 18px;font-size:14px;line-height:1.6;color:#3E4655}
+.hotels{margin-top:10px;display:grid;gap:4px;max-height:320px;overflow:auto;padding-right:4px}
+.hotels div{display:flex;justify-content:space-between;gap:12px;padding:8px 10px;border-radius:10px;background:var(--ivory);font-size:13.5px}
+.hotels span small{display:block;font-size:12px;color:var(--muted)}
+.hotels b{white-space:nowrap}
+@media (max-width:1100px){.tp-grid{grid-template-columns:1fr 1fr}}
+@media (max-width:640px){
+  #tours{padding-block:12px 96px}
+  .tp-head{padding:18px 16px;border-radius:20px;margin-inline:-4px}
+  .tp-grid{grid-template-columns:1fr}
+  .pk-sec ul{columns:1}
+  .pk-cats{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin-inline:-20px;padding:2px 20px}
+  .pk-cats::-webkit-scrollbar{display:none}
+  .pk-cats a{flex:none}
+}
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -1815,6 +1882,22 @@ body.page-account #account{display:block;animation:pagein .5s var(--ease)}
   </div>
 </section>
 
+<!-- TOURS PAGE -->
+<section id="tours" aria-label="All tour packages">
+  <div class="wrap">
+    <div class="tp-head">
+      <button type="button" class="link tp-back" id="toursBack">← Back to home</button>
+      <span class="eb4">Tour packages</span>
+      <h1>Find your <span class="serif">next journey</span></h1>
+      <label class="tp-search" for="tpQ"><svg class="i"><use href="#i-route"/></svg><input id="tpQ" type="search" placeholder="Search a place, temple or city" autocomplete="off"><button type="button" id="tpClear" aria-label="Clear search" hidden><svg class="i"><use href="#i-x"/></svg></button></label>
+      <div class="tp-cats" id="tpCats" role="group" aria-label="Category"></div>
+    </div>
+    <p class="tp-count" id="tpCount"></p>
+    <div class="tp-grid" id="tpGrid"></div>
+    <p class="pk-fine">Prices are per person unless stated, and indicative. Our team confirms dates, availability and the final fare when they call.</p>
+  </div>
+</section>
+
 <!-- TTD ENQUIRY PAGE -->
 <section id="ttd" aria-label="TTD tickets enquiry">
   <div class="ttdp">
@@ -1878,9 +1961,10 @@ body.page-account #account{display:block;animation:pagein .5s var(--ease)}
 <!-- TOUR PACKAGES -->
 <section data-home id="packages" class="pkgsec">
   <div class="wrap">
-    <div class="sh rv"><span class="eb">Tour packages</span><h2>Tirupati <span class="serif">made simple</span></h2><p>Bus, darshan help, food and a coordinator in one booking. Tap a package for the full day-by-day plan.</p></div>
-    <div class="pkgs" id="pkgList"></div>
-    <p class="pk-fine">Prices are per person and indicative; our team confirms the final fare and darshan slot when they call.</p>
+    <div class="sh rv"><span class="eb">Tour packages</span><h2>Journeys, <span class="serif">planned for you</span></h2><p>Tirupati darshan, temple circuits, Kerala, hills and more. Tap any tour for the day-by-day plan.</p></div>
+    <div class="pkgs" id="pkgList"><div class="pk-load">Loading tours…</div></div>
+    <div class="pk-cats" id="pkCats"></div>
+    <div class="pk-all"><a class="btn" href="#tours" id="pkAllBtn">View all tours <svg><use href="#arrow"/></svg></a></div>
   </div>
 </section>
 
@@ -1973,6 +2057,8 @@ body.page-account #account{display:block;animation:pagein .5s var(--ease)}
       <button type="button" role="tab" data-tg="dress" aria-selected="false">Dress code</button>
       <button type="button" role="tab" data-tg="ticket" aria-selected="false">Darshan &amp; laddu</button>
       <button type="button" role="tab" data-tg="day" aria-selected="false">On the day</button>
+      <button type="button" role="tab" data-tg="book" aria-selected="false">Booking help</button>
+      <button type="button" role="tab" data-tg="stay" aria-selected="false">Where to stay</button>
     </div>
     <div class="tg-pane" data-tp="docs">
       <div class="tg-grid">
@@ -2005,6 +2091,25 @@ body.page-account #account{display:block;animation:pagein .5s var(--ease)}
         <li><b>No photos inside</b><span>Photography is not allowed inside the main temple complex.</span></li>
         <li><b>Tonsure (mundan)</b><span>Hair offering is done at Kalyanakatta. Tell your coordinator and we plan the time for it.</span></li>
       </ol>
+    </div>
+    <div class="tg-pane" data-tp="book" hidden>
+      <div class="tg-grid tg-2">
+        <div class="tg-card"><b>SRIVANI VIP (break) darshan</b><p>₹10,000 donation to the SRIVANI Trust plus a ₹500 ticket, per person. Booked on the official TTD website under Pilgrim Services → SRIVANI Donations.</p>
+          <ol class="tg-list"><li>Log in to the official TTD website.</li><li>Open Pilgrim Services → SRIVANI Donations → Continue to Donate.</li><li>Enter ₹10,000 per person and choose Advance Booking.</li><li>Add each pilgrim's name, age, gender and ID proof. Pick Break Darshan, then your date. Add a room if you need one.</li><li>Check the summary and pay.</li><li>Download the donation receipt and darshan ticket.</li></ol></div>
+        <div class="tg-card"><b>SRIVANI daily quota</b><p>TTD splits SRIVANI tickets into an advance online quota (about 3 months ahead), a current-booking counter at Tirupati Airport, and a share reserved for existing donors. For same-day tickets, booking opens at 9:00 AM, closes at 1:00 PM, and darshan is at 4:00 PM.</p></div>
+        <div class="tg-card"><b>Usual monthly release order</b><p>TTD opens each month's quota about three months ahead, usually in this order:</p>
+          <ol class="tg-list"><li>Arjitha seva lucky-dip registration</li><li>Arjitha seva tickets, then virtual seva</li><li>Angapradakshinam</li><li>SRIVANI darshan</li><li>Senior citizens &amp; differently-abled quota</li><li>₹300 Special Entry Darshan</li><li>Accommodation</li></ol></div>
+        <div class="tg-card"><b>Our help</b><p>Dates and quotas change every month. Send a TTD enquiry and our team tells you what is open for your dates and helps you book.</p><a class="btn sm" href="#ttd" style="margin-top:12px">TTD enquiry</a></div>
+      </div>
+      <p class="pk-fine">Always confirm dates and rules on the official TTD website before booking.</p>
+    </div>
+    <div class="tg-pane" data-tp="stay" hidden>
+      <div class="tg-grid tg-2">
+        <div class="tg-card"><b>TTD rooms without online booking</b><p>If online rooms are sold out, register in person at the CRO office in Tirumala.</p>
+          <ul class="tg-list"><li>Go early, between 5:00 and 7:00 AM, for faster allotment; expect delays after 8:00 AM.</li><li>Register with Aadhaar and a mobile number.</li><li>Roughly 1,500–2,300 rooms are allotted offline each day.</li><li>Rooms are not given to single persons or unmarried couples.</li></ul></div>
+        <div class="tg-card"><b>Hotels in Tirupati</b><p>Indicative rent per day. Prices and details change often; check with the hotel before booking. Listing is not an endorsement.</p>
+          <div class="hotels" id="hotelList"></div></div>
+      </div>
     </div>
   </div>
 </section>
@@ -2430,19 +2535,20 @@ $("#rEdit").onsubmit=e=>{e.preventDefault();const f=$("#rFrom").value,t=$("#rTo"
   S.from=f;S.to=t;S.date=$("#rDate").value||S.date;$("#bFrom").value=f;$("#bTo").value=t;$("#bDate").value=S.date;$("#bPax").value=S.pax;search(false);scrollTo({top:0,behavior:"smooth"});toast(`Showing buses for ${f} → ${t}.`)};
 
 /* pages: home and bus results */
-function showResults(){document.body.classList.add("warm");if(!document.body.classList.contains("page-results")){document.body.classList.remove("page-ttd","page-account");document.body.classList.add("page-results");try{history.pushState({p:"results"},"")}catch(e){}}
+function showResults(){document.body.classList.add("warm");if(!document.body.classList.contains("page-results")){document.body.classList.remove("page-ttd","page-account","page-tours");document.body.classList.add("page-results");try{history.pushState({p:"results"},"")}catch(e){}}
   scrollTo({top:0,behavior:"instant"});onScroll();$("#rTitle").setAttribute("tabindex","-1");$("#rTitle").focus({preventScroll:true})}
-function showTTD(focus){const b=document.body;b.classList.add("warm");if(!b.classList.contains("page-ttd")){b.classList.remove("page-results","page-account");b.classList.add("page-ttd");try{history.pushState({p:"ttd"},"")}catch(e){}}
+function showTTD(focus){const b=document.body;b.classList.add("warm");if(!b.classList.contains("page-ttd")){b.classList.remove("page-results","page-account","page-tours");b.classList.add("page-ttd");try{history.pushState({p:"ttd"},"")}catch(e){}}
   $("#seatBar").hidden=true;scrollTo({top:0,behavior:"instant"});onScroll();if(focus)setTimeout(()=>{try{$(focus).focus({preventScroll:true})}catch(x){}},300)}
-function showHome(target){document.body.classList.remove("page-results","page-ttd","page-account");$("#seatBar").hidden=true;
+function showHome(target){document.body.classList.remove("page-results","page-ttd","page-account","page-tours");$("#seatBar").hidden=true;
   requestAnimationFrame(()=>{if(target){const el=document.querySelector(target);el&&el.scrollIntoView({block:target==="#search"?"center":"start",behavior:"instant"})}else scrollTo({top:0,behavior:"instant"});onScroll()})}
-addEventListener("popstate",()=>{const c=document.body.classList;if(c.contains("page-results")||c.contains("page-ttd")||c.contains("page-account"))showHome()});
+addEventListener("popstate",()=>{const c=document.body.classList;if(c.contains("page-results")||c.contains("page-ttd")||c.contains("page-account")||c.contains("page-tours"))showHome()});
 $("#backHome").onclick=()=>{try{if(history.state&&history.state.p==="results"){history.back();return}}catch(e){}showHome()};
 document.addEventListener("click",e=>{const a=e.target.closest('a[href^="#"]');if(!a||a.hasAttribute("data-pop"))return;const h=a.getAttribute("href");
   if(h==="#results"){e.preventDefault();if(S.searched)showResults();else{showHome("#search");$("#bTo").focus({preventScroll:true});toast("Choose where you're going, then search.")}return}
   if(h==="#ttd"){e.preventDefault();showTTD();return}
   if(h==="#account"){e.preventDefault();if(ACC.user)showAccount();else openLogin();return}
-  if((document.body.classList.contains("page-results")||document.body.classList.contains("page-ttd")||document.body.classList.contains("page-account"))&&h!=="#"){e.preventDefault();showHome(h==="#top"?null:h);return}
+  if(h==="#tours"){e.preventDefault();showTours();return}
+  if((document.body.classList.contains("page-results")||document.body.classList.contains("page-ttd")||document.body.classList.contains("page-account")||document.body.classList.contains("page-tours"))&&h!=="#"){e.preventDefault();showHome(h==="#top"?null:h);return}
   /* sections render lazily, so a long jump can land short: scroll, then settle on the exact spot */
   const el=h.length>1&&document.querySelector(h);if(el&&!a.hasAttribute("data-close")){e.preventDefault();const go=b=>el.scrollIntoView({block:h==="#search"?"center":"start",behavior:b});go(reduce?"auto":"smooth");clearTimeout(window.__nt);window.__nt=setTimeout(()=>go("auto"),reduce?0:650)}},true);
 const bucket=m=>{const h=(m%1440)/60;return h<6?0:h<12?1:h<18?2:3};
@@ -2870,7 +2976,7 @@ $("#lgNameForm").onsubmit=async e=>{e.preventDefault();const n=$("#lgName").valu
 function lgDone(){if(lgAfter){const f=lgAfter;lgAfter=null;f()}else if(!$("#bForm").hidden){accFillCheckout()}else showAccount()}
 /* account page */
 function showAccount(tab){if(!ACC.user){openLogin();return}const b=document.body;b.classList.add("warm");
-  if(!b.classList.contains("page-account")){b.classList.remove("page-results","page-ttd");b.classList.add("page-account");try{history.pushState({p:"account"},"")}catch(e){}}
+  if(!b.classList.contains("page-account")){b.classList.remove("page-results","page-ttd","page-tours");b.classList.add("page-account");try{history.pushState({p:"account"},"")}catch(e){}}
   $("#seatBar").hidden=true;accTab(tab||ACC.tab);accRender();accLoad();scrollTo({top:0,behavior:"instant"});onScroll()}
 function accTab(t){ACC.tab=t;$$(".acc-tabs [data-at]").forEach(x=>x.setAttribute("aria-selected",x.dataset.at===t));$$(".acc-pane").forEach(p=>p.hidden=p.dataset.ap!==t)}
 $(".acc-tabs").addEventListener("click",e=>{const b=e.target.closest("[data-at]");if(b)accTab(b.dataset.at)});
@@ -2932,65 +3038,85 @@ document.addEventListener("focusin",e=>{if(!ACC.user)return;const f=e.target.clo
 accInit();
 
 /* ---------- tour packages ----------
-   Edit prices, stops and plans here. Prices are per person in rupees. */
-const PKGS=[
-  {id:"express",name:"Tirupati 1-Day Express Darshan",dur:"1 night · 1 day",tag:"Most booked",img:"img/ttd-banner.webp",adult:2999,child:2499,
-   stops:"Overnight bus · fresh-up · ₹300 darshan · laddu · return",
-   inc:["AC bus both ways","₹300 darshan ticket*","Breakfast & lunch","Fresh-up room","Tolls & parking","Coordinator"],
-   exc:["Personal expenses","Special sevas","Extra laddus","Tonsure charges, if any"],
-   plan:[["Night 1","Board at your pick-up point and travel overnight to Tirupati."],["Early morning","Reach Tirupati, fresh up and change into traditional dress."],["Morning","Go up to Tirumala and join the queue for Special Entry Darshan."],["Afternoon","Darshan, laddu prasadam and lunch."],["Evening","Start the return journey."],["Next morning","Drop at your boarding city."]]},
-  {id:"local",name:"Tirupati & Local Temples",dur:"1 night · 2 days",tag:"Best value",img:"img/ttd-page.webp",adult:4499,child:3699,
-   stops:"Tirumala · Tiruchanur · Kapila Theertham · Srikalahasti · ISKCON",
-   inc:["AC bus both ways","₹300 darshan ticket*","Meals as per plan","Hotel stay (twin sharing)","Tolls & parking","Coordinator"],
-   exc:["Personal expenses","Special sevas","Extra laddus","Entry fees at other temples"],
-   plan:[["Night 1","Overnight journey to Tirupati."],["Day 1 morning","Fresh up, then Tirumala Balaji darshan."],["Day 1 afternoon","Laddu prasadam, lunch, check in and rest."],["Day 1 evening","Sri Padmavathi Ammavari Temple, Tiruchanur."],["Day 2 morning","Sri Kapileswara Swamy Temple and Sri Kalahasti."],["Day 2 afternoon","ISKCON Tirupati, then the return journey."]]},
-  {id:"circuit",name:"Tirupati, Kanipakam & Golden Temple",dur:"2 nights · 2 days",tag:"Temple circuit",img:"img/coach6-md.webp",adult:5499,child:4499,
-   stops:"Tirumala · Kanipakam · Sripuram Golden Temple, Vellore",
-   inc:["AC bus throughout","₹300 darshan ticket*","Meals as per plan","Hotel stay (twin sharing)","Tolls & parking","Coordinator"],
-   exc:["Personal expenses","Special sevas","Extra laddus","Entry fees at other temples"],
-   plan:[["Night 1","Overnight journey to Tirupati."],["Day 1","Tirumala Balaji darshan, laddu prasadam, hotel stay."],["Day 2 morning","Sri Varasiddhi Vinayaka Temple, Kanipakam."],["Day 2 afternoon","Sripuram Golden Temple, Vellore."],["Night 2","Return journey to your boarding city."]]}
-];
+   The catalogue lives in tours.js (window.SGVK_TOURS); edit names, prices and plans there. */
+let TOURS=[];
 const PK_FROM=["Bengaluru","Chennai","Hyderabad"];
-function pkCard(p){return `<button type="button" class="pkc" data-pk="${p.id}"><span class="ph" style="background-image:url('${p.img}')"><span class="dur">${p.dur}</span>${p.tag?`<span class="tag">${p.tag}</span>`:""}</span>
-  <span class="bd"><h3>${p.name}</h3><span class="stops">${p.stops}</span><span class="pk-inc">${p.inc.slice(0,4).map(x=>`<i>${x}</i>`).join("")}</span>
-  <span class="ft"><span><small>From, per adult</small><b>${inr(p.adult)}</b></span><span class="go">View plan →</span></span></span></button>`}
-$("#pkgList").innerHTML=PKGS.map(pkCard).join("");
+const CAT_ART={"Tirupati":["tirupati",0],"South India temples":["heritage",0],"Kerala":["beach",0],"Weekend getaways":["hills",0],"AP & Telangana":["srisailam",0],"Maharashtra":["heritage",1],"East & Central India":["kanipakam",0],"North India pilgrimage":["ahobilam",0],"Himalayas":["hills",1],"North East":["hills",1],"Andaman":["beach",1],"International":["beach",1]};
+const tArt=t=>{const [sc,v]=CAT_ART[t.cat]||["city",0];return SCENE(sc,"",v)};
+const tRoute=t=>t.meta.Route||(t.meta.Starts&&t.meta.Ends&&t.meta.Starts!==t.meta.Ends?`${t.meta.Starts} → ${t.meta.Ends}`:"")||((t.sections.find(x=>/Destinations|Places covered|Temples|Attractions/.test(x[0]))||[0,[]])[1].slice(0,5).join(" · "))||(t.meta.Starts?`From ${t.meta.Starts}`:"");
+function pkCard(t){return `<button type="button" class="pkc" data-pk="${t.id}"><span class="ph">${tArt(t)}${t.meta.Duration?`<span class="dur">${esc(t.meta.Duration)}</span>`:""}<span class="cat">${esc(t.cat)}</span></span>
+  <span class="bd"><h3>${esc(t.name)}</h3><span class="stops">${esc(tRoute(t))}</span>
+  <span class="ft"><span>${t.from?`<small>From</small><b>${inr(t.from)}</b>`:`<small>Price</small><span class="por">On request</span>`}</span><span class="go">View details →</span></span></span></button>`}
+function loadTours(){return new Promise(ok=>{if(window.SGVK_TOURS)return ok(window.SGVK_TOURS);const sc=document.createElement("script");sc.src="tours.js";sc.onload=()=>ok(window.SGVK_TOURS||[]);sc.onerror=()=>ok([]);document.head.appendChild(sc)})}
+const CATS=()=>{const m=new Map();TOURS.forEach(t=>m.set(t.cat,(m.get(t.cat)||0)+1));return [...m]};
+loadTours().then(T=>{TOURS=T||[];
+  if(!TOURS.length){$("#pkgList").innerHTML=`<div class="pk-load">Tours are not available right now.</div>`;$("#pkAllBtn").hidden=true;return}
+  $("#pkgList").innerHTML=TOURS.filter(t=>t.cat==="Tirupati").slice(0,6).map(pkCard).join("");
+  $("#pkCats").innerHTML=CATS().filter(([c])=>c!=="Tirupati").map(([c,n])=>`<a href="#tours" data-tcat="${esc(c)}">${esc(c)}<em>${n}</em></a>`).join("");
+  $("#pkAllBtn").innerHTML=`View all ${TOURS.length} tours <svg><use href="#arrow"/></svg>`;
+  $("#qkPkg").innerHTML=`<option value="tirupati">Tirupati darshan tour</option>`+CATS().filter(([c])=>c!=="Tirupati").map(([c])=>`<option value="${esc(c)}">${esc(c)} tour</option>`).join("")+`<option value="bus">Bus tickets</option><option value="cab">Cab</option><option value="other">Something else</option>`;
+  renderTours()});
+/* all-tours page */
+const TP={cat:"All",q:""};
+function showTours(cat){const b=document.body;b.classList.add("warm");if(cat)TP.cat=cat;
+  if(!b.classList.contains("page-tours")){b.classList.remove("page-results","page-ttd","page-account");b.classList.add("page-tours");try{history.pushState({p:"tours"},"")}catch(e){}}
+  $("#seatBar").hidden=true;renderTours();scrollTo({top:0,behavior:"instant"});onScroll()}
+function renderTours(){if(!TOURS.length)return;
+  $("#tpCats").innerHTML=[["All",TOURS.length],...CATS()].map(([c,n])=>`<button type="button" data-tpc="${esc(c)}" aria-pressed="${TP.cat===c}">${esc(c)}<em>${n}</em></button>`).join("");
+  const q=TP.q.toLowerCase().trim(),words=q.split(/\s+/).filter(Boolean);
+  const L=TOURS.filter(t=>(TP.cat==="All"||t.cat===TP.cat)&&(!words.length||words.every(w=>JSON.stringify([t.name,t.meta,t.sections,t.plan]).toLowerCase().includes(w))));
+  $("#tpCount").textContent=`${L.length} tour${L.length===1?"":"s"}${TP.cat!=="All"?" in "+TP.cat:""}${q?` matching “${TP.q.trim()}”`:""}`;
+  $("#tpGrid").innerHTML=L.length?L.map(pkCard).join(""):`<div class="tp-none"><b>No tours found</b>Try another place or clear the search.</div>`;
+  $("#tpClear").hidden=!TP.q}
+$("#tpCats").addEventListener("click",e=>{const b=e.target.closest("[data-tpc]");if(!b)return;TP.cat=b.dataset.tpc;renderTours()});
+$("#tpQ").addEventListener("input",e=>{TP.q=e.target.value;renderTours()});
+$("#tpClear").onclick=()=>{TP.q="";$("#tpQ").value="";renderTours();$("#tpQ").focus()};
+$("#toursBack").onclick=()=>{try{if(history.state&&history.state.p==="tours"){history.back();return}}catch(e){}showHome("#packages")};
+$("#pkCats").addEventListener("click",e=>{const a=e.target.closest("[data-tcat]");if(!a)return;e.preventDefault();e.stopPropagation();showTours(a.dataset.tcat)},true);
+$("#pkAllBtn").addEventListener("click",()=>{TP.cat="All"},true);
+/* tour detail sheet */
 const mapLink=(pt,city)=>`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(pt+", "+city)}`;
-let pkCur=null;
-function openPkg(id){const p=PKGS.find(x=>x.id===id);pkCur=p;
-  $("#pkBody").innerHTML=`<div class="pk-hero" style="background-image:url('${p.img}')"></div><div class="pk-in">
-   <span class="eb3">Tour package</span><h2 id="pkTitle">${p.name}</h2><div class="pk-meta"><span>${p.dur}</span><span>From ${PK_FROM.join(", ")}</span></div>
-   <div class="pk-price"><div><small>Adult, per person</small><b>${inr(p.adult)}</b></div><div><small>Child 5–11 yrs</small><b>${inr(p.child)}</b></div></div>
-   <p class="pk-fine" style="margin-top:6px">Indicative price. Our team confirms the final fare and darshan slot before you pay.</p>
-   <h3>Day-by-day plan</h3><ol class="pk-tl">${p.plan.map(([t,d])=>`<li><b>${t}</b>${d}</li>`).join("")}</ol>
-   <div class="pk-io"><div><h3>Included</h3><ul>${p.inc.map(x=>`<li>${x}</li>`).join("")}</ul></div><div class="no"><h3>Not included</h3><ul>${p.exc.map(x=>`<li>${x}</li>`).join("")}</ul></div></div>
-   <p class="pk-fine">*₹300 darshan tickets are issued by TTD from its online quota and depend on availability.</p>
-   <h3>Boarding points</h3><div class="pk-bp">${PK_FROM.map(c=>`<p><b>${c}:</b> ${CITY[c][2].map(pt=>`<a href="${mapLink(pt,c)}" target="_blank" rel="noopener">${pt}</a>`).join(" · ")}</p>`).join("")}<p>Please report 30 minutes before departure. Drop at the same points on return.</p></div>
-   <form class="pk-form" id="pkForm" novalidate><h3 style="margin-top:0">Enquire for this package</h3>
+function openPkg(id){const t=TOURS.find(x=>x.id===id);if(!t)return;
+  const facts=[["Duration",t.meta.Duration],["Starts",t.meta.Starts],["Ends",t.meta.Ends],["Departure",t.meta.Departure],["Stay",t.meta.Accommodation],["Meals",t.meta.Meals],["Transport",t.meta.Transport],["Valid",t.meta.Validity||t.meta["Booking window"]]].filter(x=>x[1]);
+  const city=t.meta.Starts||"";
+  const sec=t.sections.map(([h,items])=>/boarding/i.test(h)?`<div class="pk-sec"><h3>${esc(h)}</h3><ul>${items.map(x=>`<li><a href="${mapLink(x.replace(/\s*[–-]\s*\d{1,2}:\d{2}.*$/,""),city)}" target="_blank" rel="noopener">${esc(x)}</a></li>`).join("")}</ul></div>`
+    :`<div class="pk-sec"><h3>${esc(h)}</h3><ul>${items.map(x=>`<li>${esc(x)}</li>`).join("")}</ul></div>`).join("");
+  $("#pkBody").innerHTML=`<div class="pk-hero">${tArt(t)}</div><div class="pk-in">
+   <span class="eb3">${esc(t.cat)}</span><h2 id="pkTitle">${esc(t.name)}</h2>
+   ${facts.length?`<div class="pk-facts">${facts.map(([k,v])=>`<div><small>${k}</small><span>${esc(v)}</span></div>`).join("")}</div>`:""}
+   ${t.meta.Route?`<p class="pk-route"><b>Route:</b> ${esc(t.meta.Route)}</p>`:""}
+   ${t.price.length?`<div class="pk-prices"><small>Price</small>${t.price.map(x=>{const m=x.split(/:\s(?=₹)/);return m.length>1?`<div><span>${esc(m[0])}</span><b>${esc(m[1])}</b></div>`:`<div><span>${esc(x)}</span></div>`}).join("")}</div>`
+     :`<div class="pk-prices"><small>Price</small><div><span>On request: our team shares the fare for your dates and group size.</span></div></div>`}
+   ${t.plan.length?`<h3>Day-by-day plan</h3><ol class="pk-tl">${t.plan.map(([d,items])=>`<li>${d?`<b>${esc(d)}</b>`:""}${items.length>1?`<ul>${items.map(x=>`<li>${esc(x)}</li>`).join("")}</ul>`:esc(items[0]||"")}</li>`).join("")}</ol>`:""}
+   ${sec}
+   <form class="pk-form" id="pkForm" novalidate><h3 style="margin-top:0">Enquire about this tour</h3>
      <div class="acc-grid2">
        <label class="fld" for="pkName"><span>Your name</span><input class="in" id="pkName" autocomplete="name"><small class="fe"></small></label>
        <label class="fld" for="pkPhone"><span>Mobile number</span><input class="in" id="pkPhone" type="tel" inputmode="numeric" autocomplete="tel-national" placeholder="10-digit mobile"><small class="fe"></small></label>
-       <label class="fld" for="pkCity"><span>Boarding city</span><select class="in" id="pkCity">${PK_FROM.map(c=>`<option>${c}</option>`).join("")}</select></label>
+       <label class="fld" for="pkCity"><span>Starting city</span><input class="in" id="pkCity" list="cbCities" value="${esc(city)}"></label>
        <label class="fld" for="pkDate"><span>Travel date</span><input class="in" type="date" id="pkDate"></label>
-       <label class="fld" for="pkAd"><span>Adults</span><select class="in" id="pkAd">${Array.from({length:20},(_,i)=>`<option${i===1?" selected":""}>${i+1}</option>`).join("")}</select></label>
-       <label class="fld" for="pkCh"><span>Children (5–11)</span><select class="in" id="pkCh">${Array.from({length:11},(_,i)=>`<option>${i}</option>`).join("")}</select></label>
+       <label class="fld" for="pkAd"><span>Adults</span><select class="in" id="pkAd">${Array.from({length:30},(_,i)=>`<option${i===1?" selected":""}>${i+1}</option>`).join("")}</select></label>
+       <label class="fld" for="pkCh"><span>Children</span><select class="in" id="pkCh">${Array.from({length:11},(_,i)=>`<option>${i}</option>`).join("")}</select></label>
      </div><div class="err" id="pkErr" hidden></div><button type="submit" class="btn c" id="pkSend">Send enquiry <svg><use href="#arrow"/></svg></button></form></div>`;
   $("#pkDate").min=iso(addDays(today,1));
   if(ACC.user){$("#pkPhone").value=ACC.user.phone;if(ACC.profile&&ACC.profile.full_name)$("#pkName").value=ACC.profile.full_name}
   $("#pkOv").hidden=false;document.body.style.overflow="hidden";$("#pkOv .pk").scrollTop=0;
   $("#pkForm").onsubmit=async e=>{e.preventDefault();const er=contactErr("pkName","pkPhone");if(er.length)return;
     const ad=+$("#pkAd").value,ch=+$("#pkCh").value,at=new Date().toISOString();
-    const r={kind:"pkg",ref:"SY-P-"+Math.random().toString(36).slice(2,7).toUpperCase(),at,pkg:p.id,darshan:[p.name],date:$("#pkDate").value||"",flexible:!$("#pkDate").value,adults:ad,children:ch,seniors:0,pax:ad+ch,from:$("#pkCity").value,travel:"Package bus",
-      name:$("#pkName").value.trim(),phone:cleanPhone($("#pkPhone").value),whatsapp:true,email:"",language:"",callTime:"",notes:`Estimate ${inr(p.adult*ad+p.child*ch)}`,status:"new",history:[{status:"new",at}]};
+    const r={kind:"pkg",ref:"SY-P-"+Math.random().toString(36).slice(2,7).toUpperCase(),at,pkg:t.id,darshan:[t.name],date:$("#pkDate").value||"",flexible:!$("#pkDate").value,adults:ad,children:ch,seniors:0,pax:ad+ch,from:$("#pkCity").value.trim(),travel:"Tour",
+      name:$("#pkName").value.trim(),phone:cleanPhone($("#pkPhone").value),whatsapp:true,email:"",language:"",callTime:"",notes:"",status:"new",history:[{status:"new",at}]};
     const btn=$("#pkSend");btn.disabled=true;const saved=await eqSave(r);btn.disabled=false;
-    addBk({ref:r.ref,kind:"drs",title:p.name,date:r.date||iso(addDays(today,1)),line:`Tour enquiry · ${ad+ch} traveller${ad+ch>1?"s":""} from ${r.from}`,status:saved?"Enquiry received":"Not sent yet",total:0});
-    $("#pkForm").innerHTML=saved?`<h3 style="margin-top:0">Enquiry received</h3><p class="note">Reference <b>${r.ref}</b>. Our team will call <b>+91 ${esc(r.phone)}</b> to confirm dates, fares and darshan.</p>`
-      :`<h3 style="margin-top:0">Almost there</h3><p class="note">We couldn't send this online. ${CFG.whatsapp?`<a href="https://wa.me/${ten(CFG.whatsapp).length===10?"91"+ten(CFG.whatsapp):String(CFG.whatsapp).replace(/\D/g,"")}?text=${encodeURIComponent(`Tour enquiry ${r.ref}: ${p.name}, ${ad} adult(s), ${ch} child(ren) from ${r.from}${r.date?" on "+r.date:""}. Name: ${r.name}, +91 ${r.phone}`)}" target="_blank" rel="noopener">Send it on WhatsApp</a>`:`Call or WhatsApp our team with reference <b>${r.ref}</b>.`}</p>`;
+    addBk({ref:r.ref,kind:"drs",title:t.name,date:r.date||iso(addDays(today,1)),line:`Tour enquiry · ${ad+ch} traveller${ad+ch>1?"s":""}${r.from?" from "+r.from:""}`,status:saved?"Enquiry received":"Not sent yet",total:0});
+    const wa=CFG.whatsapp?String(CFG.whatsapp).replace(/\D/g,""):"";
+    $("#pkForm").innerHTML=saved?`<h3 style="margin-top:0">Enquiry received</h3><p class="note">Reference <b>${r.ref}</b>. Our team will call <b>+91 ${esc(r.phone)}</b> to confirm dates, fares and availability.</p>`
+      :`<h3 style="margin-top:0">Almost there</h3><p class="note">We couldn't send this online. ${wa?`<a href="https://wa.me/${wa.length===10?"91"+wa:wa}?text=${encodeURIComponent(`Tour enquiry ${r.ref}: ${t.name}, ${ad} adult(s), ${ch} child(ren)${r.from?" from "+r.from:""}${r.date?" on "+r.date:""}. Name: ${r.name}, +91 ${r.phone}`)}" target="_blank" rel="noopener">Send it on WhatsApp</a>`:`Call or WhatsApp our team with reference <b>${r.ref}</b>.`}</p>`;
     toast(saved?`Enquiry ${r.ref} sent.`:"Please send your enquiry on WhatsApp.")}}
 function closePkg(){$("#pkOv").hidden=true;document.body.style.overflow=""}
-$("#pkgList").addEventListener("click",e=>{const b=e.target.closest("[data-pk]");if(b)openPkg(b.dataset.pk)});
+document.addEventListener("click",e=>{const b=e.target.closest("[data-pk]");if(b)openPkg(b.dataset.pk)});
 $("#pkClose").onclick=closePkg;$("#pkOv").addEventListener("click",e=>{if(e.target.id==="pkOv")closePkg()});
 addEventListener("keydown",e=>{if(e.key==="Escape"){if(!$("#pkOv").hidden)closePkg();if(!$("#glBox").hidden)$("#glBox").hidden=true}});
+/* hotels in Tirupati (indicative rent per day) */
+$("#hotelList").innerHTML=[["Hotel Sunil Krishna","Ashok Nagar",705],["Hotel Elite Park","Padmavati Nagar",1051],["Samastha Homestay","Tiruchanoor",1516],["PVK Residency","Tiruchanur",1899],["Freshup Tirupati","Nehru Nagar",2100],["Hotel PLR Grand","Next to APSRTC Central Bus Station",2252],["Hotel Mountview Comforts","Padmavathipuram",2574],["Fortune Kences Hotel","Opp. APSRTC Bus Terminal",2934],["Ramee Guestline Hotel","Karakambadi Road",3095],["Raj Park Hotel","Kapila Theertham, near Nandhi Circle",4216],["Minerva Grand Hotel","Renigunta Road",4418],["Ekanté Bliss – IHCL SeleQtions","Near Ramanuja Circle",7088],["Fortune Select Grand Ridge","Tiruchanoor Road",7218],["Marasa Sarovar Premiere","Karakambadi Road",10832],["Lemon Tree Premier","Tiruchanoor–Renigunta Road",10903]].map(([n,a,r])=>`<div><span>${esc(n)}<small>${esc(a)}</small></span><b>${inr(r)}</b></div>`).join("");
 /* TTD guide tabs */
 $(".tg-tabs").addEventListener("click",e=>{const b=e.target.closest("[data-tg]");if(!b)return;$$(".tg-tabs [data-tg]").forEach(x=>x.setAttribute("aria-selected",x===b));$$(".tg-pane").forEach(p=>p.hidden=p.dataset.tp!==b.dataset.tg)});
 /* gallery: only real photos of the fleet and trips */
@@ -3008,7 +3134,7 @@ $("#glClose").onclick=()=>$("#glBox").hidden=true;$("#glBox").addEventListener("
   if(c.address)out.push(c.mapsUrl?`<a href="${esc(c.mapsUrl)}" target="_blank" rel="noopener"><svg class="i"><use href="#i-pin"/></svg><span><small>Office · open in Maps</small>${esc(c.address)}</span></a>`:`<div><svg class="i"><use href="#i-pin"/></svg><span><small>Office</small>${esc(c.address)}</span></div>`);
   $("#abContact").innerHTML=out.join("");$("#abContact").hidden=!out.length})();
 /* quick enquiry */
-$("#qkPkg").innerHTML=PKGS.map(p=>`<option value="${p.id}">${p.name}</option>`).join("")+`<option value="bus">Bus tickets</option><option value="cab">Cab</option><option value="other">Something else</option>`;
+$("#qkPkg").innerHTML=`<option value="tirupati">Tirupati darshan tour</option>`+`<option value="bus">Bus tickets</option><option value="cab">Cab</option><option value="other">Something else</option>`;
 $("#qkPax").innerHTML=Array.from({length:20},(_,i)=>`<option value="${i+1}"${i===1?" selected":""}>${i+1}</option>`).join("");
 $("#qkCity").innerHTML=NAMES.map(n=>`<option${n==="Bengaluru"?" selected":""}>${n}</option>`).join("");
 $("#qkDate").min=iso(addDays(today,1));
@@ -3074,8 +3200,8 @@ addEventListener("resize",()=>requestAnimationFrame(placeInd));
 try{document.fonts.ready.then(()=>requestAnimationFrame(placeInd))}catch(e){}
 function onScroll(){const y=scrollY;
   if(!reduce&&y<innerHeight*1.2)$("#heroBg").style.transform=`translateY(${y*.22}px)`;
-  let cs="top";if(document.body.classList.contains("page-results"))cs="top";else if(document.body.classList.contains("page-ttd"))cs="darshan";else if(document.body.classList.contains("page-account"))cs="account";else for(const id of["packages","destinations","cabs","darshan","amenities","bookings"]){if(document.getElementById(id).getBoundingClientRect().top<=innerHeight*.4)cs=id}
-  $$("[data-sec]").forEach(a=>a.classList.toggle("cur",a.dataset.sec===cs));placeInd();$("#hdr").classList.toggle("scrolled",y>8);document.body.classList.toggle("tb-on",y>140||document.body.classList.contains("page-results")||document.body.classList.contains("page-ttd")||document.body.classList.contains("page-account"));
+  let cs="top";if(document.body.classList.contains("page-results"))cs="top";else if(document.body.classList.contains("page-ttd"))cs="darshan";else if(document.body.classList.contains("page-account"))cs="account";else if(document.body.classList.contains("page-tours"))cs="packages";else for(const id of["packages","destinations","cabs","darshan","amenities","bookings"]){if(document.getElementById(id).getBoundingClientRect().top<=innerHeight*.4)cs=id}
+  $$("[data-sec]").forEach(a=>a.classList.toggle("cur",a.dataset.sec===cs));placeInd();$("#hdr").classList.toggle("scrolled",y>8);document.body.classList.toggle("tb-on",y>140||document.body.classList.contains("page-results")||document.body.classList.contains("page-ttd")||document.body.classList.contains("page-account")||document.body.classList.contains("page-tours"));
   $("#totop").classList.toggle("show",y>innerHeight*1.2)}
 addEventListener("scroll",onScroll,{passive:true});
 $("#modify").onclick=()=>{setTab("bus");showHome("#search");$("#bTo").focus({preventScroll:true})};
