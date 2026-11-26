@@ -3042,9 +3042,13 @@ const TIR_PH=["img/ttd-banner.webp","img/coach6-bus.webp","img/ttd-page.webp"];
 const tArt=t=>{if(t.cat==="Tirupati"){const i=TOURS.filter(x=>x.cat==="Tirupati").indexOf(t);return `<img src="${TIR_PH[(i<0?0:i)%TIR_PH.length]}" alt="" loading="lazy">`}const [sc,v]=CAT_ART[t.cat]||["city",0];return SCENE(sc,"",v)};
 const shortDur=d=>String(d||"").replace(/\s*\(.*?\)\s*/g," ").replace(/\s+/g," ").trim();
 const tRoute=t=>t.meta.Route||(t.meta.Starts&&t.meta.Ends&&t.meta.Starts!==t.meta.Ends?`${t.meta.Starts} → ${t.meta.Ends}`:"")||((t.sections.find(x=>/Destinations|Places covered|Temples|Attractions/.test(x[0]))||[0,[]])[1].slice(0,5).join(" · "))||(t.meta.Starts?`From ${t.meta.Starts}`:"");
-function pkCard(t){return `<button type="button" class="pkc" data-pk="${t.id}"><span class="ph">${tArt(t)}${t.meta.Duration?`<span class="dur">${esc(shortDur(t.meta.Duration))}</span>`:""}<span class="cat">${esc(t.cat)}</span></span>
+function priceBasis(t){const p=t.price.find(x=>x.includes(inr(t.from).slice(1)))||t.price[0]||"";
+  if(/couple/i.test(p))return "per couple";const tot=p.match(/(\d+)\s*pax[^:]*total/i);if(tot)return `total for ${tot[1]}`;
+  const min=p.match(/minimum\s*(\d+)/i)||p.match(/(\d+)\s*pax travelling together/i);if(min)return `per person, min ${min[1]}`;
+  const grp=p.match(/^(\d+)\s*persons?/i);if(grp)return `per person, group of ${grp[1]}`;return ""}
+function pkCard(t){const bs=priceBasis(t);return `<button type="button" class="pkc" data-pk="${t.id}"><span class="ph">${tArt(t)}${t.meta.Duration?`<span class="dur">${esc(shortDur(t.meta.Duration))}</span>`:""}<span class="cat">${esc(t.cat)}</span></span>
   <span class="bd"><h3>${esc(t.name)}</h3><span class="stops">${esc(tRoute(t))}</span>
-  <span class="ft"><span>${t.from?`<small>From</small><b>${inr(t.from)}</b>`:`<small>Price</small><span class="por">On request</span>`}</span><span class="go">View details →</span></span></span></button>`}
+  <span class="ft"><span>${t.from?`<small>From${bs?" · "+bs:""}</small><b>${inr(t.from)}</b>`:`<small>Price</small><span class="por">On request</span>`}</span><span class="go">View details →</span></span></span></button>`}
 function loadTours(){return new Promise(ok=>{if(window.SGVK_TOURS)return ok(window.SGVK_TOURS);const sc=document.createElement("script");sc.src="tours.js";sc.onload=()=>ok(window.SGVK_TOURS||[]);sc.onerror=()=>ok([]);document.head.appendChild(sc)})}
 const CATS=()=>{const m=new Map();TOURS.forEach(t=>m.set(t.cat,(m.get(t.cat)||0)+1));return [...m]};
 loadTours().then(T=>{TOURS=T||[];
