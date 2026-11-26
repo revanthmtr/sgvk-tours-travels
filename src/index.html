@@ -1681,6 +1681,27 @@ body.page-account #account{display:block;animation:pagein .5s var(--ease)}
   .tg-steps li{padding:14px 14px 14px 52px}.tg-steps li::before{left:14px;top:14px}
 }
 @media (min-width:641px){#pkgList .pkc:nth-child(n+4){display:none}}
+/* service tiles read as buttons */
+.svc-tiles .wrap.st-head{display:flex;align-items:baseline;gap:12px;margin-bottom:12px}
+.st-head b{font-family:var(--f-serif);font-weight:500;font-size:22px;color:var(--ink)}
+.st-head span{font-size:13px;color:var(--muted)}
+.st-t{position:relative;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.st-t:focus{outline:none}
+.st-t:focus-visible{outline:2px solid var(--champ);outline-offset:3px}
+.st-go{position:absolute;right:14px;top:16px;width:32px;height:32px;border-radius:50%;display:grid;place-items:center;background:#FBF3E4;color:var(--champ-t);transition:background .3s,color .3s,transform .35s var(--ease)}
+.st-go svg{width:14px;height:14px}
+.st-cta{display:inline-flex;align-items:center;gap:6px;margin-top:10px;font-size:13px;font-weight:700;color:var(--champ-t)}
+.st-cta svg{width:13px;height:13px;transition:transform .35s var(--ease)}
+.st-t:hover .st-go{background:var(--navy);color:#fff;transform:translateX(2px)}
+.st-t:hover .st-cta svg{transform:translateX(4px)}
+.st-t:active{transform:scale(.97)}
+@media (max-width:640px){
+  .st-head{margin-bottom:10px}.st-head b{font-size:19px}
+  .st-go{display:none}
+  .st-cta{display:inline-flex;margin-top:4px;font-size:12px;gap:3px}.st-cta svg{width:11px;height:11px}
+  .st-t{padding:14px 8px 12px;box-shadow:inset 0 0 0 1px #E6DCC8,0 10px 22px -18px rgba(15,27,45,.6)}
+}
+@media (max-width:640px){.st-cta-t{font-size:0}.st-cta-t::after{content:"Open";font-size:12px}}
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -1802,13 +1823,13 @@ body.page-account #account{display:block;animation:pagein .5s var(--ease)}
       </div>
     </div>
   </div>
-  <nav class="svc-tiles home" aria-label="What we offer"><div class="wrap">
-    <a href="#search" data-tab="bus" class="st-t"><span class="ic"><svg class="i"><use href="#i-bus"/></svg></span><b>Bus tickets</b><small>Pick your seat</small></a>
-    <a href="#packages" class="st-t"><span class="ic"><svg class="i"><use href="#i-route"/></svg></span><b>Tour packages</b><small id="stTours">Tirupati &amp; more</small></a>
-    <a href="#cabs" class="st-t"><span class="ic"><svg class="i"><use href="#i-car"/></svg></span><b>Cabs</b><small>Send an enquiry</small></a>
-    <a href="#darshan" class="st-t"><span class="ic"><svg class="i" viewBox="0 0 34 34"><use href="#i-temple"/></svg></span><b>TTD darshan</b><small>Tickets &amp; rooms help</small></a>
-    <a href="#offers" class="st-t"><span class="ic"><svg class="i"><use href="#i-ticket"/></svg></span><b>Offers</b><small>Codes &amp; group fares</small></a>
-    <a href="#ttdguide" class="st-t"><span class="ic"><svg class="i"><use href="#i-headset"/></svg></span><b>Help &amp; rules</b><small>Dress code, booking tips</small></a>
+  <nav class="svc-tiles home" aria-label="What we offer"><div class="wrap st-head"><b>Explore SGVK</b><span>Tap a card to open</span></div><div class="wrap">
+    <a href="#search" data-tab="bus" class="st-t"><span class="ic"><svg class="i"><use href="#i-bus"/></svg></span><span class="st-go" aria-hidden="true"><svg><use href="#arrow"/></svg></span><b>Bus tickets</b><small>Pick your seat</small><span class="st-cta"><span class="st-cta-t">Explore</span><svg><use href="#arrow"/></svg></span></a>
+    <a href="#packages" class="st-t"><span class="ic"><svg class="i"><use href="#i-route"/></svg></span><span class="st-go" aria-hidden="true"><svg><use href="#arrow"/></svg></span><b>Tour packages</b><small id="stTours">Tirupati &amp; more</small><span class="st-cta"><span class="st-cta-t">Explore</span><svg><use href="#arrow"/></svg></span></a>
+    <a href="#cabs" class="st-t"><span class="ic"><svg class="i"><use href="#i-car"/></svg></span><span class="st-go" aria-hidden="true"><svg><use href="#arrow"/></svg></span><b>Cabs</b><small>Send an enquiry</small><span class="st-cta"><span class="st-cta-t">Explore</span><svg><use href="#arrow"/></svg></span></a>
+    <a href="#darshan" class="st-t"><span class="ic"><svg class="i" viewBox="0 0 34 34"><use href="#i-temple"/></svg></span><span class="st-go" aria-hidden="true"><svg><use href="#arrow"/></svg></span><b>TTD darshan</b><small>Tickets &amp; rooms help</small><span class="st-cta"><span class="st-cta-t">Explore</span><svg><use href="#arrow"/></svg></span></a>
+    <a href="#offers" class="st-t"><span class="ic"><svg class="i"><use href="#i-ticket"/></svg></span><span class="st-go" aria-hidden="true"><svg><use href="#arrow"/></svg></span><b>Offers</b><small>Codes &amp; group fares</small><span class="st-cta"><span class="st-cta-t">Explore</span><svg><use href="#arrow"/></svg></span></a>
+    <a href="#ttdguide" class="st-t"><span class="ic"><svg class="i"><use href="#i-headset"/></svg></span><span class="st-go" aria-hidden="true"><svg><use href="#arrow"/></svg></span><b>Help &amp; rules</b><small>Dress code, booking tips</small><span class="st-cta"><span class="st-cta-t">Explore</span><svg><use href="#arrow"/></svg></span></a>
   </div></nav>
   <div class="trust home"><div class="wrap">
     <div><svg class="i"><use href="#i-shield"/></svg><p><b>Safe &amp; Reliable</b><span>Your journey, our priority</span></p></div>
