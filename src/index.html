@@ -1702,6 +1702,32 @@ body.page-account #account{display:block;animation:pagein .5s var(--ease)}
   .st-t{padding:14px 8px 12px;box-shadow:inset 0 0 0 1px #E6DCC8,0 10px 22px -18px rgba(15,27,45,.6)}
 }
 @media (max-width:640px){.st-cta-t{font-size:0}.st-cta-t::after{content:"Open";font-size:12px}}
+/* ---------- Explore SGVK: navy band under the hero ---------- */
+.svc-tiles{position:relative;background:radial-gradient(60% 120% at 100% 0%,rgba(201,166,107,.28),rgba(201,166,107,0) 60%),radial-gradient(50% 90% at 0% 100%,rgba(42,74,120,.55),rgba(42,74,120,0) 70%),var(--navy);padding-block:44px 48px}
+.svc-tiles .wrap.st-head{display:flex;flex-direction:column;align-items:flex-start;gap:6px;margin-bottom:22px}
+.svc-tiles .eb4{color:var(--champ)}
+.st-head > b{font-family:var(--f-serif);font-weight:500;font-size:clamp(28px,3.2vw,44px);line-height:1.1;color:#fff}
+.st-head > b em{font-style:italic;color:var(--champ)}
+.st-head .st-sub{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:600;color:#C9D0DB}
+.st-head .st-sub::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--champ);animation:dbPulse 1.6s ease-in-out infinite}
+.svc-tiles .wrap:not(.st-head){gap:14px}
+.st-t{padding:20px 18px;border-radius:20px;background:#fff;box-shadow:0 22px 40px -30px rgba(0,0,0,.9);transition:transform .35s var(--ease),box-shadow .35s}
+.st-t:hover{transform:translateY(-6px);box-shadow:0 30px 50px -28px rgba(0,0,0,.9),inset 0 0 0 2px var(--champ)}
+.st-t .ic{width:52px;height:52px;border-radius:16px;background:var(--foil);margin-bottom:12px}
+.st-t .ic svg.i{width:24px;height:24px;color:var(--navy)}
+.st-t b{font-size:17px}
+.st-go{background:var(--ivory)}
+@keyframes dbPulse{50%{opacity:.25}}
+@media (max-width:640px){
+  .svc-tiles{padding-block:28px 30px}
+  .svc-tiles .wrap.st-head{margin-bottom:16px}
+  .st-head > b{font-size:25px}
+  .svc-tiles .wrap:not(.st-head){gap:10px}
+  .st-t{padding:16px 8px 14px;border-radius:18px}
+  .st-t .ic{width:46px;height:46px;border-radius:14px;margin-bottom:6px}
+  .st-t b{font-size:14px}
+}
+@media (prefers-reduced-motion:reduce){.st-head .st-sub::before{animation:none}}
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -1809,21 +1835,7 @@ body.page-account #account{display:block;animation:pagein .5s var(--ease)}
 
   </div>
 </div>
-  <div class="dbsec home" id="departures">
-    <div class="wrap">
-      <div class="dboard" id="dBoard" aria-label="Departures board">
-        <div class="db-top">
-          <div class="db-ttl"><span class="db-live"><i></i>Live</span><b>Departures</b><span class="db-from">from</span>
-            <span class="db-cities" role="group" aria-label="Departure city" id="dbCities"></span></div>
-          <div class="db-clk"><small id="dbDay">Today</small><b id="dbClk">--:--</b></div>
-        </div>
-        <div class="db-head" aria-hidden="true"><span>Time</span><span>To</span><span class="db-c-bus">Bus</span><span class="db-c-seat">Seats</span><span>Status</span></div>
-        <div class="db-rows" id="dbRows" role="list"></div>
-        <div class="db-foot"><span>Tap a departure to pick seats</span><span id="dbPage"></span></div>
-      </div>
-    </div>
-  </div>
-  <nav class="svc-tiles home" aria-label="What we offer"><div class="wrap st-head"><b>Explore SGVK</b><span>Tap a card to open</span></div><div class="wrap">
+  <nav class="svc-tiles home" id="explore" aria-label="What we offer"><div class="wrap st-head"><span class="eb4">Explore SGVK</span><b>Everything for your journey, <em>one tap away</em></b><span class="st-sub">Tap a card to open</span></div><div class="wrap">
     <a href="#search" data-tab="bus" class="st-t"><span class="ic"><svg class="i"><use href="#i-bus"/></svg></span><span class="st-go" aria-hidden="true"><svg><use href="#arrow"/></svg></span><b>Bus tickets</b><small>Pick your seat</small><span class="st-cta"><span class="st-cta-t">Explore</span><svg><use href="#arrow"/></svg></span></a>
     <a href="#packages" class="st-t"><span class="ic"><svg class="i"><use href="#i-route"/></svg></span><span class="st-go" aria-hidden="true"><svg><use href="#arrow"/></svg></span><b>Tour packages</b><small id="stTours">Tirupati &amp; more</small><span class="st-cta"><span class="st-cta-t">Explore</span><svg><use href="#arrow"/></svg></span></a>
     <a href="#cabs" class="st-t"><span class="ic"><svg class="i"><use href="#i-car"/></svg></span><span class="st-go" aria-hidden="true"><svg><use href="#arrow"/></svg></span><b>Cabs</b><small>Send an enquiry</small><span class="st-cta"><span class="st-cta-t">Explore</span><svg><use href="#arrow"/></svg></span></a>
@@ -3171,38 +3183,7 @@ $("#qkForm").onsubmit=async e=>{e.preventDefault();const er=contactErr("qkName",
   $("#qkDone").hidden=false;$("#qkDone").innerHTML=saved?`<div><h3>Enquiry received</h3><p>Reference <b>${r.ref}</b>. Our team will call <b>+91 ${esc(r.phone)}</b> soon.</p></div>`:`<div><h3>Almost there</h3><p>We couldn't send this online. Please call or WhatsApp our team with reference <b>${r.ref}</b>.</p></div>`;
   toast(saved?`Enquiry ${r.ref} sent.`:"Please contact our team directly.")};
 
-/* ---------- departures board ----------
-   Shows the next departures from a city, from the same sample schedule as the bus results.
-   The clock and statuses follow the real time; pages flip every few seconds. */
-const DB={from:"Bengaluru",page:0,list:[],t:null};
-const DB_FROM=["Bengaluru","Hyderabad","Chennai"].filter(c=>CITY[c]);
-function dbNow(){const d=new Date();return d.getHours()*60+d.getMinutes()}
-function dbBuild(){const from=DB.from,dests=NAMES.filter(n=>n!==from&&km(from,n)>=80&&km(from,n)<=700).sort((a,b)=>km(from,a)-km(from,b)).slice(0,6);
-  const now=dbNow(),day0=iso(today),day1=iso(addDays(today,1));let L=[];
-  for(const [day,off] of [[day0,0],[day1,1440]])for(const to of dests)for(const b of genBuses(from,to,day))L.push({...b,to,day,at:b.dep+off});
-  DB.list=L.filter(b=>b.at>=now-5).sort((a,b)=>a.at-b.at).slice(0,18)}
-function dbStatus(b){const m=b.at-dbNow();if(b.day!==iso(today))return ["st-tmr","Tomorrow"];if(m<=30)return ["st-boarding","Boarding"];if(b.left<8)return ["st-fast","Filling fast"];return ["st-ontime","On time"]}
-function dbPer(){return innerWidth<=640?5:6}
-function dbRender(flip){const per=dbPer(),pages=Math.max(1,Math.ceil(DB.list.length/per));DB.page%=pages;
-  const rows=DB.list.slice(DB.page*per,DB.page*per+per);
-  $("#dbRows").innerHTML=rows.length?rows.map((b,k)=>{const [c,t]=dbStatus(b);return `<button type="button" role="listitem" class="db-row${flip?" flip":""}" style="animation-delay:${k*70}ms" data-db="${b.id}|${b.to}|${b.day}" aria-label="${hm(b.dep)} to ${b.to}, ${b.t.kind}, ${b.left} seats left, ${t}">
-      <span class="db-t">${hm(b.dep)}</span><span class="db-to"><b>${esc(b.to)}</b><small>${km(DB.from,b.to)} km · ${Math.floor(b.dur/60)}h ${String(b.dur%60).padStart(2,"0")}m</small></span>
-      <span class="db-bus">${esc(b.t.line)}<small>${esc(b.t.kind)}</small></span><span class="db-seat">${b.left}<small>left</small></span><span class="db-st ${c}">${t}</span></button>`}).join("")
-    :`<div class="db-empty">No more departures listed today.</div>`;
-  $("#dbPage").textContent=pages>1?`Page ${DB.page+1} of ${pages}`:""}
-function dbClock(){const d=new Date();$("#dbClk").textContent=`${String(d.getHours()).padStart(2,"0")}:${String(d.getMinutes()).padStart(2,"0")}`;
-  $("#dbDay").textContent=d.toLocaleDateString("en-IN",{weekday:"short",day:"numeric",month:"short"})}
-function dbCities(){$("#dbCities").innerHTML=DB_FROM.map(c=>`<button type="button" data-dbc="${c}" aria-pressed="${c===DB.from}">${c}</button>`).join("")}
-function dbStart(){dbCities();dbBuild();dbRender(false);dbClock();clearInterval(DB.t);let tick=0;
-  DB.t=setInterval(()=>{dbClock();tick++;if(document.hidden)return;
-    if(tick%60===0){dbBuild()}
-    if(tick%7===0&&!reduce&&!$("#dBoard").matches(":hover,:focus-within")){DB.page++;dbRender(true)}else if(tick%60===0)dbRender(false)},1000)}
-$("#dbCities").addEventListener("click",e=>{const b=e.target.closest("[data-dbc]");if(!b)return;DB.from=b.dataset.dbc;DB.page=0;dbCities();dbBuild();dbRender(true)});
-$("#dbRows").addEventListener("click",e=>{const r=e.target.closest("[data-db]");if(!r)return;const [id,to,day]=r.dataset.db.split("|");
-  S.from=DB.from;S.to=to;S.date=day;$("#bFrom").value=S.from;$("#bTo").value=to;$("#bDate").value=day;search(true);
-  S.open=id;S.sel=[];renderBuses();requestAnimationFrame(()=>{const c=document.querySelector(`.bus[data-b="${id}"]`);if(c)c.scrollIntoView({block:"start",behavior:"instant"});scrollBy(0,-80)})});
-addEventListener("resize",()=>{clearTimeout(DB.rz);DB.rz=setTimeout(()=>dbRender(false),150)});
-dbStart();
+
 
 /* ---------- bookings ---------- */
 const KEY="sriyatra.bookings.v2";let BK=[];try{BK=JSON.parse(localStorage.getItem(KEY))||[]}catch(e){}
