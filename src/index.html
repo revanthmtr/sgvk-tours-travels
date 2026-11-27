@@ -1806,53 +1806,72 @@ footer [style*="color"],footer small{color:var(--muted)}
 .tp-cats button{color:#fff;background:rgba(255,255,255,.14)}
 .tp-cats button[aria-pressed="true"]{background:#fff;color:#5A4D8C}
 .rhero .btn.c{background:#fff;color:#8E3F47}.rhero .btn.c svg.i{color:#8E3F47}
-/* ---------- floating contact & social dock (right edge) ---------- */
-.sdock{position:fixed;right:0;top:50%;transform:translateY(-50%);z-index:19;display:flex;flex-direction:column;align-items:center;gap:6px;padding:8px 7px;border-radius:18px 0 0 18px;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:0 18px 40px -22px rgba(38,42,49,.55),inset 0 0 0 1px var(--line)}
-.sdock a{position:relative;width:36px;height:36px;border-radius:50%;display:grid;place-items:center;color:var(--bc);background:color-mix(in srgb,var(--bc) 10%,#fff);text-decoration:none;transition:background .25s,color .25s,transform .3s var(--ease)}
-.sdock a svg.i{width:18px;height:18px}
-.sdock a:hover,.sdock a:focus-visible{background:var(--bc);color:#fff;transform:scale(1.08);outline:none}
-.sdock a.sd-ig:hover,.sdock a.sd-ig:focus-visible{background:linear-gradient(45deg,#F2A64A,#D9435E 50%,#8D49B5)}
-.sdock a span{position:absolute;right:calc(100% + 12px);top:50%;transform:translate(6px,-50%);white-space:nowrap;font-size:13px;font-weight:700;color:#fff;background:var(--ink);padding:6px 11px;border-radius:999px;opacity:0;pointer-events:none;transition:opacity .2s,transform .25s var(--ease)}
-.sdock a:hover span,.sdock a:focus-visible span{opacity:1;transform:translate(0,-50%)}
-.sd-call{--bc:var(--c-bus)}.sd-wa{--bc:#1FA855}.sd-ig{--bc:#C13584}.sd-fb{--bc:#1877F2}.sd-yt{--bc:#E62117}.sd-mail{--bc:var(--c-help)}
-.sd-sep{width:18px;height:1px;background:var(--line);margin:2px 0}
-.sd-call::after{content:"";position:absolute;inset:-3px;border-radius:50%;border:2px solid var(--bc);opacity:0;animation:sdRing 2.6s ease-out infinite}
-@keyframes sdRing{0%{opacity:.6;transform:scale(.9)}70%,100%{opacity:0;transform:scale(1.35)}}
-body.page-account .sdock{display:none}
-/* narrower screens: just Call + WhatsApp, bottom-right */
-@media (max-width:1340px){
-  .sdock{top:auto;transform:none;border-radius:999px;background:none;box-shadow:none;backdrop-filter:none;-webkit-backdrop-filter:none;bottom:calc(84px + env(safe-area-inset-bottom,0px));right:max(12px,env(safe-area-inset-right,0px));padding:6px;gap:8px}
-  .sdock :is(.sd-ig,.sd-fb,.sd-yt,.sd-mail,.sd-sep){display:none}
-  .sdock a{width:46px;height:46px;background:var(--bc);color:#fff;box-shadow:0 12px 24px -12px rgba(38,42,49,.6)}
-  .sdock a svg.i{width:21px;height:21px}
-  .sdock a span{display:none}
-  body.page-results .sdock,body.page-ttd .sdock{display:none}
+/* ---------- SGVK Travel Desk: concierge-style contact launcher ---------- */
+.cdesk{position:fixed;right:max(24px,env(safe-area-inset-right,0px));bottom:calc(24px + env(safe-area-inset-bottom,0px));z-index:24;display:flex;flex-direction:column;align-items:flex-end;gap:12px;animation:cdIn .7s var(--ease) .6s both}
+@keyframes cdIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+.totop{bottom:calc(96px + env(safe-area-inset-bottom,0px))}
+.cd-fab{display:flex;align-items:center;gap:12px;border:0;cursor:pointer;font:inherit;text-align:left;color:#fff;padding:8px 20px 8px 8px;border-radius:999px;background:linear-gradient(135deg,#2E323A,#1C1F25);box-shadow:0 22px 40px -18px rgba(28,31,37,.75),inset 0 0 0 1px rgba(255,255,255,.08);transition:transform .35s var(--ease),box-shadow .35s}
+.cd-fab:hover{transform:translateY(-3px);box-shadow:0 28px 48px -18px rgba(28,31,37,.8),inset 0 0 0 1px rgba(255,255,255,.12)}
+.cd-fab:focus-visible{outline:2px solid var(--c-bus);outline-offset:3px}
+.cd-av{position:relative;flex:none;width:44px;height:44px;border-radius:50%;display:grid;place-items:center;color:#fff;background:linear-gradient(135deg,#C97A7F,#A34E55)}
+.cd-av svg.i{width:21px;height:21px}
+.cd-av i{position:absolute;right:0;bottom:1px;width:12px;height:12px;border-radius:50%;background:#2ECC71;box-shadow:0 0 0 2.5px #23272E}
+.cd-av i::after{content:"";position:absolute;inset:0;border-radius:50%;background:#2ECC71;animation:cdLive 2s ease-out infinite}
+@keyframes cdLive{0%{opacity:.7;transform:scale(1)}100%{opacity:0;transform:scale(2.4)}}
+.cd-tx small{display:block;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#B9BFC9}
+.cd-tx b{display:block;font-size:16px;font-weight:700;letter-spacing:-.01em}
+.cd-x{display:none;width:18px;height:18px}
+.cdesk.open .cd-fab{padding:8px}
+.cdesk.open .cd-tx{display:none}
+.cdesk.open .cd-fab .cd-av{background:rgba(255,255,255,.1)}
+.cdesk.open .cd-fab .cd-av svg.i,.cdesk.open .cd-fab .cd-av i{display:none}
+.cdesk.open .cd-fab .cd-av::before{content:"";width:16px;height:2px;background:#fff;border-radius:2px;transform:rotate(45deg);box-shadow:none;position:absolute}
+.cdesk.open .cd-fab .cd-av::after{content:"";width:16px;height:2px;background:#fff;border-radius:2px;transform:rotate(-45deg);position:absolute}
+.cdesk{pointer-events:none}.cd-fab{pointer-events:auto}
+.cd-panel{position:absolute;right:0;bottom:calc(100% + 14px);width:min(360px,calc(100vw - 32px));background:#fff;border-radius:24px;overflow:hidden;box-shadow:0 40px 80px -30px rgba(28,31,37,.55),0 0 0 1px rgba(0,0,0,.05);transform-origin:bottom right;opacity:0;transform:translateY(12px) scale(.96);pointer-events:none;visibility:hidden;transition:opacity .3s,transform .45s var(--ease),visibility 0s .45s}
+.cdesk.open .cd-panel{opacity:1;transform:none;pointer-events:auto;visibility:visible;transition:opacity .3s,transform .45s var(--ease)}
+.cd-head{display:flex;align-items:center;gap:12px;padding:18px 18px 16px;color:#fff;background:radial-gradient(80% 140% at 100% 0%,rgba(255,255,255,.16),rgba(255,255,255,0) 60%),linear-gradient(135deg,#B85C62,#8E3F47)}
+.cd-head .cd-av{background:rgba(255,255,255,.16)}
+.cd-head .cd-av i{box-shadow:0 0 0 2.5px #A34E55}
+.cd-head > div{flex:1;min-width:0}
+.cd-head b{display:block;font-family:var(--f-serif);font-size:22px;font-weight:600;line-height:1.1}
+.cd-head small{display:flex;align-items:center;gap:6px;font-size:12.5px;color:rgba(255,255,255,.85);margin-top:3px}
+.cd-head small i{width:7px;height:7px;border-radius:50%;background:#7DF0A8}
+.cd-close{flex:none;width:34px;height:34px;border:0;border-radius:50%;background:rgba(255,255,255,.14);color:#fff;display:grid;place-items:center;cursor:pointer}
+.cd-close svg.i{width:16px;height:16px}
+.cd-lead{margin:0;padding:14px 18px 4px;font-size:13.5px;color:var(--muted);line-height:1.5}
+.cd-rows{display:grid;gap:8px;padding:10px 14px 14px}
+.cd-row{display:flex;align-items:center;gap:12px;padding:12px;border-radius:16px;text-decoration:none;color:var(--ink);background:#FAFAFB;box-shadow:inset 0 0 0 1px var(--line);transition:background .25s,box-shadow .25s,transform .3s var(--ease)}
+.cd-row:hover,.cd-row:focus-visible{background:color-mix(in srgb,var(--bc) 8%,#fff);box-shadow:inset 0 0 0 1.5px var(--bc);transform:translateX(-2px);outline:none}
+.cd-row > i{flex:none;width:42px;height:42px;border-radius:13px;display:grid;place-items:center;background:var(--bc);color:#fff;box-shadow:0 10px 18px -12px var(--bc)}
+.cd-row > i svg.i{width:20px;height:20px}
+.cd-row span{flex:1;min-width:0}
+.cd-row b{display:block;font-size:15px}
+.cd-row small{display:block;font-size:12.5px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cd-row .ar{width:16px;height:16px;color:var(--bc);transition:transform .3s var(--ease)}
+.cd-row:hover .ar{transform:translateX(3px)}
+.cd-foot{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 18px 16px;border-top:1px solid var(--line);font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--faint)}
+.cd-soc{display:flex;gap:8px}
+.cd-soc a{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;color:#fff;background:var(--bc);transition:transform .3s var(--ease)}
+.cd-soc a.ig{background:linear-gradient(45deg,#F2A64A,#D9435E 50%,#8D49B5)}
+.cd-soc a:hover,.cd-soc a:focus-visible{transform:translateY(-3px) scale(1.06);outline:none}
+.cd-soc svg.i{width:18px;height:18px}
+.cd-hint{border:0;font:inherit;font-size:13.5px;color:var(--ink);background:#fff;padding:10px 15px;border-radius:16px 16px 4px 16px;box-shadow:0 18px 34px -16px rgba(28,31,37,.45),inset 0 0 0 1px var(--line);cursor:pointer;opacity:0;transform:translateY(8px);pointer-events:none;transition:opacity .35s,transform .45s var(--ease)}
+.cd-hint b{color:#1E9E52}
+.cdesk.hint:not(.open) .cd-hint{opacity:1;transform:none;pointer-events:auto}
+body.page-account .cdesk{display:none}
+@media (max-width:1100px){
+  .cdesk{right:max(14px,env(safe-area-inset-right,0px));bottom:calc(84px + env(safe-area-inset-bottom,0px))}
+  body.page-results .cdesk,body.page-ttd .cdesk{display:none}
 }
-@media (min-width:1101px) and (max-width:1340px){.sdock{bottom:calc(20px + env(safe-area-inset-bottom,0px))}.totop{right:84px}}
-@media (max-width:640px){.sdock a{width:42px;height:42px}.sdock a svg.i{width:19px;height:19px}}
-@media (prefers-reduced-motion:reduce){.sd-call::after{animation:none}}
-/* contact dock, bolder: solid brand colours, title, slide-in, hint bubble */
-.sdock{padding:12px 6px;gap:8px;box-shadow:0 24px 50px -20px rgba(38,42,49,.55),inset 0 0 0 1px var(--line);animation:sdIn .7s var(--ease) .5s both}
-@keyframes sdIn{from{opacity:0;transform:translate(30px,-50%)}to{opacity:1;transform:translate(0,-50%)}}
-.sd-ttl{writing-mode:vertical-rl;transform:rotate(180deg);font-size:11px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:var(--c-bus);padding:2px 0 6px}
-.sdock a{width:42px;height:42px;background:var(--bc);color:#fff;box-shadow:0 10px 18px -12px var(--bc)}
-.sdock a svg.i{width:20px;height:20px}
-.sdock a.sd-ig{background:linear-gradient(45deg,#F2A64A,#D9435E 50%,#8D49B5)}
-.sdock a:hover,.sdock a:focus-visible{transform:scale(1.12);filter:brightness(1.06)}
-.sd-wa::after{content:"";position:absolute;inset:-3px;border-radius:50%;border:2px solid var(--bc);opacity:0;animation:sdRing 2.6s ease-out 1.3s infinite}
-.sd-bub{display:none}
-@media (max-width:1340px){
-  .sdock{animation:sdUp .6s var(--ease) .5s both;padding:0;gap:10px}
-  @keyframes sdUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
-  .sd-ttl{display:none}
-  .sdock a{width:52px;height:52px;box-shadow:0 14px 26px -12px var(--bc)}
-  .sdock a svg.i{width:23px;height:23px}
-  .sd-bub{position:absolute;right:calc(100% + 12px);bottom:8px;display:block;white-space:nowrap;border:0;font:inherit;font-size:13.5px;color:var(--ink);background:#fff;padding:9px 14px;border-radius:14px 14px 4px 14px;box-shadow:0 16px 30px -14px rgba(38,42,49,.5),inset 0 0 0 1px var(--line);cursor:pointer;opacity:0;transform:translateX(8px);pointer-events:none;transition:opacity .35s,transform .45s var(--ease)}
-  .sd-bub b{color:#1FA855}
-  .sdock.bub .sd-bub{opacity:1;transform:none;pointer-events:auto}
+@media (max-width:640px){
+  .cd-fab{padding:6px}
+  .cd-tx{display:none}
+  .cd-av{width:50px;height:50px}
+  .cd-panel{width:calc(100vw - 28px)}
+  .cdesk.open .cd-panel{box-shadow:0 30px 80px -10px rgba(28,31,37,.55),0 0 0 1px rgba(0,0,0,.06)}
 }
-@media (max-width:640px){.sdock a{width:48px;height:48px}.sdock a svg.i{width:21px;height:21px}}
-@media (prefers-reduced-motion:reduce){.sdock,.sd-wa::after{animation:none}}
+@media (prefers-reduced-motion:reduce){.cdesk,.cd-av i::after{animation:none}}
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -2408,17 +2427,35 @@ body.page-account .sdock{display:none}
   <a href="#darshan" data-sec="darshan"><svg class="i" viewBox="0 0 34 34"><use href="#i-temple"/></svg>TTD</a>
   <a href="#bookings" data-sec="bookings" id="tbAcct"><svg class="i"><use href="#i-ticket"/></svg><span>Trips</span><b id="tbCount"></b></a>
 </nav>
-<nav class="sdock" id="sdock" aria-label="Contact SGVK">
-  <b class="sd-ttl" aria-hidden="true">Contact us</b>
-  <button class="sd-bub" type="button" id="sdBub" aria-label="Close">Need help? <b>Chat with us</b></button>
-  <a class="sd-call" data-sd="phone" href="#contact"><svg class="i"><use href="#i-phone"/></svg><span>Call us</span></a>
-  <a class="sd-wa" data-sd="whatsapp" href="#contact"><svg class="i"><use href="#i-wa"/></svg><span>WhatsApp</span></a>
-  <i class="sd-sep" aria-hidden="true"></i>
-  <a class="sd-ig" data-sd="instagram" href="#contact"><svg class="i"><use href="#i-ig"/></svg><span>Instagram</span></a>
-  <a class="sd-fb" data-sd="facebook" href="#contact"><svg class="i"><use href="#i-fb"/></svg><span>Facebook</span></a>
-  <a class="sd-yt" data-sd="youtube" href="#contact"><svg class="i"><use href="#i-yt"/></svg><span>YouTube</span></a>
-  <a class="sd-mail" data-sd="email" href="#contact"><svg class="i"><use href="#i-mail"/></svg><span>Email</span></a>
-</nav>
+<div class="cdesk" id="sdock">
+  <button class="cd-hint" type="button" id="cdHint" tabindex="-1" aria-hidden="true">Need help planning? <b>We're online</b></button>
+  <button class="cd-fab" type="button" id="cdFab" aria-expanded="false" aria-controls="cdPanel">
+    <span class="cd-av"><svg class="i"><use href="#i-headset"/></svg><i></i></span>
+    <span class="cd-tx"><small>SGVK Travel Desk</small><b>Talk to us</b></span>
+    <svg class="i cd-x"><use href="#i-x"/></svg>
+  </button>
+  <div class="cd-panel" id="cdPanel" role="dialog" aria-label="Contact SGVK">
+    <div class="cd-head">
+      <span class="cd-av"><svg class="i"><use href="#i-headset"/></svg><i></i></span>
+      <div><b>SGVK Travel Desk</b><small><i></i> Online now · replies in minutes</small></div>
+      <button class="cd-close" type="button" aria-label="Close"><svg class="i"><use href="#i-x"/></svg></button>
+    </div>
+    <p class="cd-lead">Bus seats, cabs, tour packages or TTD darshan: talk to a real person on our team.</p>
+    <div class="cd-rows">
+      <a class="cd-row" data-sd="whatsapp" href="#contact" style="--bc:#1FA855"><i><svg class="i"><use href="#i-wa"/></svg></i><span><b>Chat on WhatsApp</b><small id="cdWa">Fastest reply · share your plan</small></span><svg class="i ar"><use href="#arrow"/></svg></a>
+      <a class="cd-row" data-sd="phone" href="#contact" style="--bc:var(--c-bus)"><i><svg class="i"><use href="#i-phone"/></svg></i><span><b>Call the travel desk</b><small id="cdPh">Speak to our booking team</small></span><svg class="i ar"><use href="#arrow"/></svg></a>
+      <a class="cd-row" data-sd="email" href="#contact" style="--bc:var(--c-help)"><i><svg class="i"><use href="#i-mail"/></svg></i><span><b>Email us</b><small id="cdEm">For group &amp; corporate bookings</small></span><svg class="i ar"><use href="#arrow"/></svg></a>
+    </div>
+    <div class="cd-foot">
+      <span>Follow our journeys</span>
+      <div class="cd-soc">
+        <a data-sd="instagram" href="#contact" aria-label="Instagram" class="ig"><svg class="i"><use href="#i-ig"/></svg></a>
+        <a data-sd="facebook" href="#contact" aria-label="Facebook" style="--bc:#1877F2"><svg class="i"><use href="#i-fb"/></svg></a>
+        <a data-sd="youtube" href="#contact" aria-label="YouTube" style="--bc:#E62117"><svg class="i"><use href="#i-yt"/></svg></a>
+      </div>
+    </div>
+  </div>
+</div>
 <a class="totop" id="totop" href="#top" aria-label="Back to top"><svg class="i"><use href="#i-up"/></svg></a>
 
 <!-- DRAWER -->
@@ -3309,10 +3346,17 @@ $("#glClose").onclick=()=>$("#glBox").hidden=true;$("#glBox").addEventListener("
   const url={phone:c.phone&&"tel:+"+n(c.phone),whatsapp:c.whatsapp&&"https://wa.me/"+n(c.whatsapp),email:c.email&&"mailto:"+c.email,instagram:c.instagram,facebook:c.facebook,youtube:c.youtube};
   $$("#sdock [data-sd]").forEach(a=>{const u=url[a.dataset.sd];if(u){a.href=u;if(/^https?:/.test(u)){a.target="_blank";a.rel="noopener"}}});
 })();
-(function(){const d=$("#sdock"),b=$("#sdBub");if(!d||!b)return;if(sessionStorage.getItem("sgvkBub"))return;
-  setTimeout(()=>d.classList.add("bub"),1800);setTimeout(()=>d.classList.remove("bub"),9000);
-  b.addEventListener("click",()=>{d.classList.remove("bub");try{sessionStorage.setItem("sgvkBub","1")}catch(e){}});
-  d.querySelector(".sd-wa").addEventListener("click",()=>{try{sessionStorage.setItem("sgvkBub","1")}catch(e){}})})();
+(function(){const d=$("#sdock"),f=$("#cdFab"),h=$("#cdHint"),c=window.SGVK_CONFIG||{};if(!d)return;
+  if(c.whatsapp)$("#cdWa").textContent=c.whatsapp+" · fastest reply";if(c.phone)$("#cdPh").textContent=c.phone+(c.hours?" · "+c.hours:"");if(c.email)$("#cdEm").textContent=c.email;
+  const set=o=>{d.classList.toggle("open",o);f.setAttribute("aria-expanded",o);if(o){d.classList.remove("hint");try{sessionStorage.setItem("sgvkHint","1")}catch(e){}}};
+  f.addEventListener("click",()=>set(!d.classList.contains("open")));
+  d.querySelector(".cd-close").addEventListener("click",()=>{set(false);f.focus()});
+  h.addEventListener("click",()=>set(true));
+  d.querySelectorAll("[data-sd]").forEach(a=>a.addEventListener("click",()=>{if(a.getAttribute("href")==="#contact")set(false)}));
+  document.addEventListener("keydown",e=>{if(e.key==="Escape"&&d.classList.contains("open"))set(false)});
+  document.addEventListener("click",e=>{if(d.classList.contains("open")&&!d.contains(e.target))set(false)});
+  let seen=false;try{seen=!!sessionStorage.getItem("sgvkHint")}catch(e){}
+  if(!seen){setTimeout(()=>d.classList.add("hint"),2200);setTimeout(()=>d.classList.remove("hint"),10000)}})();
 /* quick enquiry */
 $("#qkPkg").innerHTML=`<option value="tirupati">Tirupati darshan tour</option>`+`<option value="bus">Bus tickets</option><option value="cab">Cab</option><option value="other">Something else</option>`;
 $("#qkPax").innerHTML=Array.from({length:20},(_,i)=>`<option value="${i+1}"${i===1?" selected":""}>${i+1}</option>`).join("");
