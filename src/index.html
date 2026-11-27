@@ -131,7 +131,7 @@ header nav a.cur::after{transform:none}
 .ctabs button[aria-selected="true"]{background:var(--navy);color:#fff;box-shadow:0 8px 16px -10px rgba(15,27,45,.9)}
 .ctabs button svg{width:18px;height:18px}
 .cform{display:grid;gap:8px;margin-top:10px;position:relative}
-#busSearch{grid-template-columns:1fr 1fr;grid-template-areas:"f t" "d d" "p p" "b b"}
+#busSearch{grid-template-columns:1fr 1fr;grid-template-areas:"f t" "d d" "s s" "p p" "b b"}
 .a-p{grid-area:p}
 .cf .chev{width:18px;height:18px;color:var(--muted);pointer-events:none}
 #cabSearch{grid-template-columns:1fr 1fr;grid-template-areas:"k d" "f t" "b b"}
@@ -812,7 +812,7 @@ footer p{font-size:13.5px;max-width:42ch;margin:14px 0 0}
   .trust svg.i{width:26px;height:26px}
   .trust b{font-size:13.5px}
   .trust span{font-size:12px}
-  #busSearch{grid-template-columns:1fr;grid-template-areas:"f" "t" "d" "p" "b"}
+  #busSearch{grid-template-columns:1fr;grid-template-areas:"f" "t" "d" "s" "p" "b"}
   #cabSearch{grid-template-columns:1fr 1fr;grid-template-areas:"k k" "f t" "d d" "b b"}
   #drsSearch{grid-template-columns:1fr;grid-template-areas:"k" "d" "n" "b"}
   .swap{left:auto;right:14px;top:72px;transform:translateY(-50%)}
@@ -1305,7 +1305,7 @@ footer .logo .lgimg{height:56px!important;filter:none}
   .hsearch{margin-top:10px!important;position:relative}
   .hsearch .glass{border-radius:20px;padding:8px}
   .ctabs.two button{padding:7px 8px}
-  #busSearch{grid-template-columns:1fr 1fr!important;grid-template-areas:"f t" "d p" "b b"!important;gap:6px;margin-top:6px}
+  #busSearch{grid-template-columns:1fr 1fr!important;grid-template-areas:"f t" "d p" "s s" "b b"!important;gap:6px;margin-top:6px}
   #busSearch .cf{min-height:52px;padding:7px 11px;gap:8px}
   #busSearch .cf > svg.i{display:none}
   #busSearch .cf select,#busSearch .cf input{font-size:15.5px}
@@ -1928,6 +1928,21 @@ body.page-account .cdesk{display:none}
 .tk-perks span{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:600;color:#4A515D;background:var(--t-bus);border-radius:999px;padding:6px 11px}
 .tk-perks svg.i{width:14px;height:14px;color:var(--c-bus)}
 @media (max-width:1100px) and (min-width:641px){.tk-perks{display:none}}
+/* date strip under the journey date */
+.a-s{grid-area:s}
+.dstrip{min-width:0;display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px}
+.dstrip button{display:flex;flex-direction:column;align-items:center;gap:1px;border:0;font:inherit;cursor:pointer;padding:6px 2px 5px;border-radius:12px;background:#fff;color:var(--ink);box-shadow:inset 0 0 0 1px var(--line);transition:background .25s,color .25s,box-shadow .25s,transform .25s var(--ease)}
+.dstrip small{font-size:10.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--faint)}
+.dstrip b{font-size:17px;font-weight:800;line-height:1.1}
+.dstrip em{font-style:normal;font-size:10.5px;color:var(--muted)}
+.dstrip button:hover{box-shadow:inset 0 0 0 1.5px var(--c-bus);transform:translateY(-1px)}
+.dstrip button[aria-pressed="true"]{background:var(--c-bus);color:#fff;box-shadow:0 10px 18px -12px var(--c-bus)}
+.dstrip button[aria-pressed="true"] :is(small,em){color:rgba(255,255,255,.85)}
+@media (max-width:640px){.dstrip{display:flex;overflow-x:auto;scrollbar-width:none;gap:6px}.dstrip::-webkit-scrollbar{display:none}.dstrip button{flex:0 0 46px;padding:5px 2px}.dstrip b{font-size:16px}.dstrip em{display:none}}
+/* keep the Travel Desk out of the hero: it appears once the visitor scrolls */
+body:not(.tb-on) .cdesk{visibility:hidden}
+body:not(.tb-on) .cdesk *{visibility:hidden!important}
+body.tb-on .cdesk{animation:cdIn .6s var(--ease) both}
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -2012,7 +2027,8 @@ body.page-account .cdesk{display:none}
           <div class="cf a-f"><svg class="i"><use href="#i-pin"/></svg><label for="bFrom"><span class="lab">From</span><select id="bFrom"></select></label></div>
           <div class="swap"><button type="button" id="bSwap" aria-label="Swap cities"><svg class="i"><use href="#i-swap"/></svg></button></div>
           <div class="cf a-t"><svg class="i"><use href="#i-pin"/></svg><label for="bTo"><span class="lab">To</span><select id="bTo"></select></label></div>
-          <div class="cf a-d"><svg class="i"><use href="#i-cal"/></svg><label for="bDate"><span class="lab">Date<span class="quick"><button type="button" data-q="0">Today</button><button type="button" data-q="1">Tomorrow</button></span></span><input type="date" id="bDate"></label></div>
+          <div class="cf a-d"><svg class="i"><use href="#i-cal"/></svg><label for="bDate"><span class="lab">Journey date</span><input type="date" id="bDate"></label></div>
+          <div class="dstrip a-s" id="dStrip" role="group" aria-label="Pick a travel date"></div>
           <div class="cf a-p"><svg class="i"><use href="#i-user"/></svg><label for="bPax"><span class="lab">No. of passengers</span><select id="bPax"></select></label><svg class="i chev" aria-hidden="true"><use href="#i-chev"/></svg></div>
           <button class="btn c" type="submit" data-cursor="Search">Search buses <svg><use href="#arrow"/></svg></button>
         </form>
@@ -2889,8 +2905,10 @@ $("#bDate").min=min;$("#bDate").max=max;$("#bDate").value=S.date;
 $("#bPax").innerHTML=Array.from({length:6},(_,i)=>`<option value="${i+1}">${i+1} ${i?"passengers":"passenger"}</option>`).join("");
 $("#bPax").onchange=e=>{S.pax=+e.target.value;S.sel=S.sel.slice(0,S.pax)};
 $("#bSwap").onclick=()=>{const a=$("#bFrom").value;$("#bFrom").value=$("#bTo").value;$("#bTo").value=a};
-const syncQuick=()=>$$(".quick [data-q]").forEach(b=>b.setAttribute("aria-pressed",$("#bDate").value===iso(addDays(today,+b.dataset.q))));
-$$(".quick [data-q]").forEach(b=>b.onclick=e=>{e.preventDefault();$("#bDate").value=iso(addDays(today,+b.dataset.q));syncQuick()});
+/* date strip: the next seven days as tappable chips (the calendar field still works for later dates) */
+$("#dStrip").innerHTML=[0,1,2,3,4,5,6].map(i=>{const d=addDays(today,i),w=i===0?"Today":i===1?"Tmrw":d.toLocaleDateString("en-IN",{weekday:"short"});return `<button type="button" data-q="${i}" aria-label="${d.toLocaleDateString("en-IN",{weekday:"long",day:"numeric",month:"long"})}"><small>${w}</small><b>${d.getDate()}</b><em>${d.toLocaleDateString("en-IN",{month:"short"})}</em></button>`}).join("");
+const syncQuick=()=>$$("#dStrip [data-q]").forEach(b=>b.setAttribute("aria-pressed",$("#bDate").value===iso(addDays(today,+b.dataset.q))));
+$$("#dStrip [data-q]").forEach(b=>b.onclick=e=>{e.preventDefault();$("#bDate").value=iso(addDays(today,+b.dataset.q));syncQuick()});
 $("#bDate").addEventListener("change",syncQuick);syncQuick();
 $("#busSearch").onsubmit=e=>{e.preventDefault();S.from=$("#bFrom").value;S.to=$("#bTo").value;S.date=$("#bDate").value||S.date;S.pax=+$("#bPax").value||1;
   if(S.from===S.to){toast("Pick a destination different from where you start.");return}
