@@ -131,7 +131,7 @@ header nav a.cur::after{transform:none}
 .ctabs button[aria-selected="true"]{background:var(--navy);color:#fff;box-shadow:0 8px 16px -10px rgba(15,27,45,.9)}
 .ctabs button svg{width:18px;height:18px}
 .cform{display:grid;gap:8px;margin-top:10px;position:relative}
-#busSearch{grid-template-columns:1fr 1fr;grid-template-areas:"f t" "d d" "p p" "b b"}
+#busSearch{grid-template-columns:1fr 1fr;grid-template-areas:"f t" "d p" "s s" "b b"}
 .a-p{grid-area:p}
 .cf .chev{width:18px;height:18px;color:var(--muted);pointer-events:none}
 #cabSearch{grid-template-columns:1fr 1fr;grid-template-areas:"k d" "f t" "b b"}
@@ -812,7 +812,7 @@ footer p{font-size:13.5px;max-width:42ch;margin:14px 0 0}
   .trust svg.i{width:26px;height:26px}
   .trust b{font-size:13.5px}
   .trust span{font-size:12px}
-  #busSearch{grid-template-columns:1fr;grid-template-areas:"f" "t" "d" "p" "b"}
+  #busSearch{grid-template-columns:1fr;grid-template-areas:"f" "t" "d" "s" "p" "b"}
   #cabSearch{grid-template-columns:1fr 1fr;grid-template-areas:"k k" "f t" "d d" "b b"}
   #drsSearch{grid-template-columns:1fr;grid-template-areas:"k" "d" "n" "b"}
   .swap{left:auto;right:14px;top:72px;transform:translateY(-50%)}
@@ -1305,7 +1305,7 @@ footer .logo .lgimg{height:56px!important;filter:none}
   .hsearch{margin-top:10px!important;position:relative}
   .hsearch .glass{border-radius:20px;padding:8px}
   .ctabs.two button{padding:7px 8px}
-  #busSearch{grid-template-columns:1fr 1fr!important;grid-template-areas:"f t" "d p" "b b"!important;gap:6px;margin-top:6px}
+  #busSearch{grid-template-columns:1fr 1fr!important;grid-template-areas:"f t" "d p" "s s" "b b"!important;gap:6px;margin-top:6px}
   #busSearch .cf{min-height:52px;padding:7px 11px;gap:8px}
   #busSearch .cf > svg.i{display:none}
   #busSearch .cf select,#busSearch .cf input{font-size:15.5px}
@@ -1928,6 +1928,45 @@ body.page-account .cdesk{display:none}
 .tk-perks span{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:600;color:#4A515D;background:var(--t-bus);border-radius:999px;padding:6px 11px}
 .tk-perks svg.i{width:14px;height:14px;color:var(--c-bus)}
 @media (max-width:1100px) and (min-width:641px){.tk-perks{display:none}}
+/* ---------- AbhiBus-style patterns, in SGVK colours ---------- */
+/* date strip */
+.a-s{grid-area:s}
+.dstrip{min-width:0;display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px}
+.dstrip button{display:flex;flex-direction:column;align-items:center;gap:1px;border:0;font:inherit;cursor:pointer;padding:7px 2px 6px;border-radius:12px;background:#fff;color:var(--ink);box-shadow:inset 0 0 0 1px var(--line);transition:background .25s,color .25s,box-shadow .25s,transform .25s var(--ease)}
+.dstrip small{font-size:10.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--faint)}
+.dstrip b{font-size:18px;font-weight:800;line-height:1.1}
+.dstrip em{font-style:normal;font-size:10.5px;color:var(--muted)}
+.dstrip button:hover{box-shadow:inset 0 0 0 1.5px var(--c-bus);transform:translateY(-1px)}
+.dstrip button[aria-pressed="true"]{background:var(--c-bus);color:#fff;box-shadow:0 10px 18px -12px var(--c-bus)}
+.dstrip button[aria-pressed="true"] :is(small,em){color:rgba(255,255,255,.85)}
+@media (max-width:640px){.dstrip{display:flex;overflow-x:auto;scrollbar-width:none;gap:6px}.dstrip::-webkit-scrollbar{display:none}.dstrip button{flex:0 0 46px;padding:5px 2px}.dstrip b{font-size:16px}.dstrip em{display:none}}
+/* why travel with SGVK */
+.whyb{padding-block:34px 40px;border-bottom:1px solid var(--line)}
+.why-h{display:flex;flex-direction:column;gap:4px;margin-bottom:18px}
+.why-h > b{font-family:var(--f-serif);font-weight:600;font-size:clamp(26px,2.6vw,36px);line-height:1.1}
+.why-h > b em{color:var(--c-bus)}
+.why-g{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:12px}
+.why-g > div{display:flex;flex-direction:column;gap:6px;padding:18px 16px;border-radius:18px;background:var(--wt);box-shadow:inset 0 0 0 1px rgba(0,0,0,.03);transition:transform .35s var(--ease),box-shadow .35s}
+.why-g > div:hover{transform:translateY(-4px);box-shadow:inset 0 0 0 1.5px var(--wc),0 18px 30px -24px var(--wc)}
+.why-g i{width:44px;height:44px;border-radius:14px;display:grid;place-items:center;background:var(--wc);color:#fff;margin-bottom:6px;box-shadow:0 10px 18px -12px var(--wc)}
+.why-g i svg.i{width:22px;height:22px}
+.why-g b{font-size:15px;line-height:1.25}
+.why-g span{font-size:12.5px;color:var(--muted);line-height:1.4}
+@media (max-width:1100px){.why-g{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:640px){.whyb{padding-block:26px 28px}.why-g{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;margin-inline:-20px;padding:2px 20px 8px}.why-g::-webkit-scrollbar{display:none}.why-g > div{flex:0 0 62%;scroll-snap-align:start}}
+/* FAQ chips + boxed list */
+.fqbox{min-width:0;padding:16px;border-radius:22px;background:#fff;box-shadow:inset 0 0 0 1px var(--line),0 24px 50px -40px rgba(38,42,49,.5)}
+.fq-cats{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;margin-bottom:10px;padding-bottom:2px}
+.fq-cats::-webkit-scrollbar{display:none}
+.fq-cats button{flex:none;border:1px solid var(--line);background:#fff;font:inherit;font-size:13.5px;font-weight:600;color:var(--muted);padding:8px 15px;border-radius:999px;cursor:pointer;transition:.25s}
+.fq-cats button:hover{border-color:var(--c-offer);color:var(--ink)}
+.fq-cats button[aria-pressed="true"]{border-color:var(--c-offer);color:var(--c-offer);background:var(--t-offer)}
+/* footer social */
+.fsoc{display:flex;gap:8px;margin-top:18px}
+.fsoc a{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;color:#fff;background:var(--bc);transition:transform .3s var(--ease)}
+.fsoc a.ig{background:linear-gradient(45deg,#F2A64A,#D9435E 50%,#8D49B5)}
+.fsoc a:hover{transform:translateY(-3px)}
+.fsoc svg.i{width:18px;height:18px}
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -2012,7 +2051,8 @@ body.page-account .cdesk{display:none}
           <div class="cf a-f"><svg class="i"><use href="#i-pin"/></svg><label for="bFrom"><span class="lab">From</span><select id="bFrom"></select></label></div>
           <div class="swap"><button type="button" id="bSwap" aria-label="Swap cities"><svg class="i"><use href="#i-swap"/></svg></button></div>
           <div class="cf a-t"><svg class="i"><use href="#i-pin"/></svg><label for="bTo"><span class="lab">To</span><select id="bTo"></select></label></div>
-          <div class="cf a-d"><svg class="i"><use href="#i-cal"/></svg><label for="bDate"><span class="lab">Date<span class="quick"><button type="button" data-q="0">Today</button><button type="button" data-q="1">Tomorrow</button></span></span><input type="date" id="bDate"></label></div>
+          <div class="cf a-d"><svg class="i"><use href="#i-cal"/></svg><label for="bDate"><span class="lab">Journey date</span><input type="date" id="bDate"></label></div>
+          <div class="dstrip a-s" id="dStrip" role="group" aria-label="Pick a travel date"></div>
           <div class="cf a-p"><svg class="i"><use href="#i-user"/></svg><label for="bPax"><span class="lab">No. of passengers</span><select id="bPax"></select></label><svg class="i chev" aria-hidden="true"><use href="#i-chev"/></svg></div>
           <button class="btn c" type="submit" data-cursor="Search">Search buses <svg><use href="#arrow"/></svg></button>
         </form>
@@ -2043,11 +2083,16 @@ body.page-account .cdesk{display:none}
     <a href="#offers" class="st-t"><span class="ic"><svg class="i"><use href="#i-ticket"/></svg></span><span class="st-go" aria-hidden="true"><svg><use href="#arrow"/></svg></span><b>Offers</b><small>Codes &amp; group fares</small><span class="st-cta"><span class="st-cta-t">Explore</span><svg><use href="#arrow"/></svg></span></a>
     <a href="#ttdguide" class="st-t"><span class="ic"><svg class="i"><use href="#i-headset"/></svg></span><span class="st-go" aria-hidden="true"><svg><use href="#arrow"/></svg></span><b>Help &amp; rules</b><small>Dress code, booking tips</small><span class="st-cta"><span class="st-cta-t">Explore</span><svg><use href="#arrow"/></svg></span></a>
   </div></nav>
-  <div class="trust home"><div class="wrap">
-    <div><svg class="i"><use href="#i-shield"/></svg><p><b>Safe &amp; Reliable</b><span>Your journey, our priority</span></p></div>
-    <div><svg class="i"><use href="#i-users"/></svg><p><b>Family &amp; Group Options</b><span>Travel together, comfortably</span></p></div>
-    <div><svg class="i"><use href="#i-clock"/></svg><p><b>Real-time Availability</b><span>Check and plan with ease</span></p></div>
-    <div><svg class="i" viewBox="0 0 34 34"><use href="#i-temple"/></svg><p><b>Temple Travel Expertise</b><span>Trusted for your divine journey</span></p></div>
+  <div class="whyb home"><div class="wrap">
+    <div class="why-h"><span class="eb4">Why travel with SGVK</span><b>Trusted for every <em>journey</em></b></div>
+    <div class="why-g">
+      <div style="--wc:var(--c-bus);--wt:var(--t-bus)"><i><svg class="i"><use href="#i-shield"/></svg></i><b>Safe &amp; reliable</b><span>Verified drivers and well-kept coaches</span></div>
+      <div style="--wc:var(--c-ttd);--wt:var(--t-ttd)"><i><svg class="i" viewBox="0 0 34 34"><use href="#i-temple"/></svg></i><b>Temple travel experts</b><span>Tirupati darshan, sevas and stays</span></div>
+      <div style="--wc:var(--c-tour);--wt:var(--t-tour)"><i><svg class="i"><use href="#i-users"/></svg></i><b>Family &amp; group trips</b><span>Seats together, group fares</span></div>
+      <div style="--wc:var(--c-cab);--wt:var(--t-cab)"><i><svg class="i"><use href="#i-clock"/></svg></i><b>Real-time seats</b><span>Live availability as you book</span></div>
+      <div style="--wc:var(--c-offer);--wt:var(--t-offer)"><i><svg class="i"><use href="#i-ticket"/></svg></i><b>Clear prices</b><span>No hidden charges at checkout</span></div>
+      <div style="--wc:var(--c-help);--wt:var(--t-help)"><i><svg class="i"><use href="#i-headset"/></svg></i><b>Real people, your language</b><span>Travel desk on phone &amp; WhatsApp</span></div>
+    </div>
   </div></div>
 
 <!-- RESULTS -->
@@ -2439,13 +2484,16 @@ body.page-account .cdesk{display:none}
 <section data-home id="faq" class="faqs">
   <div class="wrap fqwrap">
     <div class="sh rv"><span class="eb">Help</span><h2>Questions, <span class="serif">answered</span></h2><p>Still unsure? Send a cab or TTD enquiry and our team will call you.</p></div>
+    <div class="fqbox">
+    <div class="fq-cats" role="group" aria-label="Filter questions"><button type="button" data-fcat="all" aria-pressed="true">All</button><button type="button" data-fcat="bus" aria-pressed="false">Bus tickets</button><button type="button" data-fcat="cab" aria-pressed="false">Cabs</button><button type="button" data-fcat="ttd" aria-pressed="false">TTD darshan</button><button type="button" data-fcat="acc" aria-pressed="false">My bookings</button></div>
     <div class="fqlist">
-      <details class="fq"><summary>How do I book a bus ticket?</summary><p>Choose your From and To cities and the date in the search card, then tap Search buses. Pick a bus, tap View seats, choose your seats and boarding point, and add passenger details to confirm.</p></details>
-      <details class="fq"><summary>Can I change the number of passengers after searching?</summary><p>Yes. On the Bus tickets page, use the − and + buttons in the blue banner. The number of seats you can pick changes with it.</p></details>
-      <details class="fq"><summary>How does a cab enquiry work?</summary><p>Fill in the Cab Enquiry card with pickup, drop, date, passengers, your name and mobile. There is no online payment. Our team calls you with available cars and fares, then confirms your driver by SMS.</p></details>
-      <details class="fq"><summary>Do you sell TTD darshan tickets?</summary><p>Darshan, seva and accommodation tickets are issued only by Tirumala Tirupati Devasthanams. We help you with the enquiry and guide you through the process; our team calls to verify your details.</p></details>
-      <details class="fq"><summary>Where can I see my bookings?</summary><p>Tap My bookings at the top. Bus bookings and enquiries made on this device are listed there, and enquiry status updates live as our team works on them.</p></details>
-      <details class="fq"><summary>Can I cancel or reschedule?</summary><p>Cancellation and rescheduling depend on the operator's policy for your bus or cab. Contact our help desk with your reference number and we will guide you.</p></details>
+      <details class="fq" data-fc="bus"><summary>How do I book a bus ticket?</summary><p>Choose your From and To cities and the date in the search card, then tap Search buses. Pick a bus, tap View seats, choose your seats and boarding point, and add passenger details to confirm.</p></details>
+      <details class="fq" data-fc="bus"><summary>Can I change the number of passengers after searching?</summary><p>Yes. On the Bus tickets page, use the − and + buttons in the blue banner. The number of seats you can pick changes with it.</p></details>
+      <details class="fq" data-fc="cab"><summary>How does a cab enquiry work?</summary><p>Fill in the Cab Enquiry card with pickup, drop, date, passengers, your name and mobile. There is no online payment. Our team calls you with available cars and fares, then confirms your driver by SMS.</p></details>
+      <details class="fq" data-fc="ttd"><summary>Do you sell TTD darshan tickets?</summary><p>Darshan, seva and accommodation tickets are issued only by Tirumala Tirupati Devasthanams. We help you with the enquiry and guide you through the process; our team calls to verify your details.</p></details>
+      <details class="fq" data-fc="acc"><summary>Where can I see my bookings?</summary><p>Tap My bookings at the top. Bus bookings and enquiries made on this device are listed there, and enquiry status updates live as our team works on them.</p></details>
+      <details class="fq" data-fc="bus"><summary>Can I cancel or reschedule?</summary><p>Cancellation and rescheduling depend on the operator's policy for your bus or cab. Contact our help desk with your reference number and we will guide you.</p></details>
+    </div>
     </div>
   </div>
 </section>
@@ -2461,7 +2509,7 @@ body.page-account .cdesk{display:none}
 <footer>
   <div class="wrap">
     <div class="fcols">
-      <div><a class="logo" href="#top" aria-label="SGVK Tours and Travels, home"><img class="lgimg" src="img/sgvk-logo.webp" alt="SGVK Tours and Travels" width="510" height="128" decoding="async"></a><p>Premium bus and cab travel across South India, with temple darshan booking for pilgrims.</p></div>
+      <div><a class="logo" href="#top" aria-label="SGVK Tours and Travels, home"><img class="lgimg" src="img/sgvk-logo.webp" alt="SGVK Tours and Travels" width="510" height="128" decoding="async"></a><p>Premium bus and cab travel across South India, with temple darshan booking for pilgrims.</p><div class="fsoc"><a data-sd="whatsapp" href="#contact" aria-label="WhatsApp" style="--bc:#1FA855"><svg class="i"><use href="#i-wa"/></svg></a><a data-sd="instagram" href="#contact" aria-label="Instagram" class="ig"><svg class="i"><use href="#i-ig"/></svg></a><a data-sd="facebook" href="#contact" aria-label="Facebook" style="--bc:#1877F2"><svg class="i"><use href="#i-fb"/></svg></a><a data-sd="youtube" href="#contact" aria-label="YouTube" style="--bc:#E62117"><svg class="i"><use href="#i-yt"/></svg></a><a data-sd="email" href="#contact" aria-label="Email" style="--bc:var(--c-help)"><svg class="i"><use href="#i-mail"/></svg></a></div></div>
       <div><h5>Book</h5><ul><li><button class="fl" data-tab="bus">Bus tickets</button></li><li><button class="fl" data-tab="cab">Cabs</button></li><li><button class="fl" data-tab="drs">Temple darshan</button></li></ul></div>
       <div><h5>Popular routes</h5><ul id="fRoutes"></ul></div>
       <div><h5>Support</h5><ul><li><a class="fl" href="#packages">Tour packages</a></li><li><a class="fl" href="#ttdguide">TTD rules &amp; tips</a></li><li><a class="fl" href="#contact">Contact us</a></li><li><a class="fl" href="#faq">FAQs</a></li><li><a class="fl" href="#bookings">My bookings</a></li><li><a class="fl" href="#ttd">TTD enquiry</a></li></ul></div>
@@ -2889,8 +2937,10 @@ $("#bDate").min=min;$("#bDate").max=max;$("#bDate").value=S.date;
 $("#bPax").innerHTML=Array.from({length:6},(_,i)=>`<option value="${i+1}">${i+1} ${i?"passengers":"passenger"}</option>`).join("");
 $("#bPax").onchange=e=>{S.pax=+e.target.value;S.sel=S.sel.slice(0,S.pax)};
 $("#bSwap").onclick=()=>{const a=$("#bFrom").value;$("#bFrom").value=$("#bTo").value;$("#bTo").value=a};
-const syncQuick=()=>$$(".quick [data-q]").forEach(b=>b.setAttribute("aria-pressed",$("#bDate").value===iso(addDays(today,+b.dataset.q))));
-$$(".quick [data-q]").forEach(b=>b.onclick=e=>{e.preventDefault();$("#bDate").value=iso(addDays(today,+b.dataset.q));syncQuick()});
+/* date strip: the next seven days as tappable chips (the calendar field still works for later dates) */
+$("#dStrip").innerHTML=[0,1,2,3,4,5,6].map(i=>{const d=addDays(today,i),w=i===0?"Today":i===1?"Tmrw":d.toLocaleDateString("en-IN",{weekday:"short"});return `<button type="button" data-q="${i}" aria-label="${d.toLocaleDateString("en-IN",{weekday:"long",day:"numeric",month:"long"})}"><small>${w}</small><b>${d.getDate()}</b><em>${d.toLocaleDateString("en-IN",{month:"short"})}</em></button>`}).join("");
+const syncQuick=()=>$$("#dStrip [data-q]").forEach(b=>b.setAttribute("aria-pressed",$("#bDate").value===iso(addDays(today,+b.dataset.q))));
+$$("#dStrip [data-q]").forEach(b=>b.onclick=e=>{e.preventDefault();$("#bDate").value=iso(addDays(today,+b.dataset.q));syncQuick()});
 $("#bDate").addEventListener("change",syncQuick);syncQuick();
 $("#busSearch").onsubmit=e=>{e.preventDefault();S.from=$("#bFrom").value;S.to=$("#bTo").value;S.date=$("#bDate").value||S.date;S.pax=+$("#bPax").value||1;
   if(S.from===S.to){toast("Pick a destination different from where you start.");return}
@@ -3406,7 +3456,7 @@ $("#glClose").onclick=()=>$("#glBox").hidden=true;$("#glBox").addEventListener("
 /* contact & social dock */
 (function(){const c=window.SGVK_CONFIG||{},d=x=>String(x||"").replace(/\D/g,""),n=x=>d(x).length===10?"91"+d(x):d(x);
   const url={phone:c.phone&&"tel:+"+n(c.phone),whatsapp:c.whatsapp&&"https://wa.me/"+n(c.whatsapp),email:c.email&&"mailto:"+c.email,instagram:c.instagram,facebook:c.facebook,youtube:c.youtube};
-  $$("#sdock [data-sd]").forEach(a=>{const u=url[a.dataset.sd];if(u){a.href=u;if(/^https?:/.test(u)){a.target="_blank";a.rel="noopener"}}});
+  $$("[data-sd]").forEach(a=>{const u=url[a.dataset.sd];if(u){a.href=u;if(/^https?:/.test(u)){a.target="_blank";a.rel="noopener"}}});
 })();
 (function(){const d=$("#sdock"),f=$("#cdFab"),h=$("#cdHint"),c=window.SGVK_CONFIG||{};if(!d)return;
   if(c.whatsapp)$("#cdWa").textContent=c.whatsapp+" · fastest reply";if(c.phone)$("#cdPh").textContent=c.phone+(c.hours?" · "+c.hours:"");if(c.email)$("#cdEm").textContent=c.email;
@@ -3419,6 +3469,8 @@ $("#glClose").onclick=()=>$("#glBox").hidden=true;$("#glBox").addEventListener("
   document.addEventListener("click",e=>{if(d.classList.contains("open")&&!d.contains(e.target))set(false)});
   let seen=false;try{seen=!!sessionStorage.getItem("sgvkHint")}catch(e){}
   if(!seen){setTimeout(()=>d.classList.add("hint"),2200);setTimeout(()=>d.classList.remove("hint"),10000)}})();
+/* FAQ category chips */
+$$(".fq-cats [data-fcat]").forEach(b=>b.addEventListener("click",()=>{const c=b.dataset.fcat;$$(".fq-cats [data-fcat]").forEach(x=>x.setAttribute("aria-pressed",x===b));$$(".fqlist .fq").forEach(q=>q.hidden=c!=="all"&&q.dataset.fc!==c)}));
 /* quick enquiry */
 $("#qkPkg").innerHTML=`<option value="tirupati">Tirupati darshan tour</option>`+`<option value="bus">Bus tickets</option><option value="cab">Cab</option><option value="other">Something else</option>`;
 $("#qkPax").innerHTML=Array.from({length:20},(_,i)=>`<option value="${i+1}"${i===1?" selected":""}>${i+1}</option>`).join("");
