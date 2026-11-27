@@ -1806,6 +1806,31 @@ footer [style*="color"],footer small{color:var(--muted)}
 .tp-cats button{color:#fff;background:rgba(255,255,255,.14)}
 .tp-cats button[aria-pressed="true"]{background:#fff;color:#5A4D8C}
 .rhero .btn.c{background:#fff;color:#8E3F47}.rhero .btn.c svg.i{color:#8E3F47}
+/* ---------- floating contact & social dock (right edge) ---------- */
+.sdock{position:fixed;right:0;top:50%;transform:translateY(-50%);z-index:19;display:flex;flex-direction:column;align-items:center;gap:6px;padding:8px 7px;border-radius:18px 0 0 18px;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:0 18px 40px -22px rgba(38,42,49,.55),inset 0 0 0 1px var(--line)}
+.sdock a{position:relative;width:36px;height:36px;border-radius:50%;display:grid;place-items:center;color:var(--bc);background:color-mix(in srgb,var(--bc) 10%,#fff);text-decoration:none;transition:background .25s,color .25s,transform .3s var(--ease)}
+.sdock a svg.i{width:18px;height:18px}
+.sdock a:hover,.sdock a:focus-visible{background:var(--bc);color:#fff;transform:scale(1.08);outline:none}
+.sdock a.sd-ig:hover,.sdock a.sd-ig:focus-visible{background:linear-gradient(45deg,#F2A64A,#D9435E 50%,#8D49B5)}
+.sdock a span{position:absolute;right:calc(100% + 12px);top:50%;transform:translate(6px,-50%);white-space:nowrap;font-size:13px;font-weight:700;color:#fff;background:var(--ink);padding:6px 11px;border-radius:999px;opacity:0;pointer-events:none;transition:opacity .2s,transform .25s var(--ease)}
+.sdock a:hover span,.sdock a:focus-visible span{opacity:1;transform:translate(0,-50%)}
+.sd-call{--bc:var(--c-bus)}.sd-wa{--bc:#1FA855}.sd-ig{--bc:#C13584}.sd-fb{--bc:#1877F2}.sd-yt{--bc:#E62117}.sd-mail{--bc:var(--c-help)}
+.sd-sep{width:18px;height:1px;background:var(--line);margin:2px 0}
+.sd-call::after{content:"";position:absolute;inset:-3px;border-radius:50%;border:2px solid var(--bc);opacity:0;animation:sdRing 2.6s ease-out infinite}
+@keyframes sdRing{0%{opacity:.6;transform:scale(.9)}70%,100%{opacity:0;transform:scale(1.35)}}
+body.page-account .sdock{display:none}
+/* narrower screens: just Call + WhatsApp, bottom-right */
+@media (max-width:1340px){
+  .sdock{top:auto;transform:none;border-radius:999px;background:none;box-shadow:none;backdrop-filter:none;-webkit-backdrop-filter:none;bottom:calc(84px + env(safe-area-inset-bottom,0px));right:max(12px,env(safe-area-inset-right,0px));padding:6px;gap:8px}
+  .sdock :is(.sd-ig,.sd-fb,.sd-yt,.sd-mail,.sd-sep){display:none}
+  .sdock a{width:46px;height:46px;background:var(--bc);color:#fff;box-shadow:0 12px 24px -12px rgba(38,42,49,.6)}
+  .sdock a svg.i{width:21px;height:21px}
+  .sdock a span{display:none}
+  body.page-results .sdock,body.page-ttd .sdock{display:none}
+}
+@media (min-width:1101px) and (max-width:1340px){.sdock{bottom:calc(20px + env(safe-area-inset-bottom,0px))}.totop{right:84px}}
+@media (max-width:640px){.sdock a{width:42px;height:42px}.sdock a svg.i{width:19px;height:19px}}
+@media (prefers-reduced-motion:reduce){.sd-call::after{animation:none}}
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -1851,7 +1876,7 @@ footer [style*="color"],footer small{color:var(--muted)}
     <symbol id="i-wheel" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="2"/><path d="M12 4v6M5 15l5-2M19 15l-5-2"/></symbol>
     <symbol id="i-coach" viewBox="0 0 34 34"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="3" width="20" height="24" rx="4"/><path d="M7 15h20M10 9h14M11 27v3M23 27v3"/><circle cx="11.5" cy="21.5" r="1.3"/><circle cx="22.5" cy="21.5" r="1.3"/><path d="M5 9v4M29 9v4"/></g></symbol>
     <symbol id="i-car2" viewBox="0 0 34 34"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 22v-5l3-7h18l3 7v5a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1z"/><path d="M5 17h24M9 23v3M25 23v3"/><circle cx="10" cy="19.5" r="1.3"/><circle cx="24" cy="19.5" r="1.3"/></g></symbol>
-    <symbol id="i-temple" viewBox="0 0 34 34"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><path d="M17 3v3M13 9h8l-1-3h-6zM11 14h12l-2-5h-8zM9 20h16l-2-6H11zM6 30h22M7 30v-10h20v10"/><path d="M14 30v-5a3 3 0 0 1 6 0v5"/></g></symbol>
+    <symbol id="i-temple" viewBox="0 0 34 34"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><path d="M17 3v3M13 9h8l-1-3h-6zM11 14h12l-2-5h-8zM9 20h16l-2-6H11zM6 30h22M7 30v-10h20v10"/><path d="M14 30v-5a3 3 0 0 1 6 0v5"/></g></symbol><symbol id="i-ig" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="17.4" cy="6.6" r="1.2" fill="currentColor"/></symbol><symbol id="i-fb" viewBox="0 0 24 24"><path fill="currentColor" d="M13.5 21v-7.5h2.6l.4-3h-3V8.6c0-.9.3-1.5 1.6-1.5h1.6V4.4c-.3 0-1.2-.1-2.3-.1-2.3 0-3.9 1.4-3.9 4v2.2H8v3h2.5V21z"/></symbol><symbol id="i-yt" viewBox="0 0 24 24"><path fill="currentColor" d="M21.6 7.2a2.5 2.5 0 0 0-1.8-1.8C18.2 5 12 5 12 5s-6.2 0-7.8.4A2.5 2.5 0 0 0 2.4 7.2 26 26 0 0 0 2 12a26 26 0 0 0 .4 4.8 2.5 2.5 0 0 0 1.8 1.8c1.6.4 7.8.4 7.8.4s6.2 0 7.8-.4a2.5 2.5 0 0 0 1.8-1.8A26 26 0 0 0 22 12a26 26 0 0 0-.4-4.8zM10 15V9l5.2 3z"/></symbol>
   </defs>
 </svg>
 
@@ -2360,6 +2385,15 @@ footer [style*="color"],footer small{color:var(--muted)}
   <a href="#cabs" data-sec="cabs"><svg class="i"><use href="#i-car"/></svg>Cabs</a>
   <a href="#darshan" data-sec="darshan"><svg class="i" viewBox="0 0 34 34"><use href="#i-temple"/></svg>TTD</a>
   <a href="#bookings" data-sec="bookings" id="tbAcct"><svg class="i"><use href="#i-ticket"/></svg><span>Trips</span><b id="tbCount"></b></a>
+</nav>
+<nav class="sdock" id="sdock" aria-label="Contact SGVK">
+  <a class="sd-call" data-sd="phone" href="#contact"><svg class="i"><use href="#i-phone"/></svg><span>Call us</span></a>
+  <a class="sd-wa" data-sd="whatsapp" href="#contact"><svg class="i"><use href="#i-wa"/></svg><span>WhatsApp</span></a>
+  <i class="sd-sep" aria-hidden="true"></i>
+  <a class="sd-ig" data-sd="instagram" href="#contact"><svg class="i"><use href="#i-ig"/></svg><span>Instagram</span></a>
+  <a class="sd-fb" data-sd="facebook" href="#contact"><svg class="i"><use href="#i-fb"/></svg><span>Facebook</span></a>
+  <a class="sd-yt" data-sd="youtube" href="#contact"><svg class="i"><use href="#i-yt"/></svg><span>YouTube</span></a>
+  <a class="sd-mail" data-sd="email" href="#contact"><svg class="i"><use href="#i-mail"/></svg><span>Email</span></a>
 </nav>
 <a class="totop" id="totop" href="#top" aria-label="Back to top"><svg class="i"><use href="#i-up"/></svg></a>
 
@@ -3246,6 +3280,11 @@ $("#glClose").onclick=()=>$("#glBox").hidden=true;$("#glBox").addEventListener("
   if(c.email)out.push(`<a href="mailto:${esc(c.email)}"><svg class="i"><use href="#i-mail"/></svg><span><small>Email</small>${esc(c.email)}</span></a>`);
   if(c.address)out.push(c.mapsUrl?`<a href="${esc(c.mapsUrl)}" target="_blank" rel="noopener"><svg class="i"><use href="#i-pin"/></svg><span><small>Office · open in Maps</small>${esc(c.address)}</span></a>`:`<div><svg class="i"><use href="#i-pin"/></svg><span><small>Office</small>${esc(c.address)}</span></div>`);
   $("#abContact").innerHTML=out.join("");$("#abContact").hidden=!out.length})();
+/* contact & social dock */
+(function(){const c=window.SGVK_CONFIG||{},d=x=>String(x||"").replace(/\D/g,""),n=x=>d(x).length===10?"91"+d(x):d(x);
+  const url={phone:c.phone&&"tel:+"+n(c.phone),whatsapp:c.whatsapp&&"https://wa.me/"+n(c.whatsapp),email:c.email&&"mailto:"+c.email,instagram:c.instagram,facebook:c.facebook,youtube:c.youtube};
+  $$("#sdock [data-sd]").forEach(a=>{const u=url[a.dataset.sd];if(u){a.href=u;if(/^https?:/.test(u)){a.target="_blank";a.rel="noopener"}}});
+})();
 /* quick enquiry */
 $("#qkPkg").innerHTML=`<option value="tirupati">Tirupati darshan tour</option>`+`<option value="bus">Bus tickets</option><option value="cab">Cab</option><option value="other">Something else</option>`;
 $("#qkPax").innerHTML=Array.from({length:20},(_,i)=>`<option value="${i+1}"${i===1?" selected":""}>${i+1}</option>`).join("");

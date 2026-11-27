@@ -12,5 +12,10 @@ window.SGVK_CONFIG = {
   email: "",             // e.g. "bookings@sgvktravels.com"
   address: "",           // e.g. "12, MG Road, Bengaluru 560001"
   mapsUrl: "",           // Google Maps link to the office
-  hours: ""              // e.g. "24/7" or "6 AM – 10 PM"
+  hours: "",              // e.g. "24/7" or "6 AM – 10 PM"
+
+  /* Social pages for the floating icons on the right edge. Until set, those icons open the contact section. */
+  instagram: "",         // e.g. "https://instagram.com/sgvktravels"
+  facebook: "",          // e.g. "https://facebook.com/sgvktravels"
+  youtube: ""            // e.g. "https://youtube.com/@sgvktravels"
 };
