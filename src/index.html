@@ -1872,6 +1872,62 @@ body.page-account .cdesk{display:none}
   .cdesk.open .cd-panel{box-shadow:0 30px 80px -10px rgba(28,31,37,.55),0 0 0 1px rgba(0,0,0,.06)}
 }
 @media (prefers-reduced-motion:reduce){.cdesk,.cd-av i::after{animation:none}}
+/* ---------- Popular routes: premium boarding-pass tickets ---------- */
+#routes{background:linear-gradient(180deg,#fff 0%,#FBF6F5 100%)}
+.rtx{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,2fr);gap:18px;align-items:stretch}
+.tk-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.tkt{--tc:var(--c-bus);position:relative;display:flex;flex-direction:column;border:0;padding:0;font:inherit;text-align:left;color:var(--ink);background:#fff;border-radius:22px;cursor:pointer;box-shadow:0 1px 0 rgba(0,0,0,.02),0 18px 40px -28px rgba(38,42,49,.45),inset 0 0 0 1px var(--line);transition:transform .45s var(--ease),box-shadow .45s}
+.tkt:hover,.tkt:focus-visible{transform:translateY(-6px);box-shadow:0 34px 60px -32px rgba(142,63,71,.55),inset 0 0 0 1.5px var(--tc);outline:none}
+.tk-body{display:flex;flex-direction:column;gap:14px;padding:20px 22px 18px;flex:1}
+.tk-top{display:flex;justify-content:space-between;gap:10px;font-size:11.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--faint)}
+.tk-top span:first-child{color:var(--tc)}
+.tk-cities{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:14px}
+.tk-c b{display:block;font-family:var(--f-serif);font-weight:600;font-size:40px;line-height:.95;letter-spacing:.02em;color:var(--ink)}
+.tk-c small{display:block;margin-top:5px;font-size:13px;font-weight:600;color:var(--muted);white-space:nowrap}
+.tk-c.r{text-align:right}
+.tk-path{position:relative;height:28px;display:flex;align-items:center}
+.tk-path i{position:absolute;left:0;right:0;top:50%;height:0;border-top:2px dotted #D9C3C4}
+.tk-path i::before,.tk-path i::after{content:"";position:absolute;top:-5px;width:8px;height:8px;border-radius:50%;background:#fff;box-shadow:inset 0 0 0 2px var(--tc)}
+.tk-path i::before{left:-2px}.tk-path i::after{right:-2px;background:var(--tc)}
+.tk-path svg.i{position:relative;left:18%;width:28px;height:28px;padding:5px;border-radius:50%;background:var(--tc);color:#fff;box-shadow:0 8px 16px -8px var(--tc);transition:left .9s var(--ease)}
+.tkt:hover .tk-path svg.i,.tkt:focus-visible .tk-path svg.i{left:calc(82% - 28px)}
+.tk-cut{position:relative;height:0;margin:0 18px;border-top:2px dashed var(--line)}
+.tk-cut::before,.tk-cut::after{content:"";position:absolute;top:-12px;width:22px;height:22px;border-radius:50%;background:#FCF8F7;box-shadow:inset 0 0 0 1px var(--line)}
+.tk-cut::before{left:-30px;clip-path:inset(0 0 0 50%)}.tk-cut::after{right:-30px;clip-path:inset(0 50% 0 0)}
+.tk-foot{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:14px 22px 16px}
+.tk-foot small{display:block;font-size:11.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--faint)}
+.tk-foot b{font-size:22px;font-weight:800;letter-spacing:-.02em}
+.tk-go{display:inline-flex;align-items:center;gap:8px;font-size:13.5px;font-weight:700;color:var(--tc);padding:9px 14px;border-radius:999px;background:var(--t-bus);transition:background .3s,color .3s}
+.tk-go svg{width:14px;height:14px;transition:transform .35s var(--ease)}
+.tkt:hover .tk-go,.tkt:focus-visible .tk-go{background:var(--tc);color:#fff}
+.tkt:hover .tk-go svg{transform:translateX(3px)}
+/* featured ticket */
+.tkt.feat{overflow:hidden}
+.tk-pic{position:relative;display:block;aspect-ratio:16/9.5;overflow:hidden;border-radius:22px 22px 0 0}
+.tk-pic img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 1.2s var(--ease)}
+.tkt.feat:hover .tk-pic img{transform:scale(1.05)}
+.tk-pic::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 55%,rgba(28,31,37,.35))}
+.tk-badge{position:absolute;left:14px;top:14px;z-index:1;display:inline-flex;align-items:center;gap:7px;font-size:12.5px;font-weight:700;color:var(--ink);background:rgba(255,255,255,.92);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);padding:7px 12px;border-radius:999px}
+.tk-badge svg.i{width:15px;height:15px;color:var(--c-ttd)}
+.tkt.feat .tk-c b{font-size:48px}
+.tk-note{font-size:14px;color:var(--muted);line-height:1.5}
+.tkt.feat .tk-foot b{font-size:26px}
+.tkt.feat .tk-go{background:var(--tc);color:#fff}
+@media (max-width:1100px){.rtx{grid-template-columns:1fr}.tkt.feat{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);grid-template-rows:1fr auto auto}.tkt.feat .tk-pic{grid-row:1/4;aspect-ratio:auto;border-radius:22px 0 0 22px}.tkt.feat .tk-cut{margin-left:18px}}
+@media (max-width:640px){
+  .rtx{gap:14px}
+  .tkt.feat{display:flex}
+  .tkt.feat .tk-pic{aspect-ratio:16/9;border-radius:22px 22px 0 0}
+  .tk-grid{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;margin-inline:-20px;padding:6px 20px 14px}
+  .tk-grid::-webkit-scrollbar{display:none}
+  .tk-grid .tkt{flex:0 0 82%;scroll-snap-align:start}
+  .tk-c b{font-size:34px}.tkt.feat .tk-c b{font-size:40px}
+  .tk-body{padding:18px 18px 16px}.tk-foot{padding:12px 18px 14px}
+}
+.tk-perks{display:flex;flex-wrap:wrap;gap:8px;margin-top:auto}
+.tk-perks span{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:600;color:#4A515D;background:var(--t-bus);border-radius:999px;padding:6px 11px}
+.tk-perks svg.i{width:14px;height:14px;color:var(--c-bus)}
+@media (max-width:1100px) and (min-width:641px){.tk-perks{display:none}}
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -2183,7 +2239,7 @@ body.page-account .cdesk{display:none}
 <section data-home id="routes">
   <div class="wrap">
     <div class="sh rv"><span class="eb">Popular routes</span><h2>Where people <span class="serif">are going</span></h2><p>One tap to see every bus on the route, with fares and seats.</p></div>
-    <div class="routes rv" id="routeList"></div>
+    <div class="rtx rv" id="routeList"></div>
   </div>
 </section>
 
@@ -2853,8 +2909,14 @@ document.addEventListener("click",e=>{const p=e.target.closest("[data-pop]");if(
 /* ---------- routes & destinations ---------- */
 const cheapest=(a,b)=>Math.max(249,Math.round(km(a,b)*TYPES[4].rate/10)*10);
 function renderRoutes(){
-  $("#routeList").innerHTML=POP.map(([a,b])=>{const d=km(a,b),h=d/52,dur=h<1?Math.round(h*60)+"m":Math.floor(h)+"h "+String(Math.round(h%1*60)).padStart(2,"0")+"m",n=6+(hash(a+b)%5);
-    return `<button type="button" class="route" data-pop="${a}|${b}" data-cursor="Buses"><span class="rt-cities"><span><small>From</small><b>${a}</b></span><span class="rt-line" aria-hidden="true"><i></i><svg class="i"><use href="#i-bus"/></svg><i></i></span><span class="r"><small>To</small><b>${b}</b></span></span><span class="rt-meta"><span><svg class="i"><use href="#i-route"/></svg>${d} km</span><span><svg class="i"><use href="#i-clock"/></svg>~${dur}</span><span><svg class="i"><use href="#i-bus"/></svg>${n} buses daily</span></span><span class="rt-foot"><span>Starts at <b>${inr(cheapest(a,b))}</b></span><span class="arw"><svg><use href="#arrow"/></svg></span></span></button>`}).join("");
+  const CODE={Bengaluru:"BLR",Tirupati:"TPT",Hyderabad:"HYD",Vijayawada:"BZA",Chennai:"MAA",Puducherry:"PNY",Mysuru:"MYS",Srisailam:"SRS",Ooty:"OTY",Mumbai:"BOM",Panaji:"GOI"};
+  const code=c=>CODE[c]||c.slice(0,3).toUpperCase();
+  const info=(a,b)=>{const d=km(a,b),h=d/52,dur=h<1?Math.round(h*60)+"m":Math.floor(h)+"h "+String(Math.round(h%1*60)).padStart(2,"0")+"m";return {d,dur,n:6+(hash(a+b)%5)}};
+  const leg=(a,b)=>`<span class="tk-cities"><span class="tk-c"><b>${code(a)}</b><small>${a}</small></span><span class="tk-path" aria-hidden="true"><i></i><svg class="i"><use href="#i-bus"/></svg></span><span class="tk-c r"><b>${code(b)}</b><small>${b}</small></span></span>`;
+  const [fa,fb]=POP[0],F=info(fa,fb);
+  const feat=`<button type="button" class="tkt feat" data-pop="${fa}|${fb}" data-cursor="Buses"><span class="tk-pic"><img src="img/ttd-banner.webp" alt="" width="904" height="472" loading="lazy"><span class="tk-badge"><svg class="i"><use href="#i-temple"/></svg>Most travelled route</span></span><span class="tk-body"><span class="tk-top"><span>Daily · ${F.n} buses</span><span>${F.d} km · ~${F.dur}</span></span>${leg(fa,fb)}<span class="tk-note">Overnight sleepers reach Tirupati by dawn, in time for darshan.</span><span class="tk-perks"><span><svg class="i"><use href="#i-bed"/></svg>Sleeper &amp; seater</span><span><svg class="i"><use href="#i-live"/></svg>Live tracking</span><span><svg class="i"><use href="#i-snow"/></svg>A/C coaches</span><span><svg class="i"><use href="#i-temple"/></svg>Darshan help</span></span></span><span class="tk-cut" aria-hidden="true"></span><span class="tk-foot"><span><small>Fares from</small><b>${inr(cheapest(fa,fb))}</b></span><span class="tk-go">View buses <svg><use href="#arrow"/></svg></span></span></button>`;
+  const rest=POP.slice(1,7).map(([a,b])=>{const I=info(a,b);return `<button type="button" class="tkt" data-pop="${a}|${b}" data-cursor="Buses"><span class="tk-body"><span class="tk-top"><span>Daily · ${I.n} buses</span><span>~${I.dur}</span></span>${leg(a,b)}</span><span class="tk-cut" aria-hidden="true"></span><span class="tk-foot"><span><small>From</small><b>${inr(cheapest(a,b))}</b></span><span class="tk-go">View buses <svg><use href="#arrow"/></svg></span></span></button>`}).join("");
+  $("#routeList").innerHTML=feat+`<div class="tk-grid">${rest}</div>`;
   $("#fDirRoutes").innerHTML=POP.map(([a,b])=>`<button class="fl" data-pop="${a}|${b}">${a} to ${b} bus</button>`).join("");
   $("#fDirCities").innerHTML=["Bengaluru","Hyderabad","Chennai","Tirupati","Vijayawada","Mysuru"].filter(c=>CITY[c]).map(c=>`<button class="fl" data-from="${c}">Buses from ${c}</button>`).join("");
   $("#fRoutes").innerHTML=POP.slice(0,5).map(([a,b])=>`<li><button class="fl" data-pop="${a}|${b}">${a} → ${b}</button></li>`).join("");
