@@ -4,6 +4,7 @@
 window.SGVK_CONFIG = {
   supabaseUrl: "",       // e.g. "https://abcdxyz.supabase.co"
   supabaseAnonKey: "",   // Project Settings → API → "anon public" key
+  showTrips: false,      // "Your trips / My bookings" section — set true to show it again
   demoLogin: false,      // keep false on the real site
 
   /* Contact details shown in the "About & contact" section. Leave a line empty to hide it. */

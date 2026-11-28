@@ -1943,6 +1943,10 @@ body.page-account .cdesk{display:none}
 body:not(.tb-on) .cdesk{visibility:hidden}
 body:not(.tb-on) .cdesk *{visibility:hidden!important}
 body.tb-on .cdesk{animation:cdIn .6s var(--ease) both}
+/* "Your trips" hidden for now: set showTrips:true in config.js to bring it back */
+body.no-trips #bookings,body.no-trips .fq-trips,body.no-trips a[href="#bookings"]:not(#acctBtn):not(#tbAcct),body.no-trips footer li:has(> [href="#bookings"]){display:none!important}
+body.no-trips.acc-off :is(#acctBtn,#tbAcct){display:none!important}
+@media (max-width:1100px){body.no-trips.acc-off .tabbar{grid-template-columns:repeat(4,1fr)}}
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -2460,7 +2464,7 @@ body.tb-on .cdesk{animation:cdIn .6s var(--ease) both}
       <details class="fq"><summary>Can I change the number of passengers after searching?</summary><p>Yes. On the Bus tickets page, use the − and + buttons in the blue banner. The number of seats you can pick changes with it.</p></details>
       <details class="fq"><summary>How does a cab enquiry work?</summary><p>Fill in the Cab Enquiry card with pickup, drop, date, passengers, your name and mobile. There is no online payment. Our team calls you with available cars and fares, then confirms your driver by SMS.</p></details>
       <details class="fq"><summary>Do you sell TTD darshan tickets?</summary><p>Darshan, seva and accommodation tickets are issued only by Tirumala Tirupati Devasthanams. We help you with the enquiry and guide you through the process; our team calls to verify your details.</p></details>
-      <details class="fq"><summary>Where can I see my bookings?</summary><p>Tap My bookings at the top. Bus bookings and enquiries made on this device are listed there, and enquiry status updates live as our team works on them.</p></details>
+      <details class="fq fq-trips"><summary>Where can I see my bookings?</summary><p>Tap My bookings at the top. Bus bookings and enquiries made on this device are listed there, and enquiry status updates live as our team works on them.</p></details>
       <details class="fq"><summary>Can I cancel or reschedule?</summary><p>Cancellation and rescheduling depend on the operator's policy for your bus or cab. Contact our help desk with your reference number and we will guide you.</p></details>
     </div>
   </div>
@@ -3158,6 +3162,9 @@ $("#ttdForm").addEventListener("submit",async e=>{e.preventDefault();
    (through Twilio Verify) and keeps each person's profile, travellers, trips and enquiries private to them.
    Without it the site works as before; a clearly marked demo mode exists only for previews. */
 const CFG=window.SGVK_CONFIG||{};
+/* "Your trips" section is switched off until showTrips is set to true in config.js */
+if(!CFG.showTrips)document.body.classList.add("no-trips");
+if(!(CFG.supabaseUrl&&CFG.supabaseAnonKey)&&!CFG.demoLogin)document.body.classList.add("acc-off");
 const ACC={api:null,mode:"off",user:null,profile:null,trav:[],trips:[],enq:[],phone:"",tf:"up",tab:"trips",editTv:null};
 const fmtPh=p=>{const d=String(p||"").replace(/\D/g,"").slice(-10);return d?`+91 ${d.slice(0,5)} ${d.slice(5)}`:""};
 const ten=p=>String(p||"").replace(/\D/g,"").slice(-10);
@@ -3216,7 +3223,7 @@ async function accSignedIn(u,quiet){ACC.user={id:u.id,phone:ten(u.phone)};
 async function accLoad(){if(!ACC.user)return;
   const [t,v,q]=await Promise.all(["bookings","travellers","enquiries"].map(n=>ACC.api.list(n).catch(()=>[])));
   ACC.trips=t;ACC.trav=v;ACC.enq=q;accRender()}
-function accHeader(){const b=$("#acctBtn"),tb=$("#tbAcct");if(ACC.mode==="off")return;
+function accHeader(){const b=$("#acctBtn"),tb=$("#tbAcct");if(ACC.mode==="off"){document.body.classList.add("acc-off");return}
   b.classList.add("acct");tb.classList.add("acct");b.href="#account";b.dataset.sec="account";tb.href="#account";tb.dataset.sec="account";tb.querySelector("use").setAttribute("href","#i-user");
   if(ACC.user){const n=(ACC.profile&&ACC.profile.full_name)||"";const first=n.split(" ")[0]||"Account";
     $("#acctAv").hidden=false;$("#acctAv").textContent=(n[0]||"S").toUpperCase();$("#acctIco").style.display="none";b.querySelector(".hbk-t").textContent=first;b.setAttribute("aria-label","My account");tb.querySelector("span").textContent="Account"}
