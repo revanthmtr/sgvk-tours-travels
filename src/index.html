@@ -1947,6 +1947,38 @@ body.tb-on .cdesk{animation:cdIn .6s var(--ease) both}
 body.no-trips #bookings,body.no-trips .fq-trips,body.no-trips a[href="#bookings"]:not(#acctBtn):not(#tbAcct),body.no-trips footer li:has(> [href="#bookings"]){display:none!important}
 body.no-trips.acc-off :is(#acctBtn,#tbAcct){display:none!important}
 @media (max-width:1100px){body.no-trips.acc-off .tabbar{grid-template-columns:repeat(4,1fr)}}
+/* ---------- navbar: brighter, clearer, one colour per service ---------- */
+header,header.scrolled{background:rgba(255,255,255,.97);box-shadow:0 10px 30px -22px rgba(38,42,49,.45)}
+header::before{content:"";position:absolute;left:0;right:0;top:0;height:3px;background:linear-gradient(90deg,var(--c-bus) 0 25%,var(--c-tour) 25% 50%,var(--c-cab) 50% 75%,var(--c-ttd) 75% 100%)}
+header::after{background:var(--line)}
+:is(#mainNav,.tabbar) a[data-sec="top"]{--nc:var(--c-bus);--nt:var(--t-bus)}
+:is(#mainNav,.tabbar) a[data-sec="packages"]{--nc:var(--c-tour);--nt:var(--t-tour)}
+:is(#mainNav,.tabbar) a[data-sec="cabs"]{--nc:var(--c-cab);--nt:var(--t-cab)}
+:is(#mainNav,.tabbar) a[data-sec="darshan"]{--nc:var(--c-ttd);--nt:var(--t-ttd)}
+header nav#mainNav{padding:6px;background:#fff;box-shadow:inset 0 0 0 1px var(--line),0 10px 26px -18px rgba(38,42,49,.45)}
+header nav#mainNav a{gap:9px;padding:7px 18px 7px 7px;font-size:15.5px;font-weight:700;color:var(--ink);letter-spacing:-.005em}
+header nav#mainNav a svg.i{width:30px;height:30px;padding:6px;border-radius:50%;color:var(--nc);background:var(--nt);opacity:1;transition:background .35s,color .35s,transform .4s var(--ease)}
+header nav#mainNav a:hover{color:var(--nc)}
+header nav#mainNav a:hover svg.i{transform:translateY(-1px) rotate(-6deg)}
+header nav#mainNav a.cur{color:#fff}
+header nav#mainNav a.cur svg.i{color:var(--nc);background:#fff}
+.nind{top:6px;bottom:6px;background:var(--ink);box-shadow:0 10px 20px -10px rgba(38,42,49,.6);transition:transform .55s var(--ease),width .55s var(--ease),opacity .3s,background .45s}
+#mainNav:has(a.cur[data-sec="top"]) .nind{background:var(--c-bus);box-shadow:0 10px 20px -10px var(--c-bus)}
+#mainNav:has(a.cur[data-sec="packages"]) .nind{background:var(--c-tour);box-shadow:0 10px 20px -10px var(--c-tour)}
+#mainNav:has(a.cur[data-sec="cabs"]) .nind{background:var(--c-cab);box-shadow:0 10px 20px -10px var(--c-cab)}
+#mainNav:has(a.cur[data-sec="darshan"]) .nind{background:var(--c-ttd);box-shadow:0 10px 20px -10px var(--c-ttd)}
+.hcta{box-shadow:0 12px 24px -14px var(--c-bus)}
+@media (max-width:1280px){header nav#mainNav a{padding:6px 14px 6px 6px;font-size:15px}header nav#mainNav a svg.i{width:28px;height:28px}}
+/* phone tab bar: active tab in its service colour */
+@media (max-width:1100px){
+  .tabbar{border-top:0;box-shadow:0 -10px 30px -20px rgba(38,42,49,.45)}
+  .tabbar a{color:#5A616C}
+  .tabbar a svg{transition:transform .35s var(--ease)}
+  .tabbar a.cur{color:var(--nc,var(--ink));background:var(--nt,rgba(0,0,0,.05))}
+  .tabbar a.cur svg{transform:translateY(-1px) scale(1.08)}
+  .tabbar a.cur::before{content:"";position:absolute;top:-6px;left:30%;right:30%;height:3px;border-radius:0 0 3px 3px;background:var(--nc,var(--ink))}
+}
+@media (min-width:1101px) and (max-width:1240px){header nav#mainNav a svg.i{display:block;width:26px;height:26px;padding:5px}header nav#mainNav a{padding:5px 12px 5px 5px!important;font-size:14.5px}}
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -3480,7 +3512,7 @@ addEventListener("resize",()=>requestAnimationFrame(placeInd));
 try{document.fonts.ready.then(()=>requestAnimationFrame(placeInd))}catch(e){}
 function onScroll(){const y=scrollY;
   if(!reduce&&y<innerHeight*1.2)$("#heroBg").style.transform=`translateY(${y*.22}px)`;
-  let cs="top";if(document.body.classList.contains("page-results"))cs="top";else if(document.body.classList.contains("page-ttd"))cs="darshan";else if(document.body.classList.contains("page-account"))cs="account";else if(document.body.classList.contains("page-tours"))cs="packages";else for(const id of["packages","cabs","darshan","amenities","bookings"]){if(document.getElementById(id).getBoundingClientRect().top<=innerHeight*.4)cs=id}
+  let cs="top";if(document.body.classList.contains("page-results"))cs="top";else if(document.body.classList.contains("page-ttd"))cs="darshan";else if(document.body.classList.contains("page-account"))cs="account";else if(document.body.classList.contains("page-tours"))cs="packages";else for(const id of["packages","cabs","darshan","amenities","bookings"]){const el=document.getElementById(id);if(el.offsetParent&&el.getBoundingClientRect().top<=innerHeight*.4)cs=id}
   $$("[data-sec]").forEach(a=>a.classList.toggle("cur",a.dataset.sec===cs));placeInd();$("#hdr").classList.toggle("scrolled",y>8);document.body.classList.toggle("tb-on",y>140||document.body.classList.contains("page-results")||document.body.classList.contains("page-ttd")||document.body.classList.contains("page-account")||document.body.classList.contains("page-tours"));
   $("#totop").classList.toggle("show",y>innerHeight*1.2)}
 addEventListener("scroll",onScroll,{passive:true});
